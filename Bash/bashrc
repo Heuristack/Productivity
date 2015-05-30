@@ -1,0 +1,101 @@
+export LANG=en_US.UTF-8
+export LC_ALL=$LANG
+export EDITOR=/usr/bin/vi
+
+export PS1='[${USER}-${HOSTNAME}]'
+export PS1=''
+export PS1=$PS1'[$(date +%Y-%m-%d)][$(date +%H:%M:%S)]'
+export PS1=$PS1'[$PWD]'
+
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+export LSCOLORS=exfxcxdxbxegedabagacad
+
+alias reload='source $HOME/.bash_profile'
+alias hosts='cat /etc/hosts'
+
+alias l='ls $LS_OPTIONS -l'
+alias ll='ls $LS_OPTIONS -lA'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias cdboost='cd $BOOST_HOME'
+alias cdace='cd $ACE_ROOT'
+alias cdp='cd $HOME/Programming'
+alias cds='cd $HOME/Sources'
+alias cdr='cd $HOME/Resumes'
+alias cdj='cd $HOME/Jobs'
+
+alias cdmaster='cd $MASTER_HOME'
+alias cdnesox='cd $NESOX_HOME'
+alias cdryu='cd $HOME/PycharmProjects/ryu'
+
+alias cpmk='cp $MAKE_HOME/Makefile.mk ./'
+alias lnmk='ln -s $MAKE_HOME/Makefile.mk ./Makefile'
+
+alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
+alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
+
+alias cptex='cp $MAKE_HOME/*.tex ./'
+
+
+export APPLICATIONS=$HOME/Applications
+export LOCALPATH=$APPLICATIONS:$LOCALPATH
+
+export MAKE_HOME=$HOME/Programming/Make
+
+export ALGO_HOME=$HOME/Programming/algo
+export ALGO_INCLUDE=$ALGO_HOME/incl
+export ALGO_LIBRARY=$ALGO_HOME/libs
+
+export BOOST_HOME=$HOME/Programming/boost
+export BOOST_INCLUDE=$BOOST_HOME/include
+export BOOST_LIBRARY=$BOOST_HOME/lib
+
+export QUANTLIB_HOME=$HOME/Courses/HKU/comp7406/quantlib
+export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
+export QUANTLIB_LIBRARY=$QUANTLIB_HOME/lib
+
+export JAVA_HOME=`/usr/libexec/java_home`
+export JAVA_LIB=$JAVA_HOME/lib
+export JAVA=$JAVA_HOME/bin
+export CLASSPATH=$JAVA_LIB:$CLASSPATH
+export PATH=$PATH:$JAVA
+
+export JRE_HOME=$JAVA_HOME/jre
+export JRE_LIB=$JRE_HOME/lib
+export JRE=$JRE_HOME/bin
+export CLASSPATH=$JRE_LIB:$CLASSPATH
+export PATH=$PATH:$JRE
+
+export M2_HOME=/opt/apache-maven-3.2.1
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2
+
+export CLUSTERSCRIPT=$MASTER_HOME/ClusterScripts
+export LOCALPATH=$CLUSTERSCRIPT:$LOCALPATH
+
+export MASTER_HOME=$HOME/MasterProject
+export NESOX_HOME=$MASTER_HOME/Nesox
+export NESOX_BIN=$NESOX_HOME/bin
+export LOCALPATH=$NESOX_BIN:$LOCALPATH
+
+# These scripts may traverse git dirs
+# . $HOME/.git-completion.sh
+# . $HOME/.git-prompt.sh
+
+# export GIT_PS1_SHOWDIRTYSTATE=1
+# export PS1=$PS1'$(__git_ps1 "(%s)")\$ '
+
+export ACE_HOME=$HOME/orc/ace
+export ACE_ROOT=$ACE_HOME/wrappers
+export ACE_LIB=$ACE_ROOT/lib
+
+export DYLD_LIBRARY_PATH=$ACE_LIB:$BOOST_LIBRARY:$DYLD_LIBRARY_PATH
+export PATH=$LOCALPATH:$PATH
+
+echo "Load Bash Configuration For Unix Programmers Successed!"
+

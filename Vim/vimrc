@@ -1,0 +1,11 @@
+syntax on
+
+set tabstop=4
+set nu
+set autoindent
+set cindent shiftwidth=4
+
+map! ;; <ESC>
+
+"set background=dark
+
