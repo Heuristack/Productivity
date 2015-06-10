@@ -15,8 +15,8 @@ export LSCOLORS=exfxcxdxbxegedabagacad
 alias reload='source $HOME/.bash_profile'
 alias hosts='cat /etc/hosts'
 
-alias l='ls $LS_OPTIONS -l'
-alias ll='ls $LS_OPTIONS -lA'
+alias l='ls $LS_OPTIONS -hl'
+alias ll='ls $LS_OPTIONS -hlA'
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -54,6 +54,7 @@ export ALGO_LIBRARY=$ALGO_HOME/libs
 export BOOST_HOME=$HOME/Programming/boost
 export BOOST_INCLUDE=$BOOST_HOME/include
 export BOOST_LIBRARY=$BOOST_HOME/lib
+export LOCAL_DYLD_LIBRARY_PATH=$BOOST_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
 
 export QUANTLIB_HOME=$HOME/Courses/HKU/comp7406/quantlib
 export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
@@ -93,9 +94,10 @@ export LOCALPATH=$NESOX_BIN:$LOCALPATH
 export ACE_HOME=$HOME/orc/ace
 export ACE_ROOT=$ACE_HOME/wrappers
 export ACE_LIB=$ACE_ROOT/lib
+export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
 
-export DYLD_LIBRARY_PATH=$ACE_LIB:$BOOST_LIBRARY:$DYLD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=$LOCAL_DYLD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
 export PATH=$LOCALPATH:$PATH
 
-echo "Load Bash Configuration For Unix Programmers Successed!"
+echo "Load Bash Profile Successed!"
 

@@ -1,11 +1,12 @@
 syntax on
 
 set tabstop=4
-set nu
-set autoindent
+set shiftwidth=4
+set softtabstop=4
 set cindent shiftwidth=4
+set autoindent
+set number
+set background=dark
 
-map! ;; <ESC>
-
-"set background=dark
+map! jj <ESC>
 
