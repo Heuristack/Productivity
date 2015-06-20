@@ -95,6 +95,12 @@ alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias cptex='cp $PROD_HOME/Tex/*.tex ./'
 
 
+export TB_HOME=$HOME/Sources/tb
+export GW_HOME=$TB_HOME/src/servers/connectivity/
+
+alias cdtb='cd $TB_HOME'
+alias cdgw='cd $GW_HOME'
+
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 export PATH=$PATH:$LOCALPATH
 
