@@ -12,6 +12,10 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export LSCOLORS=exfxcxdxbxegedabagacad
 
+export APPLICATIONS=$HOME/Applications
+export LOCALPATH=$LOCALPATH:$APPLICATIONS
+
+alias resync='cp $PROD_HOME/Bash/bashrc $HOME/.bash_profile'
 alias reload='source $HOME/.bash_profile'
 alias hosts='cat /etc/hosts'
 
@@ -22,34 +26,16 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias cdboost='cd $BOOST_HOME'
-alias cdace='cd $ACE_ROOT'
 alias cdp='cd $HOME/Programming'
 alias cds='cd $HOME/Sources'
 alias cdr='cd $HOME/Resumes'
 alias cdj='cd $HOME/Jobs'
 
-alias cdmaster='cd $MASTER_HOME'
-alias cdnesox='cd $NESOX_HOME'
-alias cdryu='cd $HOME/PycharmProjects/ryu'
 
-alias cpmk='cp $MAKE_HOME/Makefile.mk ./'
-alias lnmk='ln -s $MAKE_HOME/Makefile.mk ./Makefile'
-
-alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
-alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
-
-alias cptex='cp $MAKE_HOME/*.tex ./'
-
-
-export APPLICATIONS=$HOME/Applications
-export LOCALPATH=$APPLICATIONS:$LOCALPATH
-
-export MAKE_HOME=$HOME/Programming/Make
-
-export ALGO_HOME=$HOME/Programming/algo
-export ALGO_INCLUDE=$ALGO_HOME/incl
-export ALGO_LIBRARY=$ALGO_HOME/libs
+export ACE_HOME=$HOME/orc/ace
+export ACE_ROOT=$ACE_HOME/wrappers
+export ACE_LIB=$ACE_ROOT/lib
+export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
 
 export BOOST_HOME=$HOME/Programming/boost
 export BOOST_INCLUDE=$BOOST_HOME/include
@@ -60,44 +46,56 @@ export QUANTLIB_HOME=$HOME/Courses/HKU/comp7406/quantlib
 export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
 export QUANTLIB_LIBRARY=$QUANTLIB_HOME/lib
 
+alias cdace='cd $ACE_ROOT'
+alias cdboost='cd $BOOST_HOME'
+alias cdquant='cd $QUANTLIB_HOME'
+
+
 export JAVA_HOME=`/usr/libexec/java_home`
 export JAVA_LIB=$JAVA_HOME/lib
 export JAVA=$JAVA_HOME/bin
 export CLASSPATH=$JAVA_LIB:$CLASSPATH
-export PATH=$PATH:$JAVA
+export LOCALPATH=$LOCALPATH:$JAVA
 
 export JRE_HOME=$JAVA_HOME/jre
 export JRE_LIB=$JRE_HOME/lib
 export JRE=$JRE_HOME/bin
 export CLASSPATH=$JRE_LIB:$CLASSPATH
-export PATH=$PATH:$JRE
+export LOCALPATH=$LOCALPATH:$JRE
 
 export M2_HOME=/opt/apache-maven-3.2.1
 export M2=$M2_HOME/bin
-export PATH=$PATH:$M2
+export LOCALPATH=$LOCALPATH:$M2
 
-export CLUSTERSCRIPT=$MASTER_HOME/ClusterScripts
-export LOCALPATH=$CLUSTERSCRIPT:$LOCALPATH
 
 export MASTER_HOME=$HOME/MasterProject
 export NESOX_HOME=$MASTER_HOME/Nesox
 export NESOX_BIN=$NESOX_HOME/bin
-export LOCALPATH=$NESOX_BIN:$LOCALPATH
+export LOCALPATH=$LOCALPATH:$NESOX_BIN
+export CLUSTERSCRIPT=$MASTER_HOME/ClusterScripts
+export LOCALPATH=$LOCALPATH:$CLUSTERSCRIPT
 
-# These scripts may traverse git dirs
-# . $HOME/.git-completion.sh
-# . $HOME/.git-prompt.sh
+alias cdmaster='cd $MASTER_HOME'
+alias cdnesox='cd $NESOX_HOME'
 
-# export GIT_PS1_SHOWDIRTYSTATE=1
-# export PS1=$PS1'$(__git_ps1 "(%s)")\$ '
 
-export ACE_HOME=$HOME/orc/ace
-export ACE_ROOT=$ACE_HOME/wrappers
-export ACE_LIB=$ACE_ROOT/lib
-export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
+export ALGO_HOME=$HOME/Programming/algo
+export ALGO_INCLUDE=$ALGO_HOME/incl
+export ALGO_LIBRARY=$ALGO_HOME/libs
 
-export DYLD_LIBRARY_PATH=$LOCAL_DYLD_LIBRARY_PATH:$DYLD_LIBRARY_PATH
-export PATH=$LOCALPATH:$PATH
+
+export PROD_HOME=$HOME/Productivity
+export MAKE_HOME=$PROD_HOME/Make
+
+alias cdprod='cd $PROD_HOME'
+alias cpmk='cp $MAKE_HOME/Makefile.mk ./'
+alias lnmk='ln -s $MAKE_HOME/Makefile.mk ./Makefile'
+alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
+alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
+alias cptex='cp $PROD_HOME/Tex/*.tex ./'
+
+
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
+export PATH=$PATH:$LOCALPATH
 
 echo "Load Bash Profile Successed!"
-
