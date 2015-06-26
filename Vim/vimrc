@@ -12,4 +12,5 @@ set background=dark
 
 "recursive map in insert and command modes
 map! jj <esc>
+noremap <c-k> <c-w>
 
