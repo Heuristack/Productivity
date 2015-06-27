@@ -104,7 +104,9 @@ alias cdgw='cd $GW_HOME'
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 export PATH=$PATH:$LOCALPATH
 
-set -o emacs
-set -o vi
+READLINE_MODE=vi
+READLINE_MODE=emacs
+set -o $READLINE_MODE
 
-echo "Load Bash Profile Successed!"
+WELCOME="Readline:[mode=$READLINE_MODE]! Load Bash Profile Successed!"
+echo $WELCOME
