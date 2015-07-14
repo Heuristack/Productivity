@@ -115,5 +115,5 @@ command cp $PROD_HOME/Bash/bashrc $HOME/.bash_profile
 }
 
 WELCOME="Readline:[mode=$READLINE_MODE]! Load Bash Profile Successed!"
-echo $WELCOME
+COMMENT="echo some string in login shell may cause rsync or ssh not work"
 
