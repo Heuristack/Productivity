@@ -99,6 +99,7 @@ alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias cptex='cp $PROD_HOME/Tex/*.tex ./'
 
 
+export TB_HOME=$HOME/Tbricks/tbricks.git
 export TB_HOME=$HOME/Sources/tb
 export GW_HOME=$TB_HOME/src/servers/connectivity/
 
@@ -111,6 +112,7 @@ export PATH=$PATH:$LOCALPATH
 function helloworld() { echo "Bash: Hello, World!"; } 
 function synchronize()
 {
+command cp $HOME/.bash_profile $HOME/.bash_profile.bk
 command cp $PROD_HOME/Bash/bashrc $HOME/.bash_profile
 }
 
