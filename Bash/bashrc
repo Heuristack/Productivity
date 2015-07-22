@@ -99,11 +99,20 @@ alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias cptex='cp $PROD_HOME/Tex/*.tex ./'
 
 
-export TB_HOME=$HOME/Tbricks/tbricks.git
 export TB_HOME=$HOME/Sources/tbricks
-export GW_HOME=$TB_HOME/src/servers/connectivity/
+export TB_HOME=$HOME/Tbricks/tbricks.git
+export TB_HOME=$HOME/Tbricks/tbricks.build
 
 alias cdtb='cd $TB_HOME'
+
+export TB_OS_TYPE=i386-apple-darwin
+export TB_TC_HOME=$TB_HOME/toolchain
+export TB_TC_PATH=$TB_TC_HOME/$TB_OS_TYPE/bin
+export LOCALPATH=$LOCALPATH:$TB_TC_PATH
+
+export TB_GW_HOME=$TB_HOME/src/servers/connectivity/
+
+
 alias cdgw='cd $GW_HOME'
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
