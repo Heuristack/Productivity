@@ -17,7 +17,8 @@ export READLINE_MODE=emacs
 set -o $READLINE_MODE
 
 export APPLICATIONS=$HOME/Applications
-export LOCALPATH=$LOCALPATH:$APPLICATIONS
+export APPLICATIONS_BIN=$APPLICATIONS/bin
+export LOCALPATH=$LOCALPATH:$APPLICATIONS:$APPLICATIONS_BIN
 
 alias resync='synchronize'
 alias reload='source $HOME/.bash_profile'
@@ -112,8 +113,7 @@ export LOCALPATH=$LOCALPATH:$TB_TC_PATH
 
 export TB_GW_HOME=$TB_HOME/src/servers/connectivity/
 
-
-alias cdgw='cd $GW_HOME'
+alias cdgw='cd $TB_GW_HOME'
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 export PATH=$PATH:$LOCALPATH
