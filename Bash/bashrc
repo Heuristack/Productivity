@@ -121,8 +121,17 @@ export PATH=$PATH:$LOCALPATH
 function helloworld() { echo "Bash: Hello, World!"; } 
 function synchronize()
 {
-command cp $HOME/.bash_profile $HOME/.bash_profile.bk
-command cp $PROD_HOME/Bash/bashrc $HOME/.bash_profile
+    progname=$1
+    if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
+        command cp $HOME/.bash_profile $HOME/.bash_profile.bk
+        command cp $PROD_HOME/Bash/bashrc $HOME/.bash_profile
+    elif [ "$progname" == "tmux" ]; then
+        command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk
+        command cp $PROD_HOME/Tmux/tmux.conf $HOME/.tmux.conf
+    elif [ "$progname" == "vim" ]; then
+        command cp $HOME/.vimrc $HOME/.vimrc.bk
+        command cp $PROD_HOME/Vim/vimrc $HOME/.vimrc
+    fi
 }
 
 WELCOME="Readline:[mode=$READLINE_MODE]! Load Bash Profile Successed!"
