@@ -2,8 +2,8 @@ export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 export EDITOR=/usr/bin/vi
 
-export PS1=$PS1'[${USER}][${HOSTNAME}]'
 export PS1=''
+export PS1=$PS1'[${USER}][${HOSTNAME}]'
 export PS1=$PS1'[$(date +%Y-%m-%d)][$(date +%H:%M:%S)]'
 export PS1=$PS1'[$PWD]'
 
@@ -15,6 +15,10 @@ export LSCOLORS=exfxcxdxbxegedabagacad
 export READLINE_MODE=vi
 export READLINE_MODE=emacs
 set -o $READLINE_MODE
+
+export HISTTIMEFORMAT='%F %T  '
+export HISTCONTROL=ignoredups
+export HISTSIZE=5000
 
 export APPLICATIONS=$HOME/Applications
 export APPLICATIONS_BIN=$APPLICATIONS/bin
@@ -114,6 +118,7 @@ export LOCALPATH=$LOCALPATH:$TB_TC_PATH
 export TB_GW_HOME=$TB_HOME/src/servers/connectivity/
 
 alias cdgw='cd $TB_GW_HOME'
+alias cdfema='cd $TB_GW_HOME/cffex/fema/src'
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 export PATH=$PATH:$LOCALPATH
