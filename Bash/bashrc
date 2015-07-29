@@ -24,6 +24,7 @@ export APPLICATIONS=$HOME/Applications
 export APPLICATIONS_BIN=$APPLICATIONS/bin
 export LOCALPATH=$LOCALPATH:$APPLICATIONS:$APPLICATIONS_BIN
 
+alias cdbin='cd $APPLICATIONS_BIN'
 alias resync='synchronize'
 alias reload='source $HOME/.bash_profile'
 alias hosts='cat /etc/hosts'
