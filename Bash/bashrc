@@ -107,8 +107,7 @@ alias cptex='cp $PROD_HOME/Tex/*.tex ./'
 
 
 export TB_HOME=$HOME/Sources/tbricks
-export TB_HOME=$HOME/Tbricks/tbricks.git
-export TB_HOME=$HOME/Tbricks/tbricks.build
+export TB_HOME=$HOME/Tbricks/tbricks.tb
 
 alias cdtb='cd $TB_HOME'
 
