@@ -20,6 +20,14 @@ export HISTTIMEFORMAT='%F %T  '
 export HISTCONTROL=ignoredups
 export HISTSIZE=5000
 
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias gs='git status'
+alias ga='git add *'
+alias gc='git commit'
+
 export APPLICATIONS=$HOME/Applications
 export APPLICATIONS_BIN=$APPLICATIONS/bin
 export LOCALPATH=$LOCALPATH:$APPLICATIONS:$APPLICATIONS_BIN
@@ -31,10 +39,6 @@ alias hosts='cat /etc/hosts'
 
 alias l='ls $LS_OPTIONS -hl'
 alias ll='ls $LS_OPTIONS -hlA'
-
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
 
 alias cdp='cd $HOME/Programming'
 alias cds='cd $HOME/Sources'
