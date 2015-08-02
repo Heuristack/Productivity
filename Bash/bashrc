@@ -101,14 +101,16 @@ export ALGO_LIBRARY=$ALGO_HOME/libs
 
 export PROD_HOME=$HOME/Productivity
 export MAKE_HOME=$PROD_HOME/Make
-export CODEBASE_HOME=$HOME/CodeBase
 
 alias cdprod='cd $PROD_HOME'
-alias cpmk='cp $MAKE_HOME/Makefile.mk ./'
+alias cpmk='cp $MAKE_HOME/Makefile.mk ./Makefile'
 alias lnmk='ln -s $MAKE_HOME/Makefile.mk ./Makefile'
 alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias cptex='cp $PROD_HOME/Tex/*.tex ./'
+alias cpdox='cp $PROD_HOME/doxygen/doxygen.config ./'
+
+export CODEBASE_HOME=$HOME/CodeBase
 alias cdcb='cd $CODEBASE_HOME'
 
 export TB_HOME=$HOME/Sources/tbricks
