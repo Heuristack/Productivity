@@ -10,11 +10,17 @@ set smarttab
 set expandtab
 set autoindent
 set number
-"set background=dark
+set background=dark
 set ttyfast
 
 "recursive map in insert and command modes
 "map! jk <esc>
 map! jj <esc>
 noremap <c-k> <c-w>
+
+"hight current line
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=DarkGrey ctermfg=NONE
+"set cursorcolumn
+highlight CursorColumn cterm=NONE ctermbg=DarkGrey ctermfg=NONE
 
