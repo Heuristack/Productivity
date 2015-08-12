@@ -123,10 +123,12 @@ export TB_TC_HOME=$TB_HOME/toolchain
 export TB_TC_PATH=$TB_TC_HOME/$TB_OS_TYPE/bin
 export LOCALPATH=$LOCALPATH:$TB_TC_PATH
 
-export TB_GW_HOME=$TB_HOME/src/servers/connectivity/
+export TB_GW_HOME=$TB_HOME/src/servers/connectivity
+export TB_LB_HOME=$TB_HOME/src/libraries
 
 alias cdgw='cd $TB_GW_HOME'
 alias cdfema='cd $TB_GW_HOME/cffex/fema/src'
+alias cdfemalib='cd $TB_LB_HOME/transport_fema'
 
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 export PATH=$PATH:$LOCALPATH
