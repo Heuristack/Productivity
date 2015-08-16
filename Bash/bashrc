@@ -1,3 +1,6 @@
+export OS=$(uname)
+export HN=$(hostname -s)
+
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 export EDITOR=/usr/bin/vi
@@ -46,20 +49,20 @@ alias cdr='cd $HOME/Resumes'
 alias cdj='cd $HOME/Jobs'
 alias cdd='cd $HOME/Downloads'
 
-export ACE_HOME=$HOME/orc/ace
 export ACE_HOME=$HOME/Sources/ace
+if [ $HN == 'liying' ]; then export ACE_HOME=$HOME/orc/ace; fi
 export ACE_ROOT=$ACE_HOME/wrappers
 export ACE_LIB=$ACE_ROOT/lib
 export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
 
-export BOOST_HOME=$HOME/Programming/boost
 export BOOST_HOME=$HOME/Sources/boost
+if [ $HN == 'liying' ]; then export BOOST_HOME=$HOME/Programming/boost; fi
 export BOOST_INCLUDE=$BOOST_HOME/include
 export BOOST_LIBRARY=$BOOST_HOME/lib
 export LOCAL_DYLD_LIBRARY_PATH=$BOOST_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
 
-export QUANTLIB_HOME=$HOME/Courses/HKU/COMP7406_FIN3/quantlib
 export QUANTLIB_HOME=$HOME/Sourses/quantlib
+if [ $HN == 'liying' ]; then export QUANTLIB_HOME=$HOME/Courses/HKU/COMP7406_FIN3/quantlib; fi
 export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
 export QUANTLIB_LIBRARY=$QUANTLIB_HOME/lib
 export LOCAL_DYLD_LIBRARY_PATH=$QUANTLIB_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
