@@ -47,16 +47,19 @@ alias cdj='cd $HOME/Jobs'
 alias cdd='cd $HOME/Downloads'
 
 export ACE_HOME=$HOME/orc/ace
+export ACE_HOME=$HOME/Sources/ace
 export ACE_ROOT=$ACE_HOME/wrappers
 export ACE_LIB=$ACE_ROOT/lib
 export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
 
 export BOOST_HOME=$HOME/Programming/boost
+export BOOST_HOME=$HOME/Sources/boost
 export BOOST_INCLUDE=$BOOST_HOME/include
 export BOOST_LIBRARY=$BOOST_HOME/lib
 export LOCAL_DYLD_LIBRARY_PATH=$BOOST_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
 
 export QUANTLIB_HOME=$HOME/Courses/HKU/COMP7406_FIN3/quantlib
+export QUANTLIB_HOME=$HOME/Sourses/quantlib
 export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
 export QUANTLIB_LIBRARY=$QUANTLIB_HOME/lib
 export LOCAL_DYLD_LIBRARY_PATH=$QUANTLIB_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
@@ -101,6 +104,7 @@ export ALGO_LIBRARY=$ALGO_HOME/libs
 
 export PROD_HOME=$HOME/Productivity
 export MAKE_HOME=$PROD_HOME/Make
+export MT_HOME=$PROD_HOME/magictrace
 
 alias cdprod='cd $PROD_HOME'
 alias cpmk='cp $MAKE_HOME/Makefile.mk ./Makefile'
@@ -109,6 +113,7 @@ alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
 alias cptex='cp $PROD_HOME/Tex/*.tex ./'
 alias cpdox='cp $PROD_HOME/doxygen/doxygen.config ./'
+alias cpmt='cp $MT_HOME/mt* ./'
 
 export CODEBASE_HOME=$HOME/CodeBase
 alias cdcb='cd $CODEBASE_HOME'
@@ -127,6 +132,9 @@ export TB_GW_HOME=$TB_HOME/src/servers/connectivity
 export TB_LB_HOME=$TB_HOME/src/libraries
 
 alias cdgw='cd $TB_GW_HOME'
+alias cdmd='cd $TB_LB_HOME/market_data'
+alias cdtr='cd $TB_LB_HOME/trading'
+alias cdtemp='cd $HOME/Tbricks/tbricks.master/src/servers/connectivity/template'
 alias cdfema='cd $TB_GW_HOME/cffex/fema/src'
 alias cdfemalib='cd $TB_LB_HOME/transport_fema'
 
