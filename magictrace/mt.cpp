@@ -22,22 +22,23 @@ int magic_trace(char *filename, char *file, char *function, int line, char *form
 
 	static char header[0x100];
 	if (file != NULL && function != NULL && line != -1)
-		snprintf(header, sizeof(header), "[%s %10s(%30s):%04d]", loggingtime, file, function, line);
+		snprintf(header, sizeof(header), "[%s %30s(%30s):%04d]", loggingtime, file, function, line);
 	else
 		snprintf(header, sizeof(header), "[%s]", loggingtime);
 
-	static char message[0x400];
+	static char message[0x10000];
 	va_list arglist;
 	va_start(arglist, format);
 
 	vsnprintf(message, sizeof(message), format, arglist);
 
-	static char buffer[0x500];
+	static char buffer[0x10000];
 	ssize_t num = snprintf(buffer, sizeof(buffer), "%s : %s\n", header, message);
 	if (num < 0) return -1;
 
 	int fd = open(filename, OPEN_FLAGS, FILE_PERMS);
-	while (((num = write(fd, buffer, (size_t)num)) == -1) && (errno == EINTR));
+    ssize_t n = 0;
+    while ((n = write(fd, buffer+n, (size_t)(num-n))) < (num-n));
 	close(fd);
 	return (int)num;
 }
@@ -53,3 +54,14 @@ int stack_trace(char *filename)
 
 	return close(fd);
 }
+
+int force_trace(char *filename, const char *p, int num)
+{
+	int fd = open(filename, OPEN_FLAGS, FILE_PERMS);
+    ssize_t n = 0;
+    while ((n = write(fd, p+n, (size_t)(num-n))) < (num-n));
+    write(fd,"\n",1);
+	close(fd);
+    return num;
+}
+
