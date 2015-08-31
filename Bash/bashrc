@@ -72,7 +72,7 @@ alias cdboost='cd $BOOST_HOME'
 alias cdquant='cd $QUANTLIB_HOME'
 
 
-export JAVA_HOME=`/usr/libexec/java_home`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JAVA_LIB=$JAVA_HOME/lib
 export JAVA=$JAVA_HOME/bin
 export CLASSPATH=$JAVA_LIB:$CLASSPATH
