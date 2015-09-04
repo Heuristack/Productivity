@@ -72,7 +72,7 @@ alias cdboost='cd $BOOST_HOME'
 alias cdquant='cd $QUANTLIB_HOME'
 
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export JAVA_LIB=$JAVA_HOME/lib
 export JAVA=$JAVA_HOME/bin
 export CLASSPATH=$JAVA_LIB:$CLASSPATH
@@ -105,8 +105,8 @@ export ALGO_INCLUDE=$ALGO_HOME/incl
 export ALGO_LIBRARY=$ALGO_HOME/libs
 
 
-export PROD_HOME=$HOME/Productivity
-export MAKE_HOME=$PROD_HOME/Make
+export PROD_HOME=$HOME/productivity
+export MAKE_HOME=$PROD_HOME/make
 export MT_HOME=$PROD_HOME/magictrace
 
 alias cdprod='cd $PROD_HOME'
@@ -150,13 +150,13 @@ function synchronize()
     progname=$1
     if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
         command cp $HOME/.bash_profile $HOME/.bash_profile.bk
-        command cp $PROD_HOME/Bash/bashrc $HOME/.bash_profile
+        command cp $PROD_HOME/bash/bashrc $HOME/.bash_profile
     elif [ "$progname" == "tmux" ]; then
         command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk
-        command cp $PROD_HOME/Tmux/tmux.conf $HOME/.tmux.conf
+        command cp $PROD_HOME/tmux/tmux.conf $HOME/.tmux.conf
     elif [ "$progname" == "vim" ]; then
         command cp $HOME/.vimrc $HOME/.vimrc.bk
-        command cp $PROD_HOME/Vim/vimrc $HOME/.vimrc
+        command cp $PROD_HOME/vim/vimrc $HOME/.vimrc
     fi
 }
 
