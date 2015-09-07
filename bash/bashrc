@@ -106,11 +106,13 @@ alias cdc='cd $CB_HOME'
 ##===
 export PJ_HOME=$HOME/projects
 export CL_HOME=$PJ_HOME/CLion
+export XC_HOME=$PJ_HOME/Xcode
 export IJ_HOME=$PJ_HOME/IntellJ
 export PY_HOME=$PJ_HOME/PyCharm
 
 alias cdpj='cd $PJ_HOME'
 alias cdclion='cd $CL_HOME'
+alias cdxcode='cd $XC_HOME'
 
 
 ##===
