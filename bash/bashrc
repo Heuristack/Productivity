@@ -27,41 +27,38 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias gs='git status'
-alias ga='git add *'
-alias gc='git commit'
-
-export APPLICATIONS=$HOME/Applications
+export APPLICATIONS=$HOME/applications
 export APPLICATIONS_BIN=$APPLICATIONS/bin
+export APPLICATIONS_USR=$APPLICATIONS/usr
 export LOCALPATH=$LOCALPATH:$APPLICATIONS:$APPLICATIONS_BIN
 
-alias cdbin='cd $APPLICATIONS_BIN'
-alias resync='synchronize'
-alias reload='source $HOME/.bash_profile'
 alias hosts='cat /etc/hosts'
+alias cdbin='cd $APPLICATIONS_BIN'
+alias cdusr='cd $APPLICATIONS_USR'
+alias reload='source $HOME/.bash_profile'
 
-alias l='ls $LS_OPTIONS -hl'
+alias  l='ls $LS_OPTIONS -hl'
 alias ll='ls $LS_OPTIONS -hlA'
 
-alias cdp='cd $HOME/Programming'
-alias cds='cd $HOME/Sources'
-alias cdr='cd $HOME/Resumes'
-alias cdj='cd $HOME/Jobs'
-alias cdd='cd $HOME/Downloads'
+alias cdd='cd $HOME/downloads'
+alias cds='cd $HOME/sources'
+alias cdb='cd $HOME/builds'
+alias cdr='cd $HOME/resumes'
+alias cdj='cd $HOME/jobs'
 
-export ACE_HOME=$HOME/Sources/ace
+export ACE_HOME=$HOME/sources/ace
 if [ $HN == 'liying' ]; then export ACE_HOME=$HOME/orc/ace; fi
 export ACE_ROOT=$ACE_HOME/wrappers
 export ACE_LIB=$ACE_ROOT/lib
 export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
 
-export BOOST_HOME=$HOME/Sources/boost
+export BOOST_HOME=$HOME/sources/boost
 if [ $HN == 'liying' ]; then export BOOST_HOME=$HOME/Programming/boost; fi
 export BOOST_INCLUDE=$BOOST_HOME/include
 export BOOST_LIBRARY=$BOOST_HOME/lib
 export LOCAL_DYLD_LIBRARY_PATH=$BOOST_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
 
-export QUANTLIB_HOME=$HOME/Sourses/quantlib
+export QUANTLIB_HOME=$HOME/sourses/quantlib
 if [ $HN == 'liying' ]; then export QUANTLIB_HOME=$HOME/Courses/HKU/COMP7406_FIN3/quantlib; fi
 export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
 export QUANTLIB_LIBRARY=$QUANTLIB_HOME/lib
@@ -109,7 +106,7 @@ export PROD_HOME=$HOME/productivity
 export MAKE_HOME=$PROD_HOME/make
 export MT_HOME=$PROD_HOME/magictrace
 
-alias cdprod='cd $PROD_HOME'
+alias cdp='cd $PROD_HOME'
 alias cpmk='cp $MAKE_HOME/Makefile.mk ./Makefile'
 alias lnmk='ln -s $MAKE_HOME/Makefile.mk ./Makefile'
 alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
@@ -118,11 +115,10 @@ alias cptex='cp $PROD_HOME/Tex/*.tex ./'
 alias cpdox='cp $PROD_HOME/doxygen/doxygen.config ./'
 alias cpmt='cp $MT_HOME/mt* ./'
 
-export CODEBASE_HOME=$HOME/CodeBase
-alias cdcb='cd $CODEBASE_HOME'
+export CODEBASE_HOME=$HOME/codebase
+alias cdc='cd $CODEBASE_HOME'
 
-export TB_HOME=$HOME/Sources/tbricks
-export TB_HOME=$HOME/Tbricks/tbricks.tb
+export TB_HOME=$HOME/tbricks/tbricks.tb
 
 alias cdtb='cd $TB_HOME'
 
@@ -145,17 +141,17 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 export PATH=$PATH:$LOCALPATH
 
 function helloworld() { echo "Bash: Hello, World!"; } 
-function synchronize()
+function update()
 {
     progname=$1
     if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
-        command cp $HOME/.bash_profile $HOME/.bash_profile.bk
+        command cp $HOME/.bash_profile $HOME/.bash_profile.bk 2>/dev/null || true
         command cp $PROD_HOME/bash/bashrc $HOME/.bash_profile
     elif [ "$progname" == "tmux" ]; then
-        command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk
+        command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk 2>/dev/null || true
         command cp $PROD_HOME/tmux/tmux.conf $HOME/.tmux.conf
     elif [ "$progname" == "vim" ]; then
-        command cp $HOME/.vimrc $HOME/.vimrc.bk
+        command cp $HOME/.vimrc $HOME/.vimrc.bk || true
         command cp $PROD_HOME/vim/vimrc $HOME/.vimrc
     fi
 }
