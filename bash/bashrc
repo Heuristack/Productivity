@@ -10,7 +10,8 @@
 #   6. Settings: 
 #
 #   Note: Git should be installed beforehand to clone this 'productivity' repo
-#   Todo: Adapt LS color on Linux
+#
+#   Todo: Adapt LS color on Linux; Improve update() function (embed point);
 #
 ##===----------------------------------------------------------------------===##
 export OS=$(uname)
@@ -39,7 +40,7 @@ export READLINE_MODE=emacs
 set -o $READLINE_MODE
 
 export HISTTIMEFORMAT='%F %T  '
-export HISTIGNORE='ls:l:ll:cd:pwd:date:history:'
+export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:tm *:tb:ap:history:'
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 
