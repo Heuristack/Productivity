@@ -95,6 +95,7 @@ alias cdtb='cd $TB_HOME'
 #
 ###
 function hello() { echo "Bash: Hello, World!"; } 
+
 function update()
 {
     progname=$1
@@ -110,6 +111,15 @@ function update()
     fi
 }
 
+function tmux_session()
+{
+    session=$1
+    if [ "$session" == "" ]; then session="apple"; fi
+    tmux new -s $session
+    if [ "$?" != "0" ]; then tmux a -t $session; fi
+}
+
+export -f tmux_session
 
 ###
 # Pathes for Executables  
