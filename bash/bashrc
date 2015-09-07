@@ -10,10 +10,12 @@ export PS1=$PS1'[${USER}][${HOSTNAME}]'
 export PS1=$PS1'[$(date +%Y-%m-%d)][$(date +%H:%M:%S)]'
 export PS1=$PS1'[$PWD]'
 
+if [ "$OS" == "Darwin" ]; then 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export LSCOLORS=exfxcxdxbxegedabagacad
+fi
 
 export READLINE_MODE=vi
 export READLINE_MODE=emacs
@@ -21,31 +23,110 @@ set -o $READLINE_MODE
 
 export HISTTIMEFORMAT='%F %T  '
 export HISTCONTROL=ignoredups
-export HISTSIZE=5000
+export HISTSIZE=10000
 
+alias reload='source $HOME/.bash_profile'
+alias hosts='cat /etc/hosts'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-export APPLICATIONS=$HOME/applications
-export APPLICATIONS_BIN=$APPLICATIONS/bin
-export APPLICATIONS_USR=$APPLICATIONS/usr
-export LOCALPATH=$LOCALPATH:$APPLICATIONS:$APPLICATIONS_BIN
-
-alias hosts='cat /etc/hosts'
-alias cdbin='cd $APPLICATIONS_BIN'
-alias cdusr='cd $APPLICATIONS_USR'
-alias reload='source $HOME/.bash_profile'
-
 alias  l='ls $LS_OPTIONS -hl'
 alias ll='ls $LS_OPTIONS -hlA'
 
-alias cdd='cd $HOME/downloads'
-alias cds='cd $HOME/sources'
-alias cdb='cd $HOME/builds'
-alias cdr='cd $HOME/resumes'
-alias cdj='cd $HOME/jobs'
 
+###
+# Location Class 1
+#
+#
+###
+export LOCAL_APP=$HOME/applications
+export LOCAL_BIN=$LOCAL_APP/bin
+export LOCAL_USR=$LOCAL_APP/usr
+export LOCAL_BLD=$HOME/builds
+export LOCAL_SRC=$HOME/sources
+export LOCAL_DLD=$HOME/downloads
+export LOCALPATH=$LOCALPATH:$LOCAL_BIN
+
+alias cda='cd $LOCAL_APP'
+alias cdb='cd $LOCAL_BLD'
+alias cds='cd $LOCAL_SRC'
+alias cdd='cd $LOCAL_DLD'
+
+alias cdbin='cd $LOCAL_BIN'
+alias cdusr='cd $LOCAL_USR'
+
+
+###
+# Location Class 2
+# 
+#
+###
+export PD_HOME=$HOME/productivity
+alias cdp='cd $PD_HOME'
+
+export MK_HOME=$PD_HOME/make
+export MT_HOME=$PD_HOME/magictrace
+alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
+alias cpmt='cp $MT_HOME/mt* .'
+
+alias cptex='cp $PD_HOME/tex/*.tex .'
+alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
+
+
+export CB_HOME=$HOME/codebase
+alias cdc='cd $CB_HOME'
+
+
+###
+# Location Class 3
+#
+#
+###
+export TBRICKS=$HOME/tbricks
+alias cdt='cd $TBRICKS'
+
+export TB_HOME=$TBRICKS/tbricks.tb
+alias cdtb='cd $TB_HOME'
+
+
+###
+# Functions
+#
+#
+###
+function hello() { echo "Bash: Hello, World!"; } 
+function update()
+{
+    progname=$1
+    if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
+        command cp $HOME/.bash_profile $HOME/.bash_profile.bk 2>/dev/null || true
+        command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
+    elif [ "$progname" == "tmux" ]; then
+        command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk 2>/dev/null || true
+        command cp $PD_HOME/tmux/tmux.conf $HOME/.tmux.conf
+    elif [ "$progname" == "vim" ]; then
+        command cp $HOME/.vimrc $HOME/.vimrc.bk 2>/dev/null || true
+        command cp $PD_HOME/vim/vimrc $HOME/.vimrc
+    fi
+}
+
+
+###
+# Pathes for Executables  
+#
+#
+###
+export PATH=$PATH:$LOCALPATH
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
+
+
+
+
+###
+# These are going to be refactored!
+#
+#
+###
 export ACE_HOME=$HOME/sources/ace
 if [ $HN == 'liying' ]; then export ACE_HOME=$HOME/orc/ace; fi
 export ACE_ROOT=$ACE_HOME/wrappers
@@ -101,60 +182,6 @@ export ALGO_HOME=$HOME/Programming/algo
 export ALGO_INCLUDE=$ALGO_HOME/incl
 export ALGO_LIBRARY=$ALGO_HOME/libs
 
-
-export PROD_HOME=$HOME/productivity
-export MAKE_HOME=$PROD_HOME/make
-export MT_HOME=$PROD_HOME/magictrace
-
-alias cdp='cd $PROD_HOME'
-alias cpmk='cp $MAKE_HOME/Makefile.mk ./Makefile'
-alias lnmk='ln -s $MAKE_HOME/Makefile.mk ./Makefile'
-alias cpmktex='cp $MAKE_HOME/MakefileTeX.mk ./Makefile'
-alias lnmktex='ln -s $MAKE_HOME/MakefileTeX.mk ./Makefile'
-alias cptex='cp $PROD_HOME/Tex/*.tex ./'
-alias cpdox='cp $PROD_HOME/doxygen/doxygen.config ./'
-alias cpmt='cp $MT_HOME/mt* ./'
-
-export CODEBASE_HOME=$HOME/codebase
-alias cdc='cd $CODEBASE_HOME'
-
-export TB_HOME=$HOME/tbricks/tbricks.tb
-
-alias cdtb='cd $TB_HOME'
-
-export TB_OS_TYPE=i386-apple-darwin
-export TB_TC_HOME=$TB_HOME/toolchain
-export TB_TC_PATH=$TB_TC_HOME/$TB_OS_TYPE/bin
-export LOCALPATH=$LOCALPATH:$TB_TC_PATH
-
-export TB_GW_HOME=$TB_HOME/src/servers/connectivity
-export TB_LB_HOME=$TB_HOME/src/libraries
-
-alias cdgw='cd $TB_GW_HOME'
-alias cdmd='cd $TB_LB_HOME/market_data'
-alias cdtr='cd $TB_LB_HOME/trading'
-alias cdtemp='cd $HOME/Tbricks/tbricks.master/src/servers/connectivity/template'
-alias cdfema='cd $TB_GW_HOME/cffex/fema/src'
-alias cdfemalib='cd $TB_LB_HOME/transport_fema'
-
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
-export PATH=$PATH:$LOCALPATH
-
-function helloworld() { echo "Bash: Hello, World!"; } 
-function update()
-{
-    progname=$1
-    if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
-        command cp $HOME/.bash_profile $HOME/.bash_profile.bk 2>/dev/null || true
-        command cp $PROD_HOME/bash/bashrc $HOME/.bash_profile
-    elif [ "$progname" == "tmux" ]; then
-        command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk 2>/dev/null || true
-        command cp $PROD_HOME/tmux/tmux.conf $HOME/.tmux.conf
-    elif [ "$progname" == "vim" ]; then
-        command cp $HOME/.vimrc $HOME/.vimrc.bk || true
-        command cp $PROD_HOME/vim/vimrc $HOME/.vimrc
-    fi
-}
 
 WELCOME="Readline:[mode=$READLINE_MODE]! Load Bash Profile Successed!"
 COMMENT="echo some string in login shell may cause rsync or ssh not work"
