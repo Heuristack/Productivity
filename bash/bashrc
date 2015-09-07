@@ -1,3 +1,18 @@
+##===----------------------------------------------------------------------===##
+#
+#                                Bash Profile 
+#
+#   1. Locations:  Important Node in the FS(File-System) Tree
+#   2. Navigation: cdx; cdxx; cdname;
+#   3. File Clone: cpx; cpxx; cpname;
+#   4. Functions: [exported -f] function f(){}
+#   5. Constants: environments
+#   6. Settings: 
+#
+#   Note: Git should be installed beforehand to clone this 'productivity' repo
+#   Todo: Adapt LS color on Linux
+#
+##===----------------------------------------------------------------------===##
 export OS=$(uname)
 export HN=$(hostname -s)
 
@@ -5,10 +20,12 @@ export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 export EDITOR=/usr/bin/vi
 
+export PS1=$PS1'[${USER}]'
 export PS1=''
-export PS1=$PS1'[${USER}][${HOSTNAME}]'
-export PS1=$PS1'[$(date +%Y-%m-%d)][$(date +%H:%M:%S)]'
-export PS1=$PS1'[$PWD]'
+export PS1=$PS1'[$(date +%Y-%m-%d)]'
+export PS1=$PS1'[$(date +%H:%M:%S)]'
+export PS1=$PS1'[${HOSTNAME}]'
+export PS1=$PS1'[${PWD}]'
 
 if [ "$OS" == "Darwin" ]; then 
 export CLICOLOR=1
@@ -35,33 +52,11 @@ alias  l='ls $LS_OPTIONS -hl'
 alias ll='ls $LS_OPTIONS -hlA'
 
 
-###
-# Location Class 1
-#
-#
-###
-export LOCAL_APP=$HOME/applications
-export LOCAL_BIN=$LOCAL_APP/bin
-export LOCAL_USR=$LOCAL_APP/usr
-export LOCAL_BLD=$HOME/builds
-export LOCAL_SRC=$HOME/sources
-export LOCAL_DLD=$HOME/downloads
-export LOCALPATH=$LOCALPATH:$LOCAL_BIN
-
-alias cda='cd $LOCAL_APP'
-alias cdb='cd $LOCAL_BLD'
-alias cds='cd $LOCAL_SRC'
-alias cdd='cd $LOCAL_DLD'
-
-alias cdbin='cd $LOCAL_BIN'
-alias cdusr='cd $LOCAL_USR'
-
-
-###
-# Location Class 2
+##===
 # 
+# Location 0: productivity
 #
-###
+##===
 export PD_HOME=$HOME/productivity
 alias cdp='cd $PD_HOME'
 
@@ -74,126 +69,119 @@ alias cptex='cp $PD_HOME/tex/*.tex .'
 alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
 
 
+##===
+#
+# Location 1: applications/builds/sources
+#
+##===
+export LOCAL_APP=$HOME/applications
+export LOCAL_BIN=$LOCAL_APP/bin
+export LOCAL_USR=$LOCAL_APP/usr
+export LOCAL_BLD=$HOME/builds
+export LOCAL_SRC=$HOME/sources
+export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
+
+alias cda='cd $LOCAL_APP'
+alias cdb='cd $LOCAL_BLD'
+alias cds='cd $LOCAL_SRC'
+
+alias cdbin='cd $LOCAL_BIN'
+alias cdusr='cd $LOCAL_USR'
+
+
+##==
+#
+# Location 2: codebase
+#
+##==
 export CB_HOME=$HOME/codebase
 alias cdc='cd $CB_HOME'
 
 
-###
-# Location Class 3
+##===
 #
+# Location 3: projects (for IDE)
 #
-###
-export TBRICKS=$HOME/tbricks
-alias cdt='cd $TBRICKS'
+##===
+export PJ_HOME=$HOME/projects
+export CL_HOME=$PJ_HOME/CLion
+export IJ_HOME=$PJ_HOME/IntellJ
+export PY_HOME=$PJ_HOME/PyCharm
 
-export TB_HOME=$TBRICKS/tbricks.tb
-alias cdtb='cd $TB_HOME'
+alias cdpj='cd $PJ_HOME'
+alias cdclion='cd $CL_HOME'
 
 
-###
-# Functions
+##===
 #
+# Location 4: downloads/archive/temp
 #
-###
-function hello() { echo "Bash: Hello, World!"; } 
+##===
+export DL_HOME=$HOME/downloads
+export AR_HOME=$HOME/archive
+export TM_HOME=$HOME/temp
 
+alias cdd='cd $DL_HOME'
+alias cdt='cd $TM_HOME'
+
+
+##==
+#
+# Function 0: greet to the world
+#
+##==
+function greet() { echo "Productive Programming!"; } 
+
+
+##==
+#
+# Function 1: update main configurations
+#
+##==
 function update()
 {
     progname=$1
     if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
-        command cp $HOME/.bash_profile $HOME/.bash_profile.bk 2>/dev/null || true
+        command cp $HOME/.bash_profile $HOME/.bash_profile.backup 2>/dev/null || true
         command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
     elif [ "$progname" == "tmux" ]; then
-        command cp $HOME/.tmux.conf $HOME/.tmux.conf.bk 2>/dev/null || true
+        command cp $HOME/.tmux.conf $HOME/.tmux.conf.backup 2>/dev/null || true
         command cp $PD_HOME/tmux/tmux.conf $HOME/.tmux.conf
     elif [ "$progname" == "vim" ]; then
-        command cp $HOME/.vimrc $HOME/.vimrc.bk 2>/dev/null || true
+        command cp $HOME/.vimrc $HOME/.vimrc.backup 2>/dev/null || true
         command cp $PD_HOME/vim/vimrc $HOME/.vimrc
     fi
 }
 
+
+##==
+#
+# Function 2: tmux session shortcut helper function
+#
+##==
 function tmux_session()
 {
     session=$1
-    if [ "$session" == "" ]; then session="apple"; fi
+    if [ "$session" == "" ]; then session="productivity"; fi
     tmux new -s $session
     if [ "$?" != "0" ]; then tmux a -t $session; fi
 }
-
 export -f tmux_session
 
-###
-# Pathes for Executables  
+##==
 #
+# PATH and DYLD_LIBRARY_PATH
 #
-###
-export PATH=$PATH:$LOCALPATH
+##==
+export PATH=$PATH:$LOCAL_PATH
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 
-
-
-
-###
-# These are going to be refactored!
+##==
 #
+# Extension: Load (source) bash configurations accordingly
 #
-###
-export ACE_HOME=$HOME/sources/ace
-if [ $HN == 'liying' ]; then export ACE_HOME=$HOME/orc/ace; fi
-export ACE_ROOT=$ACE_HOME/wrappers
-export ACE_LIB=$ACE_ROOT/lib
-export LOCAL_DYLD_LIBRARY_PATH=$ACE_LIB:$LOCAL_DYLD_LIBRARY_PATH
+##==
+if [ "$HN" == "liying" ]; then source $PD_HOME/bash/liying.bash; fi
 
-export BOOST_HOME=$HOME/sources/boost
-if [ $HN == 'liying' ]; then export BOOST_HOME=$HOME/Programming/boost; fi
-export BOOST_INCLUDE=$BOOST_HOME/include
-export BOOST_LIBRARY=$BOOST_HOME/lib
-export LOCAL_DYLD_LIBRARY_PATH=$BOOST_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
-
-export QUANTLIB_HOME=$HOME/sourses/quantlib
-if [ $HN == 'liying' ]; then export QUANTLIB_HOME=$HOME/Courses/HKU/COMP7406_FIN3/quantlib; fi
-export QUANTLIB_INCLUDE=$QUANTLIB_HOME/include
-export QUANTLIB_LIBRARY=$QUANTLIB_HOME/lib
-export LOCAL_DYLD_LIBRARY_PATH=$QUANTLIB_LIBRARY:$LOCAL_DYLD_LIBRARY_PATH
-
-alias cdace='cd $ACE_ROOT'
-alias cdboost='cd $BOOST_HOME'
-alias cdquant='cd $QUANTLIB_HOME'
-
-
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export JAVA_LIB=$JAVA_HOME/lib
-export JAVA=$JAVA_HOME/bin
-export CLASSPATH=$JAVA_LIB:$CLASSPATH
-export LOCALPATH=$LOCALPATH:$JAVA
-
-export JRE_HOME=$JAVA_HOME/jre
-export JRE_LIB=$JRE_HOME/lib
-export JRE=$JRE_HOME/bin
-export CLASSPATH=$JRE_LIB:$CLASSPATH
-export LOCALPATH=$LOCALPATH:$JRE
-
-export M2_HOME=/opt/apache-maven-3.2.1
-export M2=$M2_HOME/bin
-export LOCALPATH=$LOCALPATH:$M2
-
-
-export MASTER_HOME=$HOME/MasterProject
-export NESOX_HOME=$MASTER_HOME/Nesox
-export NESOX_BIN=$NESOX_HOME/bin
-export LOCALPATH=$LOCALPATH:$NESOX_BIN
-export CLUSTERSCRIPT=$MASTER_HOME/ClusterScripts
-export LOCALPATH=$LOCALPATH:$CLUSTERSCRIPT
-
-alias cdmaster='cd $MASTER_HOME'
-alias cdnesox='cd $NESOX_HOME'
-
-
-export ALGO_HOME=$HOME/Programming/algo
-export ALGO_INCLUDE=$ALGO_HOME/incl
-export ALGO_LIBRARY=$ALGO_HOME/libs
-
-
-WELCOME="Readline:[mode=$READLINE_MODE]! Load Bash Profile Successed!"
-COMMENT="echo some string in login shell may cause rsync or ssh not work"
+##===----------------------------------------------------------------------===##
 

@@ -15,7 +15,7 @@ set ttyfast
 
 "recursive map in insert and command modes
 "map! jk <esc>
-map! jj <esc>
+"map! jj <esc>
 noremap <c-k> <c-w>
 
 "hight current line
