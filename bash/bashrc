@@ -22,6 +22,7 @@ export READLINE_MODE=emacs
 set -o $READLINE_MODE
 
 export HISTTIMEFORMAT='%F %T  '
+export HISTIGNORE='ls:l:ll:cd:pwd:date:history:'
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 
