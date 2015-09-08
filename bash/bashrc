@@ -72,17 +72,17 @@ alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
 
 ##===
 #
-# Location 1: applications/builds/sources
+# Location 1: local/builds/sources
 #
 ##===
-export LOCAL_APP=$HOME/applications
-export LOCAL_BIN=$LOCAL_APP/bin
-export LOCAL_USR=$LOCAL_APP/usr
+export LOCAL=$HOME/local
+export LOCAL_BIN=$LOCAL/bin
+export LOCAL_USR=$LOCAL/usr
 export LOCAL_BLD=$HOME/builds
 export LOCAL_SRC=$HOME/sources
 export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
 
-alias cda='cd $LOCAL_APP'
+alias cdl='cd $LOCAL'
 alias cdb='cd $LOCAL_BLD'
 alias cds='cd $LOCAL_SRC'
 
