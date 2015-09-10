@@ -20,7 +20,9 @@ noremap <c-k> <c-w>
 
 "hight current line
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=Grey ctermfg=NONE
+"highlight CursorLine cterm=NONE ctermbg=LightGreen ctermfg=NONE
+"highlight CursorLine cterm=NONE ctermbg=LightYellow ctermfg=NONE
+highlight CursorLine cterm=NONE ctermbg=DarkGrey ctermfg=NONE
 "set cursorcolumn
 highlight CursorColumn cterm=NONE ctermbg=DarkGrey ctermfg=NONE
 
