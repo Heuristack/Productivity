@@ -149,9 +149,16 @@ function update()
     mode=$2
     if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
         if [ -f $HOME/.bashrc ]; then 
-            command cp $HOME/.bashrc $HOME/.bashrc.backup 2>/dev/null || true
-            echo "source $PD_HOME/bash/bashrc;" >> $HOME/.bashrc
-            echo "" >> $HOME/.bashrc
+            echo "bashrc exists"
+            echo "if this is the first time, run 'update bash init'";
+            echo "else just run 'reload'";
+            if [ "$mode" == "init" ]; then
+                command cp $HOME/.bashrc $HOME/.bashrc.backup 2>/dev/null || true
+                echo "source $PD_HOME/bash/bashrc;" >> $HOME/.bashrc
+                echo "" >> $HOME/.bashrc
+            else
+                echo "please just run 'reload'";
+            fi
         else
             command cp $HOME/.bash_profile $HOME/.bash_profile.backup 2>/dev/null || true
             command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
