@@ -53,11 +53,11 @@ alias  l='ls $LS_OPTIONS -hl'
 alias ll='ls $LS_OPTIONS -hlA'
 
 
-##===
+##==
 # 
 # Location 0: productivity
 #
-##===
+##==
 export PD_HOME=$HOME/productivity
 alias cdp='cd $PD_HOME'
 
@@ -70,11 +70,11 @@ alias cptex='cp $PD_HOME/tex/*.tex .'
 alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
 
 
-##===
+##==
 #
 # Location 1: local/builds/sources
 #
-##===
+##==
 export LOCAL=$HOME/local
 export LOCAL_BIN=$LOCAL/bin
 export LOCAL_USR=$LOCAL/usr
@@ -99,11 +99,11 @@ export CB_HOME=$HOME/codebase
 alias cdc='cd $CB_HOME'
 
 
-##===
+##==
 #
 # Location 3: projects (for IDE)
 #
-##===
+##==
 export PJ_HOME=$HOME/projects
 export CL_HOME=$PJ_HOME/CLion
 export XC_HOME=$PJ_HOME/Xcode
@@ -115,11 +115,11 @@ alias cdclion='cd $CL_HOME'
 alias cdxcode='cd $XC_HOME'
 
 
-##===
+##==
 #
 # Location 4: downloads/archive/temp
 #
-##===
+##==
 export DL_HOME=$HOME/downloads
 export AR_HOME=$HOME/archive
 export TM_HOME=$HOME/temp
