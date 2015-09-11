@@ -78,6 +78,7 @@ alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
 export LOCAL=$HOME/local
 export LOCAL_BIN=$LOCAL/bin
 export LOCAL_USR=$LOCAL/usr
+export LOCAL_ETC=$LOCAL/etc
 export LOCAL_BLD=$HOME/builds
 export LOCAL_SRC=$HOME/sources
 export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
@@ -88,6 +89,7 @@ alias cds='cd $LOCAL_SRC'
 
 alias cdbin='cd $LOCAL_BIN'
 alias cdusr='cd $LOCAL_USR'
+alias cdetc='cd $LOCAL_ETC'
 
 
 ##==
@@ -144,15 +146,38 @@ function greet() { echo "Productive Programming!"; }
 function update()
 {
     progname=$1
+    mode=$2
     if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
-        command cp $HOME/.bash_profile $HOME/.bash_profile.backup 2>/dev/null || true
-        command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
+        if [ -f $HOME/.bashrc ]; then 
+            echo "bashrc exists"
+            echo "if this is the first time, run 'update bash init'";
+            echo "else just run 'reload'";
+            if [ "$mode" == "init" ]; then
+                command cp $HOME/.bashrc $HOME/.bashrc.backup 2>/dev/null || true
+                echo "source $PD_HOME/bash/bashrc;" >> $HOME/.bashrc
+                echo "" >> $HOME/.bashrc
+            fi
+        else
+            command cp $HOME/.bash_profile $HOME/.bash_profile.backup 2>/dev/null || true
+            command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
+        fi
     elif [ "$progname" == "tmux" ]; then
         command cp $HOME/.tmux.conf $HOME/.tmux.conf.backup 2>/dev/null || true
         command cp $PD_HOME/tmux/tmux.conf $HOME/.tmux.conf
     elif [ "$progname" == "vim" ]; then
         command cp $HOME/.vimrc $HOME/.vimrc.backup 2>/dev/null || true
-        command cp $PD_HOME/vim/vimrc $HOME/.vimrc
+        case "$mode" in
+            light)
+            vim_mode_file=light.vimrc
+                ;;
+            dark)
+            vim_mode_file=dark.vimrc
+                ;;
+            *)
+            vim_mode_file=vimrc
+                ;;
+        esac
+        command cp $PD_HOME/vim/$vim_mode_file $HOME/.vimrc
     fi
 }
 
@@ -184,7 +209,7 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 # Extension: Load (source) bash configurations accordingly
 #
 ##==
+if [ -f $LOCAL_ETC/local.bash ]; then source $LOCAL_ETC/local.bash; fi
 if [ "$HN" == "liying" ]; then source $PD_HOME/bash/liying.bash; fi
-
 ##===----------------------------------------------------------------------===##
 

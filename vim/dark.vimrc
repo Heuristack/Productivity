@@ -10,7 +10,7 @@ set smarttab
 set expandtab
 set autoindent
 set number
-"set background=dark
+set background=dark
 set ttyfast
 
 "recursive map in insert and command modes
