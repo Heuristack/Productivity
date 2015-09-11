@@ -150,7 +150,8 @@ function update()
     if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
         if [ -f $HOME/.bashrc ]; then 
             command cp $HOME/.bashrc $HOME/.bashrc.backup 2>/dev/null || true
-            echo "source $PD_HOME/bash/bashrc; \n" >> $HOME/.bashrc
+            echo "source $PD_HOME/bash/bashrc;" >> $HOME/.bashrc
+            echo "" >> $HOME/.bashrc
         else
             command cp $HOME/.bash_profile $HOME/.bash_profile.backup 2>/dev/null || true
             command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
