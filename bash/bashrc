@@ -95,12 +95,13 @@ alias cdetc='cd $LOCAL_ETC'
 
 ##==
 #
-# Location 2: codebase
+# Location 2: codebase and snippets
 #
 ##==
 export CB_HOME=$HOME/codebase
+export SNIPPET=$HOME/snippets
 alias cdc='cd $CB_HOME'
-
+alias cdsnip='cd $SNIPPET'
 
 ##==
 #
