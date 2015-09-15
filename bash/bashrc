@@ -65,7 +65,7 @@ export MK_HOME=$PD_HOME/make
 export MT_HOME=$PD_HOME/magictrace
 alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
 alias cpmt='cp $MT_HOME/mt* .'
-alias rmmt='command rm -rf mt.*"
+alias rmmt='command rm -rf mt.*'
 
 alias cptex='cp $PD_HOME/tex/*.tex .'
 alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
