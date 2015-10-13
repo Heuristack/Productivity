@@ -125,11 +125,12 @@ alias cdxcode='cd $XC_HOME'
 #
 ##==
 export DL_HOME=$HOME/downloads
-export AR_HOME=$HOME/archive
 export TM_HOME=$HOME/temp
+export AR_HOME=$HOME/archive
 
 alias cdd='cd $DL_HOME'
 alias cdt='cd $TM_HOME'
+alias cda='cd $AR_HOME'
 
 
 ##==
@@ -212,6 +213,5 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 #
 ##==
 if [ -f $LOCAL_ETC/local.bash ]; then source $LOCAL_ETC/local.bash; fi
-if [ "$HN" == "liying" ]; then source $PD_HOME/bash/liying.bash; fi
 ##===----------------------------------------------------------------------===##
 

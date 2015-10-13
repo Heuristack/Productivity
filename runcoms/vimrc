@@ -1,0 +1,76 @@
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''""
+"
+"
+"                   VIM Run Commands (Configuration)  
+"
+"
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''""
+
+""'''
+"
+" fast navigation
+"
+""'''
+set ttyfast
+
+""'''
+"
+" syntax
+"
+""'''
+syntax on
+
+""'''
+"
+" line no.
+"
+""'''
+set number
+
+""'''
+"
+" spaces 
+"
+""'''
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set cindent shiftwidth=4
+set smarttab
+set expandtab
+set autoindent
+
+""'''
+"
+" ESC remap
+"
+""'''
+"map! jk <esc>
+"map! jj <esc>
+""'''
+noremap <c-k> <c-w>
+
+""'''
+"
+" background color
+"
+""'''
+"set background=dark
+
+""'''
+"
+" highlight line
+"
+""'''
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=Grey ctermfg=NONE
+
+""'''
+"
+" highlight vertical 
+"
+""'''
+"set cursorcolumn
+highlight CursorColumn cterm=NONE ctermbg=DarkGrey ctermfg=NONE
+
+""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''""
