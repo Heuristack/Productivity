@@ -55,12 +55,21 @@ alias ll='ls $LS_OPTIONS -hlA'
 
 ##==
 # 
-# Location 0: productivity
+# Location 0: productivity 
 #
 ##==
 export PD_HOME=$HOME/productivity
 alias cdp='cd $PD_HOME'
 
+export RC_HOME=$PD_HOME/runcoms
+alias cdrc='cd $RC_HOME'
+
+if [ ! -d $HOME/codebase ]; then ln -s $PD_HOME/codebase $HOME/codebase; fi
+##==
+#
+# TODO: move the following to next block
+#
+##==
 export MK_HOME=$PD_HOME/make
 export MT_HOME=$PD_HOME/magictrace
 alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
@@ -73,7 +82,18 @@ alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
 
 ##==
 #
-# Location 1: local/builds/sources
+# Location 1: codebase and snippets
+#
+##==
+export CB_HOME=$HOME/codebase
+export SNIPPET=$HOME/snippets
+alias cdc='cd $CB_HOME'
+alias cdsnip='cd $SNIPPET'
+
+
+##==
+#
+# Location 2: local/builds/sources
 #
 ##==
 export LOCAL=$HOME/local
@@ -92,16 +112,6 @@ alias cdbin='cd $LOCAL_BIN'
 alias cdusr='cd $LOCAL_USR'
 alias cdetc='cd $LOCAL_ETC'
 
-
-##==
-#
-# Location 2: codebase and snippets
-#
-##==
-export CB_HOME=$HOME/codebase
-export SNIPPET=$HOME/snippets
-alias cdc='cd $CB_HOME'
-alias cdsnip='cd $SNIPPET'
 
 ##==
 #
