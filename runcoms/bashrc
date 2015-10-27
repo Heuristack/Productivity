@@ -40,7 +40,7 @@ export READLINE_MODE=emacs
 set -o $READLINE_MODE
 
 export HISTTIMEFORMAT='%F %T  '
-export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:tm *:tb:ap:history:'
+export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:tm *:tb:history:'
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 
@@ -55,40 +55,27 @@ alias ll='ls $LS_OPTIONS -hlA'
 
 ##==
 # 
-# Location 0: productivity 
+# Location 1: productivity 
 #
 ##==
 export PD_HOME=$HOME/productivity
-alias cdp='cd $PD_HOME'
-
 export RC_HOME=$PD_HOME/runcoms
-alias cdrc='cd $RC_HOME'
+export CB_HOME=$PD_HOME/codebase
+export SP_HOME=$PD_HOME/snippets
+export MK_HOME=$CB_HOME/make
+export TX_HOME=$CB_HOME/tex
+export MT_HOME=$CB_HOME/trace
 
-if [ ! -d $HOME/codebase ]; then ln -s $PD_HOME/codebase $HOME/codebase; fi
-##==
-#
-# TODO: move the following to next block
-#
-##==
-export MK_HOME=$PD_HOME/make
-export MT_HOME=$PD_HOME/magictrace
+alias cdpd='cd $PD_HOME'
+alias cdrc='cd $RC_HOME'
+alias cdcb='cd $CB_HOME'
+alias cdsp='cd $SP_HOME'
+
 alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
+alias cptx='cp $TX_HOME/*.tex .'
 alias cpmt='cp $MT_HOME/mt* .'
 alias rmmt='command rm -rf mt.*'
 
-alias cptex='cp $PD_HOME/tex/*.tex .'
-alias cpdox='cp $PD_HOME/doxygen/doxygen.config .'
-
-
-##==
-#
-# Location 1: codebase and snippets
-#
-##==
-export CB_HOME=$HOME/codebase
-export SNIPPET=$HOME/snippets
-alias cdc='cd $CB_HOME'
-alias cdsnip='cd $SNIPPET'
 
 
 ##==
@@ -97,20 +84,19 @@ alias cdsnip='cd $SNIPPET'
 #
 ##==
 export LOCAL=$HOME/local
+alias cdl='cd $LOCAL'
+
 export LOCAL_BIN=$LOCAL/bin
 export LOCAL_USR=$LOCAL/usr
 export LOCAL_ETC=$LOCAL/etc
-export LOCAL_BLD=$HOME/builds
-export LOCAL_SRC=$HOME/sources
-export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
-
-alias cdl='cd $LOCAL'
-alias cdb='cd $LOCAL_BLD'
-alias cds='cd $LOCAL_SRC'
+export LOCAL_SRC=$LOCAL/src
 
 alias cdbin='cd $LOCAL_BIN'
 alias cdusr='cd $LOCAL_USR'
 alias cdetc='cd $LOCAL_ETC'
+alias cdsrc='cd $LOCAL_SRC'
+
+export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
 
 
 ##==
@@ -153,51 +139,9 @@ function greet() { echo "Productive Programming!"; }
 
 ##==
 #
-# Function 1: update main configurations
+# Function 1: tmux session shortcut helper function
 #
-##==
-function update()
-{
-    progname=$1
-    mode=$2
-    if [ "$progname" == "bash" ] || [ "$progname" == "" ]; then
-        if [ -f $HOME/.bashrc ]; then 
-            echo "bashrc exists"
-            echo "if this is the first time, run 'update bash init'";
-            echo "else just run 'reload'";
-            if [ "$mode" == "init" ]; then
-                command cp $HOME/.bashrc $HOME/.bashrc.backup 2>/dev/null || true
-                echo "source $PD_HOME/bash/bashrc;" >> $HOME/.bashrc
-                echo "" >> $HOME/.bashrc
-            fi
-        else
-            command cp $HOME/.bash_profile $HOME/.bash_profile.backup 2>/dev/null || true
-            command cp $PD_HOME/bash/bashrc $HOME/.bash_profile
-        fi
-    elif [ "$progname" == "tmux" ]; then
-        command cp $HOME/.tmux.conf $HOME/.tmux.conf.backup 2>/dev/null || true
-        command cp $PD_HOME/tmux/tmux.conf $HOME/.tmux.conf
-    elif [ "$progname" == "vim" ]; then
-        command cp $HOME/.vimrc $HOME/.vimrc.backup 2>/dev/null || true
-        case "$mode" in
-            light)
-            vim_mode_file=light.vimrc
-                ;;
-            dark)
-            vim_mode_file=dark.vimrc
-                ;;
-            *)
-            vim_mode_file=vimrc
-                ;;
-        esac
-        command cp $PD_HOME/vim/$vim_mode_file $HOME/.vimrc
-    fi
-}
-
-
-##==
-#
-# Function 2: tmux session shortcut helper function
+# TODO: improve this function
 #
 ##==
 function tmux_session()
