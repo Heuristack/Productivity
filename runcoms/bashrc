@@ -28,11 +28,16 @@ export PS1=$PS1'[$(date +%H:%M:%S)]'
 export PS1=$PS1'[${HOSTNAME}]'
 export PS1=$PS1'[${PWD}]'
 
-if [ "$OS" == "Darwin" ]; then 
+if [ "$OS" == "Darwin" ];
+then
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export LSCOLORS=exfxcxdxbxegedabagacad
+elif [ "$OS" == "Linux" ];
+then
+export LS_OPTIONS='--color=auto'
+eval "`dircolors`"
 fi
 
 export READLINE_MODE=vi
@@ -49,6 +54,7 @@ alias hosts='cat /etc/hosts'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias ls='ls $LS_OPTIONS'
 alias  l='ls $LS_OPTIONS -hl'
 alias ll='ls $LS_OPTIONS -hlA'
 
