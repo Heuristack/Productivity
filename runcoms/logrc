@@ -17,9 +17,10 @@
       "critical" : "critical",
       "error" : "error",
       "warning" : "warning",
-      "stats" : "status",
-      "info" : "info",
+      "stats" : "notice",
+      "info" : "status",
       "debug" : "debug",
+      "debug2" : "dump",
       "trace" : "fulldump"
     },
     "value" : {
