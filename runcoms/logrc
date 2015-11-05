@@ -1,0 +1,87 @@
+{
+  "example" : {
+    "title" : "Tbricks Log Format",
+    "description" : "Log format used for example system.",
+    "regex" : {
+      "basic" : {
+        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{6} \\D{3}) (?<hostname>.+) (?<component>.+)\\@(?<system>.+)\\/(?<process>.+)\\[(?<pid>\\d+):(?<tid>\\d+)\\] (?<layer>.+) \\<(?<level>\\w+)\\> (?<source>.+\\(.+\\):) (?<body>.+)"
+      }
+    },
+    "timestamp-field" : "timestamp",
+    "timestamp-format" : [
+      "%Y-%m-%d %H:%M:%S.%i %Z"
+    ],
+    "level-field" : "level",
+    "level" : {
+      "fatal" : "fatal",
+      "critical" : "critical",
+      "error" : "error",
+      "warning" : "warning",
+      "stats" : "status",
+      "info" : "info",
+      "debug" : "debug",
+      "trace" : "fulldump"
+    },
+    "value" : {
+      "timestamp" : {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "hostname" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "component" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "system" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "process" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "pid" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "tid" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "layer" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "level" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "source" :
+      {
+        "kind" : "string",
+        "identifier" : true
+      },
+      "body" :
+      {
+        "kind" : "string",
+        "identifier" : false
+      }
+    },
+    "sample" : [
+      {
+        "line" : "2015-11-04 16:27:21.551286 HKT example-100qrc pantor-engine-s@pantor/pantor-engine-s[4541:5073] se.ssf <fulldump> src/ServicesStatus.cpp(894): QoS was handled for service pantor-engine-l-le (fb6a3ca6-8144-11e5-bc00-8c9633fd0914)"
+      }
+    ]
+  }
+}
