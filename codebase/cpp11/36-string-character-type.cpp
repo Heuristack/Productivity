@@ -15,23 +15,23 @@ using std::string;
 int main(int argc, char** argv) {
 
 
-    char charactor = '0';
+    char character = '0';
 
-    if (std::isdigit(charactor))
-        cout << '\'' << charactor << '\'' << " is a digit!" << endl;
+    if (std::isdigit(character))
+        cout << '\'' << character << '\'' << " is a digit!" << endl;
 
 
-    char & charactor_reference = charactor;
-    charactor_reference = 'R';
+    char &character_reference = character;
+    character_reference = 'R';
 
-    if (std::isalpha(charactor_reference)) {
-        charactor_reference = static_cast<char>(std::tolower(charactor_reference));
-        cout << '\'' << charactor_reference << '\'' << " should be in lower case!" << endl;
+    if (std::isalpha(character_reference)) {
+        character_reference = static_cast<char>(std::tolower(character_reference));
+        cout << '\'' << character_reference << '\'' << " should be in lower case!" << endl;
     }
 
     char SOH = static_cast<char>(0x01);
     if (std::iscntrl(SOH)) {
-        cout << (int)SOH << " is an control charactor!" << endl;
+        cout << (int)SOH << " is an control character!" << endl;
     }
 
     return 0;

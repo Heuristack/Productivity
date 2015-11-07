@@ -1,7 +1,7 @@
 //===----------------------------------------------------------------------===//
 //
 //
-//                          charactor properties
+//                          character properties
 //
 //                  template<typename T> struct char_traits{};
 //
@@ -24,12 +24,12 @@ int main()
     // members of char_traits<> are all static functions
     //
     //==
-    typedef char_traits<char> charactor_properties;
+    typedef char_traits<char> character_properties;
 
     char a = 'a';
     char b = 'b';
 
-    bool equal = charactor_properties::eq(a, b);
+    bool equal = character_properties::eq(a, b);
 
     cout << '\'' << a << '\'' << " and " << '\'' << b << '\'' << " are " << equal << " equal!";
 }
