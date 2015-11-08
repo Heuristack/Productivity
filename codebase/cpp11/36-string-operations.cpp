@@ -138,6 +138,17 @@ try {
     s.swap(t);
     cout << s << endl;
     cout << t << endl;
+
+    //==
+    //
+    // copy (write c-string)
+    //
+    //==
+    char buffer[100]; memset(buffer, 0, 100);
+
+    size_t n = u.copy(buffer, u.size()-2, 0);
+    cout << "buffer: " << buffer << ": " << n << ":" << u.size() << endl;
+
 }
 catch (std::exception & e)
 {
