@@ -83,24 +83,21 @@ alias cpmt='cp $MT_HOME/mt* .'
 alias rmmt='command rm -rf mt.*'
 
 
-
 ##==
 #
-# Location 2: local/builds/sources
+# Location 2: local
 #
 ##==
 export LOCAL=$HOME/local
 alias cdl='cd $LOCAL'
 
 export LOCAL_BIN=$LOCAL/bin
-export LOCAL_USR=$LOCAL/usr
 export LOCAL_ETC=$LOCAL/etc
-export LOCAL_SRC=$LOCAL/src
+export LOCAL_USR=$LOCAL/usr
 
 alias cdbin='cd $LOCAL_BIN'
-alias cdusr='cd $LOCAL_USR'
 alias cdetc='cd $LOCAL_ETC'
-alias cdsrc='cd $LOCAL_SRC'
+alias cdusr='cd $LOCAL_USR'
 
 export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
 
@@ -111,19 +108,23 @@ export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
 #
 ##==
 export PJ_HOME=$HOME/projects
-export CL_HOME=$PJ_HOME/CLion
-export XC_HOME=$PJ_HOME/Xcode
-export IJ_HOME=$PJ_HOME/IntellJ
-export PY_HOME=$PJ_HOME/PyCharm
 
 alias cdpj='cd $PJ_HOME'
-alias cdclion='cd $CL_HOME'
-alias cdxcode='cd $XC_HOME'
 
 
 ##==
 #
-# Location 4: downloads/archive/temp
+# Location 4: repositories
+#
+##==
+export RP_HOME=$HOME/repositories
+
+alias cdrp='cd $RP_HOME'
+alias cdrepo='cd $RP_HOME'
+
+##==
+#
+# Location 5: downloads/archive/temp
 #
 ##==
 export DL_HOME=$HOME/downloads
