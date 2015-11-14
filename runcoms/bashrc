@@ -94,12 +94,17 @@ alias cdl='cd $LOCAL'
 export LOCAL_BIN=$LOCAL/bin
 export LOCAL_ETC=$LOCAL/etc
 export LOCAL_USR=$LOCAL/usr
+export LOCAL_INL=$LOCAL_USR/include
+export LOCAL_LIB=$LOCAL_USR/lib
 
 alias cdbin='cd $LOCAL_BIN'
 alias cdetc='cd $LOCAL_ETC'
 alias cdusr='cd $LOCAL_USR'
+alias cdinl='cd $LOCAL_INL'
+alias cdlib='cd $LOCAL_LIB'
 
 export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
+export LOCAL_DYLD_LIBRARY_PATH=$LOCAL_DYLD_LIBRARY_PATH:$LOCAL_LIB
 
 
 ##==
@@ -121,6 +126,7 @@ export RP_HOME=$HOME/repositories
 
 alias cdrp='cd $RP_HOME'
 alias cdrepo='cd $RP_HOME'
+
 
 ##==
 #
@@ -160,6 +166,7 @@ function tmux_session()
 }
 export -f tmux_session
 
+
 ##==
 #
 # PATH and DYLD_LIBRARY_PATH
@@ -168,11 +175,14 @@ export -f tmux_session
 export PATH=$PATH:$LOCAL_PATH
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 
+
 ##==
 #
 # Extension: Load (source) bash configurations accordingly
 #
 ##==
 if [ -f $LOCAL_ETC/local.bash ]; then source $LOCAL_ETC/local.bash; fi
+
+
 ##===----------------------------------------------------------------------===##
 
