@@ -1,0 +1,14 @@
+FILES AND DIRECTORIES
+NAME				TILE
+-----------------------------------------------------------------
+routine001.c		print file type of each command-line argument
+routine002.c		access function
+routine003.c		umask function
+routine004.c		chmod function
+routine005.c		Open a file and then unlink it
+routine006.c		Example of utime function
+routine007.c		Example of chdir function
+routine008.c		Example of getcwd function
+routine009.c		Recursively descend a directory hierarchy, counting file types
+routine010.c		Print st_dev and st_rdev values
+

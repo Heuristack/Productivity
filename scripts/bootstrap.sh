@@ -35,7 +35,6 @@ mkdir -p Projects
 mkdir -p Archive
 mkdir -p Downloads
 mkdir -p Temporaries
-mkdir -p Log
 
 
 ##==
@@ -45,6 +44,7 @@ mkdir -p Log
 ##==
 ln -snf temporaries             tmp
 ln -snf productivity/snippets   snippets
+ln -snf productivity/codebase   codebase
 ln -snf ../productivity/scripts Applications/bin
 
 

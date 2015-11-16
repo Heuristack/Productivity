@@ -1,0 +1,12 @@
+STANDART I/O
+NAME				TITLE
+--------------------------------------------------
+routine001.c		Streams and FILE Objects
+routine002.c		Buffering-Orientation
+routine003.c		Opening and Closing a Stream
+routine004.c		Reading and Writing a Stream: character-at-a-time
+routine005.c		Reading and Writing a Stream: line-at-a-time
+routine006.c		Reading and Writing a Stream: direct
+routine007.c		Implementation Details(standard I/O implementation)
+routine008.c		Temporary Files - tmpnam and tmpfile functions
+routine009.c		Temporary Files - tempnam function

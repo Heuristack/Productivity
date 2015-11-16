@@ -1,0 +1,37 @@
+Signals
+Name                Subject
+-----------------------------------------------------------------------------------------------------------------
+routine001.c		signal model
+routine002.c		signal unreliable
+routine003.c		interrupted system calls
+routine004.c		reentrant functions
+routine005.c		SIGCLD semantics
+routine006.c		kill and raise functions -- RAISE
+routine007.c		alarm and pause functions -- ALARM
+routine008.c		alarm and pause functions -- PAUSE
+routine009.c		kill and raise functions -- KILL
+routine010.c		alarm and pause functions -- SLEEP IMPLEMENTATION
+routine011.c		signal sets
+routine012.c		signal sets -- signal blocking set (sigprocmask)
+routine013.c		signal sets -- examine pending signals (sigpending)
+routine014.c		signal action -- struct sigaction (only reading comments)
+routine015.c		sigsetjmp && siglongjmp (program handling two signals)
+routine016.c 		signal names && signal mappings
+routine017.c		job-control signals
+routine018.c		POSIX.1 implementation of sleep
+routine019.c		system function
+routine020.c		sigsuspend function -- EXAMPLE1: Protecting a critical region from a signal
+routine021.c		sigsuspend function -- EXAMPLE2: Using sigsuspend to wait for a global variable to be set
+routine022.c		sigsuspend function -- EXAMPLE3: Routines to allow a parent and child to synchronize
+routine023.c		abort function
+
+routine024.c		implementation of sigaddset, sigdelset, and sigismember
+routine025.c		sleep1 function implemented by alarm and pause
+routine026.c		sleep2 function implemented by alarm and pause
+routine027.c		read with a time out through longjmp (alarm)
+routine028.c		read with a time out (alarm)
+routine030.c		stringizing operator(#) and concatenation operator (##)
+routine031.c		siginfo structure and its si_code memeber (message mapping printing)
+routine032.c		sicode_message structure and interface to handle si_code memeber (message mapping structure)
+routine033.c		sigaction structure, sigaction function, sa_sigaction handler pointer
+routine034.c		sa_sigaction handler, siginfo_t structure, si_code member

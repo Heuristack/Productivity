@@ -1,0 +1,5 @@
+SYSTEM I/O
+NAME				TITLE
+------------------------------------------------------------------------------
+routine001.c		fcntl function - Print file flags for specified descriptor
+routine002.c		fcntl function - Turn on one or more of the file status flags for a descriptor

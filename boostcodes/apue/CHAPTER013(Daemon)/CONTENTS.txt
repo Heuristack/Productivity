@@ -1,0 +1,8 @@
+Daemons
+Name                Subject
+-------------------------------------------------------------
+routine001.c		Daemonize -- daemonize function
+routine002.c		Error Logging -- syslog function
+routine003.c		Single-Instance Daemons -- already running
+routine004.c		Daemon Conventions -- rereading configuration file
+routine005.c		Daemon Conventions -- rereading configuration file2

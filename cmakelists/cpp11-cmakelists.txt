@@ -9,6 +9,7 @@ include_directories( src )
 set( SOURCE_FILES
 
     src/36-string.hpp
+    src/36-string.cpp
     src/36-string-character-type.cpp
     src/36-string-character-traits.cpp
     src/36-string-basic-string.cpp
@@ -18,8 +19,10 @@ set( SOURCE_FILES
 
     src/41-concurrency.hpp
     src/41-concurrency-atomics.cpp
+    src/41-concurrency-future.cpp
 )
 
+add_executable( 36-string src/36-string.cpp)
 add_executable( 36-string-charactor-type src/36-string-character-type.cpp)
 add_executable( 36-string-charactor-traits src/36-string-character-traits.cpp)
 add_executable( 36-string-basic-string src/36-string-basic-string.cpp)
@@ -27,4 +30,5 @@ add_executable( 36-string-c-string src/36-string-c-string.cpp)
 add_executable( 36-string-constructors src/36-string-constructors.cpp)
 add_executable( 36-string-operations src/36-string-operations.cpp)
 add_executable( 41-concurrency-atomics src/41-concurrency-atomics.cpp )
+add_executable( 41-concurrency-future src/41-concurrency-future.cpp )
 

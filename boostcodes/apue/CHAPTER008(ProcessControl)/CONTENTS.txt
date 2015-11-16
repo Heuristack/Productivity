@@ -1,0 +1,15 @@
+Process Control
+Name                Subject
+-------------------------------------------------------------
+routine001.c		process identifiers
+routine002.c		process creation -- fork
+routine003.c		process creation -- vfork(spawn new process)
+routine004.c		exit functions
+routine005.c		wait and waitpid
+routine006.c		waitid
+routine007.c		wait3 and wait4
+routine008.c		race condition
+routine009.c		exec functions
+routine010.c		echo argument-list and environment-list
+routine011.c		change user and group ids
+routine012.c		interpreter files

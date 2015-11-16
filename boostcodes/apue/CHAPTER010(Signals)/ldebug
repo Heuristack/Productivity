@@ -1,0 +1,34 @@
+###################################################################
+# TITLE: debugging AIX C programs helper
+# AUTHOR: LiYing
+# DATE: 2010-5-14 16:46:01
+# NOTE: future ldebug will be a common debug tool
+###################################################################
+
+debug_tool1="AR: 	  Creates static libraries, and inserts, deletes, lists, and extracts members."
+debug_tool2="STRINGS: Lists all of the printable strings contained in an object file."
+debug_tool3="STRIP:   Deletes symbol table information from an object file."
+debug_tool4="NM:      Lists the symbols defined in the symbol table of an object file."
+debug_tool5="SIZE:    Lists the names and sizes of the sections in an object file."
+debug_tool6="READELF: Displays the complete structure of an object file, including all of the information encoded in the ELF header."
+debug_tool7="OBJDUMP: The mother of all binary tools. Can display all of the information in an object file. Its most useful function is disassembling the binary instructions in the .text section."
+debug_tool8="LDD:     Lists the shared libraries that an executable needs at run time."
+debug_tool9=""
+debug_toola="DUMP"
+debug_toolb="DBX"
+debug_tools=""
+
+echo "Debugging Tools:"
+echo "\t"$debug_tool1
+echo "\t"$debug_tool2
+echo "\t"$debug_tool3
+echo "\t"$debug_tool4
+echo "\t"$debug_tool5
+echo "\t"$debug_tool6
+echo "\t"$debug_tool7
+echo "\t"$debug_tool8
+
+echo "AIX Debugging Tools:"
+echo "\t"$debug_toola
+echo "\t"$debug_toolb
+
