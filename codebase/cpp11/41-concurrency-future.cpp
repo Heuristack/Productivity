@@ -38,7 +38,7 @@ int function2() { return random_timeslice_echo('+'); }
 //! program entry point
 int main()
 {
-	future<int> result1 = async(function1);
+	future<int> result1{async(function1)};
 	int result2 = function2();
 
 	int result = result1.get() + result2;
