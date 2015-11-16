@@ -1,9 +1,11 @@
-cmake_minimum_required ( VERSION 3.3 )
-project ( cpp11_clion )
+cmake_minimum_required( VERSION 3.3 )
+project( cpp11_clion )
 
-set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+set( CMAKE_INCLUDE_CURRENT_DIR true )
 
-set ( SOURCE_FILES
+set( SOURCE_FILES
+
     src/36-string-basic-string.cpp
     src/36-string-c-string.cpp
     src/36-string-character-traits.cpp
@@ -12,6 +14,7 @@ set ( SOURCE_FILES
     src/36-string-operations.cpp
     src/36-string.hpp
     src/41-concurrency-atomics.cpp
-    src/41-concurrency.hpp )
+    src/41-concurrency.hpp
+    )
 
-add_executable ( cpp11_clion ${SOURCE_FILES} )
+add_executable( cpp11_clion ${SOURCE_FILES} )
