@@ -2,7 +2,7 @@
 ##===----------------------------------------------------------------------===##
 #
 #
-#                       bootstrap script for osx
+#                       bootstrap script for linux
 #
 #
 ##===----------------------------------------------------------------------===##
@@ -20,23 +20,25 @@ cd
 # build directory hierarchy
 #
 ##==
-mkdir -p Local/bin
-mkdir -p Local/etc
-mkdir -p Local/usr
-mkdir -p Local/usr/bin
-mkdir -p Local/usr/include
-mkdir -p Local/usr/lib
-mkdir -p Local/usr/share
+mkdir -p local/bin
+mkdir -p local/etc
+mkdir -p local/usr
+mkdir -p local/usr/bin
+mkdir -p local/usr/include
+mkdir -p local/usr/lib
+mkdir -p local/usr/share
 
-mkdir -p Repositories
-mkdir -p Projects
+mkdir -p repositories
+mkdir -p projects
 
-mkdir -p Archive
-mkdir -p Downloads
-mkdir -p Temp
+mkdir -p archive
+mkdir -p downloads
+mkdir -p temp
 
-mkdir -p Log
-mkdir -p Dump
+mkdir -p bin
+
+mkdir -p log
+mkdir -p dump
 
 ##==
 #
@@ -44,7 +46,8 @@ mkdir -p Dump
 #
 ##==
 ln -snf productivity/snippets snippets
-ln -snf productivity/scripts  Application/bin
+ln -snf productivity/scripts  bin
+
 
 ##==
 #
