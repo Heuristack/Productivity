@@ -33,10 +33,8 @@ mkdir -p projects
 
 mkdir -p archive
 mkdir -p downloads
-mkdir -p temp
-
+mkdir -p tmp
 mkdir -p log
-mkdir -p dump
 
 ##==
 #

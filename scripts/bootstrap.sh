@@ -33,10 +33,8 @@ mkdir -p Projects
 
 mkdir -p Archive
 mkdir -p Downloads
-mkdir -p Temp
-
+mkdir -p Temporaries
 mkdir -p Log
-mkdir -p Dump
 
 ##==
 #
@@ -45,6 +43,7 @@ mkdir -p Dump
 ##==
 ln -snf productivity/snippets snippets
 ln -snf productivity/scripts  Application/bin
+ln -snf Temporaries           tmp
 
 ##==
 #
