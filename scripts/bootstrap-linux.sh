@@ -35,8 +35,6 @@ mkdir -p archive
 mkdir -p downloads
 mkdir -p temp
 
-mkdir -p bin
-
 mkdir -p log
 mkdir -p dump
 
