@@ -15,6 +15,7 @@
 ##==
 cd
 
+
 ##==
 #
 # build directory hierarchy
@@ -36,14 +37,16 @@ mkdir -p Downloads
 mkdir -p Temporaries
 mkdir -p Log
 
+
 ##==
 #
 # build symbolic links to directories
 #
 ##==
-ln -snf productivity/snippets snippets
-ln -snf productivity/scripts  Application/bin
-ln -snf Temporaries           tmp
+ln -snf temporaries             tmp
+ln -snf productivity/snippets   snippets
+ln -snf ../productivity/scripts Applications/bin
+
 
 ##==
 #

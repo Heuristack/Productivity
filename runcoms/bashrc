@@ -134,7 +134,7 @@ alias cdrepo='cd $RP_HOME'
 #
 ##==
 export DL_HOME=$HOME/downloads
-export TM_HOME=$HOME/temp
+export TM_HOME=$HOME/temporaries
 export AR_HOME=$HOME/archive
 
 alias cdd='cd $DL_HOME'
