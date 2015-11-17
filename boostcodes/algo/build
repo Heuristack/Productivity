@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd algo
+make all
+cd ..
+
+cd test
+make all
+cd ..
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd ../algo
+make all
+cd -
+make clean;
+make all;
+make test;
+

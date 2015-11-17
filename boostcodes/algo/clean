@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd algo
+make clean
+cd ..
+
+cd test
+make clean
+cd ..
+
