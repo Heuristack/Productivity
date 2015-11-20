@@ -33,7 +33,7 @@ mkdir -p projects
 
 mkdir -p archive
 mkdir -p downloads
-mkdir -p tmp
+mkdir -p temporaries
 mkdir -p log
 
 
@@ -42,6 +42,7 @@ mkdir -p log
 # build symbolic links to directories
 #
 ##==
+ln -snf temporaries           tmp
 ln -snf productivity/snippets snippets
 ln -snf productivity/scripts  bin
 
