@@ -96,15 +96,18 @@ export LOCAL_ETC=$LOCAL/etc
 export LOCAL_USR=$LOCAL/usr
 export LOCAL_INL=$LOCAL_USR/include
 export LOCAL_LIB=$LOCAL_USR/lib
+export LOCAL_JDK=$LOCAL/jdk
 
 alias cdbin='cd $LOCAL_BIN'
 alias cdetc='cd $LOCAL_ETC'
 alias cdusr='cd $LOCAL_USR'
 alias cdinl='cd $LOCAL_INL'
 alias cdlib='cd $LOCAL_LIB'
+alias cdjdk='cd $LOCAL_JDK'
 
 export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
 export LOCAL_DYLD_LIBRARY_PATH=$LOCAL_DYLD_LIBRARY_PATH:$LOCAL_LIB
+export JAVA_HOME=$LOCAL_JDK
 
 
 ##==
