@@ -32,8 +32,8 @@ if [ "$OS" == "Darwin" ];
 then
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-export LSCOLORS=exfxcxdxbxegedabagacad
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export LSCOLORS=exfxcxdxbxegedabagacad
 elif [ "$OS" == "Linux" ];
 then
 export LS_OPTIONS='--color=auto'
