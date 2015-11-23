@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.3)
+project(integration_clion)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+include_directories(include)
+link_directories(/users/liying/local/usr/lib)
+set(SOURCE_FILES main.cpp)
+add_executable(integration_clion ${SOURCE_FILES})
+target_link_libraries(integration_clion boost_system boost_thread wiredtiger)
