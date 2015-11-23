@@ -31,9 +31,9 @@ export PS1=$PS1'[${PWD}]'
 if [ "$OS" == "Darwin" ];
 then
 export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export LSCOLORS=exfxcxdxbxegedabagacad
+export LSCOLORS=ExFxCxDxBxegedabagacad
 elif [ "$OS" == "Linux" ];
 then
 export LS_OPTIONS='--color=auto'
