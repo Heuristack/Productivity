@@ -1,0 +1,47 @@
+##===----------------------------------------------------------------------===##
+#
+#
+#                         Local Bash Run Commands
+#
+#
+##===----------------------------------------------------------------------===##
+
+##==
+#
+# Library: Boost
+#
+##==
+export BOOST_ROOT=$RP_HOME/boost.git
+
+##==
+#
+# Library: Quantlib
+#
+##==
+export QUANTLIB_ROOT=$RP_HOME/quantlib.git
+
+##==
+#
+# Library: Adaptive Runtime Environment 
+#
+##==
+export ACE_ROOT=$RP_HOME/atcd.git/ace
+
+alias cdace='cd $ACE_ROOT'
+
+##==
+#
+# Toolchain: Make Project Creator
+#
+##==
+export MPC_ROOT=$RP_HOME/mpc.git
+
+##==
+#
+# Application: q
+#
+##==
+export QHOME=$HOME/Applications/q
+
+##===----------------------------------------------------------------------===##
+
