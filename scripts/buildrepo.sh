@@ -60,7 +60,7 @@ makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU
 echo $importstring >> $makeinclude
 echo $prefixstring >> $makeinclude
 
-cd $ACE_ROOT/ace
+cd $ACE_ROOT
 make
 make install
 cd -
