@@ -4,6 +4,6 @@ array+=(b)
 
 for e in ${array[@]}
 do
-    echo $a
+    echo $e
 done
     
