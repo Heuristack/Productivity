@@ -15,8 +15,10 @@ git config --global alias.b branch
 git config --global alias.r remote
 git config --global alias.d diff -w
 
-git config --global alias.get pull --rebase origin
+git config --global alias.get pull target
 git config --global alias.put push target
+
+git config --global --bool pull.rebase true
 
 ##===----------------------------------------------------------------------===##
 
