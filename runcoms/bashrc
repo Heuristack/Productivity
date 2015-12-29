@@ -66,6 +66,7 @@ alias ll='ls $LS_OPTIONS -hlA'
 ##==
 export PD_HOME=$HOME/productivity
 export RC_HOME=$PD_HOME/runcoms
+export BC_HOME=$PD_HOME/boostcodes
 export CB_HOME=$PD_HOME/codebase
 export SP_HOME=$PD_HOME/snippets
 export MK_HOME=$CB_HOME/make
@@ -74,6 +75,7 @@ export MT_HOME=$CB_HOME/trace
 
 alias cdpd='cd $PD_HOME'
 alias cdrc='cd $RC_HOME'
+alias cdbc='cd $BC_HOME'
 alias cdcb='cd $CB_HOME'
 alias cdsp='cd $SP_HOME'
 
