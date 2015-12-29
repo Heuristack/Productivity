@@ -21,7 +21,7 @@ modulelist+=(asio)
 for module in ${modulelist[@]}
 do
     cd boost.git/libs/$module
-    git remote add $remote/boost-$module.git
+    git remote add target $remote/boost-$module.git
     cd -
 done
     
@@ -42,6 +42,9 @@ repolist+=(quickfix)
 for reponame in ${repolist[@]}
 do
     clonerepo $reponame
+    cd $reponame.git
+    git remote add 
+    cd -
 done
 
 ##===----------------------------------------------------------------------===##
