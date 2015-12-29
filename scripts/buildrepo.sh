@@ -61,6 +61,7 @@ echo $importstring >> $makeinclude
 echo $prefixstring >> $makeinclude
 
 cd $ACE_ROOT
+bin/mwc.pl -type gnuace ace.mwc
 make
 make install
 cd -
