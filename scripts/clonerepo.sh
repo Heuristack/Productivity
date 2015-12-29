@@ -14,7 +14,8 @@ remote=https://github.com/Heuristack
 # clone boost from boostorg and add remote linking to heuristack
 #
 ##==
-git clone --recursive https://github.com/boostorg/boost.git boost.git
+if [ -d boost.git ]; then echo "already exist: boost.git"; else
+git clone --recursive https://github.com/boostorg/boost.git boost.git; fi
 
 modulelist+=(asio)
 

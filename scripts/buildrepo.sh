@@ -42,5 +42,23 @@ make
 make install
 cd -
 
+##==
+#
+# ACE
+#
+##==
+
+importstring='#include \"ace/config-macosx-mavericks.h\"'
+echo $importstring > $ACE_ROOT/ace/config.h
+
+importstring='include $(ACE_ROOT)/include/makeinclude/platform_macosx_mavericks.GNU'
+prefixstring='INSTALL_PREFIX = $(LOCAL_USR)'
+
+makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU
+
+: > $ACE_ROOT/$makeinclude
+echo $importstring >> $makeinclude
+echo $prefixstring >> $makeinclude
+
 ##===----------------------------------------------------------------------===##
 
