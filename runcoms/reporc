@@ -1,7 +1,7 @@
 ##===----------------------------------------------------------------------===##
 #
 #
-#                         Local Bash Run Commands
+#    Bash Run Commands for Source Repositories, Applications and Libraries
 #
 #
 ##===----------------------------------------------------------------------===##
@@ -31,7 +31,7 @@ alias cdace='cd $ACE_ROOT'
 
 ##==
 #
-# Toolchain: Make Project Creator
+# Library: Make Project Creator
 #
 ##==
 export MPC_ROOT=$RP_HOME/mpc.git
