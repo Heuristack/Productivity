@@ -69,6 +69,7 @@ export RC_HOME=$PD_HOME/runcoms
 export BC_HOME=$PD_HOME/boostcodes
 export CB_HOME=$PD_HOME/codebase
 export SP_HOME=$PD_HOME/snippets
+export SC_HOME=$PD_HOME/scripts
 export MK_HOME=$CB_HOME/make
 export TX_HOME=$CB_HOME/tex
 export MT_HOME=$CB_HOME/trace
@@ -78,12 +79,14 @@ alias cdrc='cd $RC_HOME'
 alias cdbc='cd $BC_HOME'
 alias cdcb='cd $CB_HOME'
 alias cdsp='cd $SP_HOME'
+alias cdsc='cd $SC_HOME'
 
 alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
 alias cptx='cp $TX_HOME/*.tex .'
 alias cpmt='cp $MT_HOME/mt* .'
 alias rmmt='command rm -rf mt.*'
 
+export LOCAL_PATH=$LOCAL_PATH:$HOME/bin
 
 ##==
 #
@@ -93,6 +96,7 @@ alias rmmt='command rm -rf mt.*'
 export LOCAL=$HOME/local
 alias cdl='cd $LOCAL'
 
+export LOCAL_APP=$LOCAL/applications
 export LOCAL_BIN=$LOCAL/bin
 export LOCAL_ETC=$LOCAL/etc
 export LOCAL_USR=$LOCAL/usr
@@ -100,6 +104,7 @@ export LOCAL_INC=$LOCAL_USR/include
 export LOCAL_LIB=$LOCAL_USR/lib
 export LOCAL_JDK=$LOCAL/jdk
 
+alias cdapp='cd $LOCAL_APP'
 alias cdbin='cd $LOCAL_BIN'
 alias cdetc='cd $LOCAL_ETC'
 alias cdusr='cd $LOCAL_USR'
@@ -128,6 +133,7 @@ alias cdpj='cd $PJ_HOME'
 #
 ##==
 export RP_HOME=$HOME/repositories
+source $RC_HOME/reporc
 
 alias cdrp='cd $RP_HOME'
 alias cdrepo='cd $RP_HOME'
@@ -186,7 +192,6 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 # Extension: Load (source) bash configurations accordingly
 #
 ##==
-source $RC_HOME/reporc;
 if [ -f $LOCAL_ETC/local.bash ]; then source $LOCAL_ETC/local.bash; fi
 
 

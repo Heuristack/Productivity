@@ -21,6 +21,7 @@ cd
 # build directory hierarchy
 #
 ##==
+mkdir -p Local/applications
 mkdir -p Local/bin
 mkdir -p Local/etc
 mkdir -p Local/usr
@@ -43,9 +44,9 @@ mkdir -p Temporaries
 #
 ##==
 ln -snf temporaries             tmp
+ln -snf productivity/scripts    bin
 ln -snf productivity/snippets   snippets
 ln -snf productivity/codebase   codebase
-ln -snf ../productivity/scripts Applications/bin
 
 
 ##==

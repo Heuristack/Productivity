@@ -20,6 +20,7 @@ cd
 # build directory hierarchy
 #
 ##==
+mkdir -p local/applications
 mkdir -p local/bin
 mkdir -p local/etc
 mkdir -p local/usr
@@ -42,9 +43,10 @@ mkdir -p log
 # build symbolic links to directories
 #
 ##==
-ln -snf temporaries           tmp
-ln -snf productivity/snippets snippets
-ln -snf productivity/scripts  bin
+ln -snf temporaries             tmp
+ln -snf productivity/scripts    bin
+ln -snf productivity/snippets   snippets
+ln -snf productivity/codebase   codebase
 
 
 ##==
