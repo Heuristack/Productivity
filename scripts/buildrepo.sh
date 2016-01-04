@@ -14,9 +14,8 @@ cd $RP_HOME
 #
 ##==
 cd boost.git
-./bootstrap.sh
-./b2 --help
-./b2 --prefix=$LOCAL_USR --exec-prefix=$LOCAL_USR -aq install
+./bootstrap.sh --prefix=$LOCAL_USR 
+./b2 -aq install
 cd - &> /dev/null
 
 ##==
@@ -26,7 +25,7 @@ cd - &> /dev/null
 ##==
 cd quickfix.git
 ./bootstrap
-./configure --prefix=$LOCAL_USR --exec-prefix=$LOCAL_USR
+./configure --prefix=$LOCAL_USR 
 make
 make install
 cd - &> /dev/null
@@ -48,16 +47,24 @@ cd - &> /dev/null
 # ACE
 #
 ##==
-
 importstring='#include "ace/config-macosx-mavericks.h"'
-echo $importstring > $ACE_ROOT/ace/config.h
+
+if [ "$(uname)" == "Linux" ]; then 
+export ACE_ROOT=$RP_HOME/ace.git/ACE; 
+importstring='#include "ace/config-linux.h"'
+fi
+
+headerconfig=$ACE_ROOT/ace/config.h : > $headerconfig
+echo $importstring >> $headerconfig
+
 
 importstring='include $(ACE_ROOT)/include/makeinclude/platform_macosx_mavericks.GNU'
 prefixstring='INSTALL_PREFIX = $(LOCAL_USR)'
+if [ "$(uname)" == "Linux" ]; then 
+importstring='include $(ACE_ROOT)/include/makeinclude/platform_linux.GNU'
+; fi
 
-makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU
-
-: > $makeinclude
+makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU : > $makeinclude
 echo $importstring >> $makeinclude
 echo $prefixstring >> $makeinclude
 

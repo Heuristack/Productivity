@@ -13,6 +13,8 @@
 ##==
 export BOOST_ROOT=$RP_HOME/boost.git
 
+alias cdboost='cd $BOOST_ROOT'
+
 ##==
 #
 # Library: Quantlib
