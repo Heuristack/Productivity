@@ -15,7 +15,8 @@ cd $RP_HOME
 ##==
 cd boost.git
 ./bootstrap.sh
-./b2 --prefix=$LOCAL_USR --exec-prefix=$LOCAL_USR install
+./b2 --help
+./b2 --prefix=$LOCAL_USR --exec-prefix=$LOCAL_USR -aq install
 cd - &> /dev/null
 
 ##==
