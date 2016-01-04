@@ -112,6 +112,8 @@ alias cdinc='cd $LOCAL_INC'
 alias cdlib='cd $LOCAL_LIB'
 alias cdjdk='cd $LOCAL_JDK'
 
+source $RC_HOME/apprc
+
 export LOCAL_PATH=$LOCAL_PATH:$LOCAL_BIN
 export LOCAL_DYLD_LIBRARY_PATH=$LOCAL_DYLD_LIBRARY_PATH:$LOCAL_LIB
 export JAVA_HOME=$LOCAL_JDK
@@ -133,11 +135,11 @@ alias cdpj='cd $PJ_HOME'
 #
 ##==
 export RP_HOME=$HOME/repositories
-source $RC_HOME/reporc
 
 alias cdrp='cd $RP_HOME'
 alias cdrepo='cd $RP_HOME'
 
+source $RC_HOME/reporc
 
 ##==
 #

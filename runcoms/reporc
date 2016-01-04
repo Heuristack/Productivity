@@ -1,7 +1,7 @@
 ##===----------------------------------------------------------------------===##
 #
 #
-#    Bash Run Commands for Source Repositories, Applications and Libraries
+#               Bash Run Commands for Source Repositories 
 #
 #
 ##===----------------------------------------------------------------------===##
@@ -42,13 +42,6 @@ export MPC_ROOT=$RP_HOME/mpc.git
 #
 ##==
 export SSL_ROOT=/usr/local/opt/openssl
-
-##==
-#
-# Application: q
-#
-##==
-export QHOME=$HOME/Applications/q
 
 ##===----------------------------------------------------------------------===##
 
