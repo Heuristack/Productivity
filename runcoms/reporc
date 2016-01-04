@@ -31,10 +31,17 @@ alias cdace='cd $ACE_ROOT'
 
 ##==
 #
-# Library: Make Project Creator
+# Library: Make Project Creator (required by ACE building)
 #
 ##==
 export MPC_ROOT=$RP_HOME/mpc.git
+
+##==
+#
+# Library: Open SSL (required by ACE SSL)
+#
+##==
+export SSL_ROOT=/usr/local/opt/openssl
 
 ##==
 #
