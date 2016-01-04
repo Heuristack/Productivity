@@ -6,6 +6,4 @@ for e in ${array[@]}
 do
     echo $e
 done
-    
-echo ${array[0]}
 

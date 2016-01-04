@@ -81,6 +81,8 @@ alias cdcb='cd $CB_HOME'
 alias cdsp='cd $SP_HOME'
 alias cdsc='cd $SC_HOME'
 
+alias cdsnip='cdsp'
+
 alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
 alias cptx='cp $TX_HOME/*.tex .'
 alias cpmt='cp $MT_HOME/mt* .'
@@ -137,7 +139,7 @@ alias cdpj='cd $PJ_HOME'
 export RP_HOME=$HOME/repositories
 
 alias cdrp='cd $RP_HOME'
-alias cdrepo='cd $RP_HOME'
+alias cdrepo='cdrp'
 
 source $RC_HOME/reporc
 
