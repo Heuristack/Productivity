@@ -23,7 +23,7 @@ for module in ${modulelist[@]}
 do
     cd boost.git/libs/$module
     if [[ "$(git remote)" =~ "target" ]]; then echo "already exist: $module (remote 'target')"; 
-    else git remote add target $remote/boost-$module.git; git get; fi
+    else git remote add target $remote/boost-$module.git; git get develop; fi
     cd - &> /dev/null
 done
     
