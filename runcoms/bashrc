@@ -186,6 +186,7 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
 # Extension: Load (source) bash configurations accordingly
 #
 ##==
+source $RC_HOME/reporc;
 if [ -f $LOCAL_ETC/local.bash ]; then source $LOCAL_ETC/local.bash; fi
 
 
