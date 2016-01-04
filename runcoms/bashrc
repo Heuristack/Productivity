@@ -45,7 +45,7 @@ export READLINE_MODE=emacs
 set -o $READLINE_MODE
 
 export HISTTIMEFORMAT='%F %T  '
-export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:tm *:tb:history:'
+export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:tb:history:'
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 
@@ -161,23 +161,6 @@ alias cda='cd $AR_HOME'
 #
 ##==
 function greet() { echo "Productive Programming!"; } 
-
-
-##==
-#
-# Function 1: tmux session shortcut helper function
-#
-# TODO: improve this function
-#
-##==
-function tmux_session()
-{
-    session=$1
-    if [ "$session" == "" ]; then session="productivity"; fi
-    tmux new -s $session
-    if [ "$?" != "0" ]; then tmux a -t $session; fi
-}
-export -f tmux_session
 
 
 ##==
