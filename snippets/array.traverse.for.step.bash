@@ -1,4 +1,3 @@
-
 array+=(a b)
 array+=(c)
 

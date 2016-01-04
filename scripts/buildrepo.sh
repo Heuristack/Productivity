@@ -50,11 +50,11 @@ cd - &> /dev/null
 importstring='#include "ace/config-macosx-mavericks.h"'
 
 if [ "$(uname)" == "Linux" ]; then 
-export ACE_ROOT=$RP_HOME/ace.git/ACE; 
+export ACE_ROOT=$RP_HOME/ace.git/ACE 
 importstring='#include "ace/config-linux.h"'
 fi
 
-headerconfig=$ACE_ROOT/ace/config.h : > $headerconfig
+headerconfig=$ACE_ROOT/ace/config.h ; > $headerconfig
 echo $importstring >> $headerconfig
 
 
@@ -62,9 +62,9 @@ importstring='include $(ACE_ROOT)/include/makeinclude/platform_macosx_mavericks.
 prefixstring='INSTALL_PREFIX = $(LOCAL_USR)'
 if [ "$(uname)" == "Linux" ]; then 
 importstring='include $(ACE_ROOT)/include/makeinclude/platform_linux.GNU'
-; fi
+fi
 
-makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU : > $makeinclude
+makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU ; > $makeinclude
 echo $importstring >> $makeinclude
 echo $prefixstring >> $makeinclude
 
