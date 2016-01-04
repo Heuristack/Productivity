@@ -16,7 +16,7 @@ cd $RP_HOME
 cd boost.git
 ./bootstrap.sh
 ./b2 --prefix=$LOCAL_USR --exec-prefix=$LOCAL_USR install
-cd -
+cd - &> /dev/null
 
 ##==
 #
@@ -28,7 +28,7 @@ cd quickfix.git
 ./configure --prefix=$LOCAL_USR --exec-prefix=$LOCAL_USR
 make
 make install
-cd -
+cd - &> /dev/null
 
 ##==
 #
@@ -37,10 +37,10 @@ cd -
 ##==
 cd quantlib.git
 ./autogen.sh
-./configure --enable-static --with-boost-include=$LOCAL_INL --with-boost-lib=$LOCAL_LIB --prefix=$LOCAL_USR
+./configure --enable-static --with-boost-include=$LOCAL_INC --with-boost-lib=$LOCAL_LIB --prefix=$LOCAL_USR
 make
 make install
-cd -
+cd - &> /dev/null
 
 ##==
 #
@@ -64,7 +64,7 @@ cd $ACE_ROOT
 bin/mwc.pl -type gnuace ace.mwc
 make
 make install
-cd -
+cd - &> /dev/null
 
 ##===----------------------------------------------------------------------===##
 

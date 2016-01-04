@@ -14,7 +14,7 @@ remote=https://github.com/Heuristack
 # clone boost from boostorg and add remote linking to heuristack
 #
 ##==
-if [ -d boost.git ]; then echo "already exist: boost.git"; else
+if [ -d boost.git ]; then echo "already exist: boost"; else
 git clone --recursive https://github.com/boostorg/boost.git boost.git; fi
 
 modulelist+=(asio)
@@ -22,8 +22,9 @@ modulelist+=(asio)
 for module in ${modulelist[@]}
 do
     cd boost.git/libs/$module
-    git remote add target $remote/boost-$module.git
-    cd -
+    if [[ "$(git remote)" =~ "target" ]]; then echo "already exist: $module (remote 'target')"; 
+    else git remote add target $remote/boost-$module.git; git get; fi
+    cd - &> /dev/null
 done
     
 ##==
@@ -54,7 +55,8 @@ done
 # clone mpc and build symbolic link for building ace
 #
 ##==
-git clone https://github.com/DOCGroup/MPC.git mpc.git
+if [ -d mpc.git ]; then echo "already exist: mpc"; else
+git clone https://github.com/DOCGroup/MPC.git mpc.git; fi
 if [ -d ace.git ]; then ln -snf ace.git atcd.git; fi
 
 
