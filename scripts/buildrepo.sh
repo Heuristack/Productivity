@@ -79,9 +79,9 @@ cd - &> /dev/null
 # WiredTigher
 #
 ##==
-cd wiredtigher.git
+cd wiredtiger.git
 ./build_posix/reconf
-./configure --prefix=$LOCAL_USR --includedir=$LOCAL_USR/include/wiredtigher
+./configure --prefix=$LOCAL_USR --includedir=$LOCAL_USR/include/wiredtiger
 ./make
 ./make install
 cd - &> /dev/null
