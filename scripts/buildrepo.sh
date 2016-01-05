@@ -74,5 +74,17 @@ make
 make install
 cd - &> /dev/null
 
+##==
+#
+# WiredTigher
+#
+##==
+cd wiredtigher.git
+./build_posix/reconf
+./configure --prefix=$LOCAL_USR --includedir=$LOCAL_USR/include/wiredtigher
+./make
+./make install
+cd - &> /dev/null
+
 ##===----------------------------------------------------------------------===##
 
