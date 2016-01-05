@@ -28,6 +28,10 @@ export QUANTLIB_ROOT=$RP_HOME/quantlib.git
 #
 ##==
 export ACE_ROOT=$RP_HOME/atcd.git/ace
+if [ "$(uname)" == "Linux" ]; then 
+export ACE_ROOT=$RP_HOME/atcd.git/ACE
+fi
+
 
 alias cdace='cd $ACE_ROOT'
 
