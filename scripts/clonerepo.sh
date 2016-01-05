@@ -44,7 +44,7 @@ repolist+=(quantlib)
 repolist+=(git)
 repolist+=(xv6)
 repolist+=(ace)
-repolist+=(wiredtigher)
+repolist+=(wiredtiger)
 
 for reponame in ${repolist[@]}
 do
