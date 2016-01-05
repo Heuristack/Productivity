@@ -82,8 +82,8 @@ cd - &> /dev/null
 cd wiredtiger.git
 ./build_posix/reconf
 ./configure --prefix=$LOCAL_USR --includedir=$LOCAL_USR/include/wiredtiger
-./make
-./make install
+make
+make install
 cd - &> /dev/null
 
 ##===----------------------------------------------------------------------===##
