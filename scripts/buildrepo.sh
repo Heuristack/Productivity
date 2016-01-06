@@ -131,5 +131,21 @@ make
 cd - &> /dev/null
 fi
 
+##==
+#
+# googletest
+#
+##==
+pushd .
+cd googletest.git;
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$LOCAL_USR ..
+make
+make install
+cd - &> /dev/null
+rm -rf build
+popd
+
 ##===----------------------------------------------------------------------===##
 

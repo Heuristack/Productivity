@@ -48,6 +48,7 @@ repolist+=(wiredtiger)
 repolist+=(libpcap)
 repolist+=(tcpdump)
 repolist+=(nginx)
+repolist+=(googletest)
 
 for reponame in ${repolist[@]}
 do
