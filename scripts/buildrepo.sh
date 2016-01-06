@@ -86,5 +86,27 @@ make
 make install
 cd - &> /dev/null
 
+##==
+#
+# libpcap
+#
+##==
+cd libpcap.git
+./configure --prefix=$LOCAL_USR
+make
+make install
+cd - &> /dev/null
+
+##==
+#
+# tcpdump
+#
+##==
+cd tcpdump.git
+LDFLAGS=-L$LOCAL_LIB ./configure --prefix=$LOCAL_USR 
+make
+make install
+cd - &> /dev/null
+
 ##===----------------------------------------------------------------------===##
 

@@ -45,6 +45,8 @@ repolist+=(git)
 repolist+=(xv6)
 repolist+=(ace)
 repolist+=(wiredtiger)
+repolist+=(libpcap)
+repolist+=(tcpdump)
 
 for reponame in ${repolist[@]}
 do
