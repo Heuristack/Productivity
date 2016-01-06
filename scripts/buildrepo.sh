@@ -61,7 +61,7 @@ echo $importstring >> $headerconfig
 importstring='include $(ACE_ROOT)/include/makeinclude/platform_macosx_mavericks.GNU'
 prefixstring='INSTALL_PREFIX = $(LOCAL_USR)'
 if [ "$(uname)" == "Linux" ]; then 
-importstring='include $(ACE_ROOT)/include/makeinclude/platform_linux.GNU'
+importstring="include $ACE_ROOT/include/makeinclude/platform_linux.GNU"
 fi
 
 makeinclude=$ACE_ROOT/include/makeinclude/platform_macros.GNU ; > $makeinclude
