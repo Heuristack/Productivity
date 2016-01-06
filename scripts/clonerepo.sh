@@ -49,6 +49,7 @@ repolist+=(libpcap)
 repolist+=(tcpdump)
 repolist+=(nginx)
 repolist+=(googletest)
+repolist+=(protobuf)
 
 for reponame in ${repolist[@]}
 do

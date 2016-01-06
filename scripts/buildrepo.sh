@@ -147,5 +147,17 @@ cd - &> /dev/null
 rm -rf build
 popd
 
+##==
+#
+# google protobuf
+#
+##==
+cd protobuf.git
+./autogen.sh
+./configure --prefix=$LOCAL_USR
+make
+make install
+cd - &> /dev/null
+
 ##===----------------------------------------------------------------------===##
 
