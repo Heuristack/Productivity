@@ -95,6 +95,7 @@ cd libpcap.git
 ./configure --prefix=$LOCAL_USR
 make
 make install
+command rm -f $LOCAL_INC/pcap-*.h
 cd - &> /dev/null
 
 ##==
