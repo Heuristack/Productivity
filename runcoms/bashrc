@@ -28,14 +28,12 @@ export PS1=$PS1'[$(date +%H:%M:%S)]'
 export PS1=$PS1'[${HOSTNAME}]'
 export PS1=$PS1'[${PWD}]'
 
-if [ "$OS" == "Darwin" ];
-then
+if [ "$OS" == "Darwin" ]; then
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=exfxcxdxbxegedabagacad
-elif [ "$OS" == "Linux" ];
-then
+elif [ "$OS" == "Linux" ]; then
 export LS_OPTIONS='--color=auto'
 eval "`dircolors`"
 fi
@@ -172,7 +170,7 @@ function greet() { echo "Productive Programming!"; }
 ##==
 export PATH=$PATH:$LOCAL_PATH
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$LOCAL_DYLD_LIBRARY_PATH
-
+if [ "$OS" == "Linux" ]; then export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH; fi
 
 ##==
 #
