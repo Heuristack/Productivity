@@ -104,7 +104,18 @@ cd - &> /dev/null
 #
 ##==
 cd tcpdump.git
-LDFLAGS=-L$LOCAL_LIB ./configure --prefix=$LOCAL_USR 
+LDFLAGS=-L$LOCAL_LIB ./configure --sbindir=$LOCAL_APP/tcpdump --mandir=/dev/null
+make
+make install
+cd - &> /dev/null
+
+##==
+#
+# nginx
+#
+##==
+cd nginx.git
+auto/configure --prefix=$LOCAL_APP/nginx
 make
 make install
 cd - &> /dev/null
