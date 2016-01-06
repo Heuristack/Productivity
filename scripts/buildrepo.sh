@@ -120,5 +120,16 @@ make
 make install
 cd - &> /dev/null
 
+##==
+#
+# xv6 on linux
+#
+##==
+if [ "$(uname)" == "Linux" ]; then 
+cd xv6.git
+make
+cd - &> /dev/null
+fi
+
 ##===----------------------------------------------------------------------===##
 
