@@ -10,7 +10,7 @@
 
 ##==
 #
-# Function : tmux session shortcut helper function
+# Function: tmux session shortcut helper function
 #
 ##==
 function tmux_session()
@@ -31,7 +31,7 @@ function tmux_session()
 
 ##==
 #
-# Program Name: 
+# Program Name as Session Name (command name de-multiplexing)
 #
 ##==
 prog_name=$(basename "$0")
