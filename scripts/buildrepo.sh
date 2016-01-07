@@ -159,5 +159,18 @@ make
 make install
 cd - &> /dev/null
 
+##==
+#
+# LLVM (Uninstallation: make uninstall)
+# Note: 14G+ is required for build
+#
+##==
+if [ -d llvm.build ]; then mkdir llvm.build; fi
+cd llvm.build
+../llvm.git/configure --prefix=$LOCAL_USR
+make
+make install
+cd - &> /dev/null
+
 ##===----------------------------------------------------------------------===##
 

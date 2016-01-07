@@ -66,5 +66,27 @@ git clone https://github.com/DOCGroup/MPC.git mpc.git; fi
 if [ -d ace.git ]; then ln -snf ace.git atcd.git; fi
 
 
+##==
+#
+# clone llvm, clang, and libcxx
+#
+##==
+if [ -d llvm.git ]; then echo "already exist: llvm"; else
+git clone http://llvm.org/git/llvm.git llvm.git; fi
+
+pushd . &> /dev/null; cd llvm.git;
+
+cd tools
+git clone http://llvm.org/git/clang.git
+cd - &> /dev/null
+
+cd projects
+git clone http://llvm.org/git/libcxx.git
+git clone http://llvm.org/git/libcxxabi.git
+cd - &> /dev/null
+
+popd &> /dev/null
+
+
 ##===----------------------------------------------------------------------===##
 
