@@ -172,5 +172,31 @@ make
 make install
 cd - &> /dev/null
 
+##==
+#
+# Berkeley DB
+#
+##==
+BDB_version=6.1.26
+cd db-${BDB_version}/build_unix
+../dist/configure --prefix=$LOCAL_USR --includedir=$LOCAL_INC/berkeleydb
+make
+make install
+cd - &> /dev/null
+
+##==
+#
+# Berkeley DB XML (simple build)
+#
+##==
+BDBXML_buildmode=simple
+BDBXML_version=6.0.18
+cd dbxml-${BDBXML_version}
+if [ $BDBXML_buildmode == "simple" ]; then  buildall.sh --prefix=$LOCAL_USR; 
+else 
+:
+fi
+cd - &> /dev/null
+
 ##===----------------------------------------------------------------------===##
 
