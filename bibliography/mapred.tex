@@ -1,0 +1,1830 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{fullpage,color,xcolor,natbib, mathtools}
+\color{black}
+\author{Li Ying}
+\title{Data-Parallel Computing on Commodity Clusters \\ \large{A Literature Survey on the MapReduce Trend} }
+\bibliographystyle{unsrt}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Programming Models and Execution Engines}
+
+\subsection*{MapReduce: Simplified Data Processing on Large Clusters}
+{\color{cyan} {\color{magenta} Cited by: 10636}
+
+{\color{black} MapReduce\cite{mapred}} is a 
+programming model and an 
+associated implementation 
+for processing and generating large data sets. 
+
+Users specify a 
+{\color{red} \em map} function that 
+processes a key/value pair to generate a set of intermediate key/value pairs, and a 
+{\color{red} \em reduce} function that 
+merges all intermediate values associated with the same intermediate key. 
+
+Many real world tasks are expressible in this model, as shown in the paper.
+
+Programs written in this functional style are 
+automatically parallelized and executed 
+on a large cluster of commodity machine.
+
+The {\color{red} \bf run-time system} 
+takes care of the details of 
+{\color{red} \em partitioning the input data}, 
+{\color{red} \em scheduling the program's execution across a set of machines}, 
+{\color{red} \em handling machine failures}, and 
+{\color{red} \em managing the required inter-machine communication}. 
+
+This allows programmers without any experience with parallel and distributed systems to 
+easily utilize the resources of a large distributed system.
+
+Our implementation of MapReduce runs on a large cluster of commodity machines and is highly scalable: 
+a typical MapReduce computation processes many terabytes of data on thousands of machines. 
+
+Programmers find the system easy to use: 
+hundreds of MapReduce programs have been {\color{red} \em implemented} and 
+upwards of one thousand MapReduce jobs are {\color{red} \em executed} on Google's clusters every day.
+
+}
+
+\subsection*{Dryad: distributed data-parallel programs from sequential building blocks}
+{\color{cyan} {\color{magenta} Cited by: 1420}
+
+{\color{black} Dryad\cite{dryad}} is a 
+{\color{red} \em general-purpose distributed execution engine}
+for coarse-grain data-parallel applications. 
+
+A Dryad application combines 
+computational `vertices' with 
+communication `channels' 
+to form a dataflow graph. 
+
+Dryad 
+runs the application by 
+executing the vertices of this graph on a set of available computers, 
+communicating as appropriate through files, TCP pipes, and shared-memory FIFOs.
+
+The vertices provided by the application developer are 
+quite simple and are usually written as 
+sequential programs with no thread creation or locking. 
+
+Concurrency 
+arises from Dryad scheduling vertices to run simultaneously 
+on multiple computers, or on multiple CPU cores within a computer.
+
+The application can 
+discover the size and placement of data at run time, and 
+modify the graph as the computation progresses to make efficient use of the available resources.
+
+Dryad is designed to 
+scale 
+from powerful multi-core single computers, 
+through small clusters of computers, 
+to data centers with thousands of computers. 
+
+The Dryad execution engine 
+handles all the difficult problems of 
+creating a large distributed, concurrent application: 
+scheduling the use of computers and their CPUs, 
+recovering from communication or computer failures, and 
+transporting data between vertices.
+
+}
+
+\subsection*{FlumeJava: Easy, Efficient Data-Parallel Pipelines}
+{\color{cyan} {\color{magenta} Cited by: 143}
+
+MapReduce and similar systems significantly ease the task of writing data-parallel code. 
+
+However, 
+many real-world computations require {\color{red} \em a pipeline of MapReduces}, and 
+programming and managing such pipelines can be difficult. 
+
+We present 
+{\color{black} FlumeJava\cite{flumejava}}, 
+a Java library that makes it easy to develop, test, and run efficient data-parallel pipelines. 
+
+At the core of the FlumeJava library are 
+a couple of classes that represent 
+{\color{red} \em immutable parallel collections}, 
+each supporting a modest number of {\color{red} \em operations} 
+for processing them in parallel. 
+
+Parallel collections and their operations present a 
+simple, high-level, uniform abstraction 
+over different data representations and execution strategies. 
+
+To enable parallel operations to run efficiently,
+FlumeJava defers their evaluation, 
+instead internally constructing an 
+{\color{red} \em execution plan dataflow graph}. 
+
+When the final results of the parallel operations are eventually needed, 
+FlumeJava 
+first {\color{red} \em optimizes the execution plan}, and 
+then {\color{red} \em executes the optimized operations} on appropriate underlying primitives (e.g., MapReduces). 
+
+The combination of 
+{\color{red} \em high-level abstractions for parallel data and computation,
+deferred evaluation and optimization, and 
+efficient parallel primitives}
+yields an easy-to-use system that approaches the efficiency of hand-optimized pipelines. 
+
+FlumeJava is in active use by hundreds of pipeline developers within Google.
+
+}
+
+
+\subsection*{Distributed computing in practice: The Condor experience}
+{\color{cyan} {\color{magenta} Cited by: 1422}
+
+Since 1984, 
+the Condor project has enabled ordinary users to do extraordinary computing. 
+
+Today, 
+the project continues to explore the social and technical problems of 
+cooperative computing on scales ranging from the desktop to the world-wide computational grid. 
+
+In this chapter, we 
+provide the history and philosophy of the {\color{black} Condor project\cite{condor}} and 
+describe how it has interacted with other projects and evolved along with the ﬁeld of distributed computing. 
+
+We 
+outline the core components of the Condor system and 
+describe how the technology of computing must correspond to social structures.
+
+Throughout, we 
+reﬂect on the lessons of experience and 
+chart the course traveled by research ideas as they grow into production systems.
+
+}
+
+\subsection*{Map-Reduce-Merge: Simplified Relational Data Processing on Large Clusters}
+{\color{cyan} {\color{magenta} Cited by: 575}
+
+Map-Reduce is a programming model 
+that enables easy development of scalable parallel applications 
+to process vast amounts of data on large clusters of commodity machines.
+
+Through a simple interface with two functions, map and reduce,
+this model facilitates parallel implementation of many real-world tasks such as 
+data processing for search engines and machine learning.
+
+However, 
+this model does not directly support processing multiple related heterogeneous datasets. 
+
+While processing relational data is a common need, this limitation causes difficulties
+and/or inefficiency when Map-Reduce is applied on relational operations like joins.
+
+We improve 
+Map-Reduce into a new model called 
+{\color{black} Map-Reduce-Merge\cite{mapredmerge}}. 
+
+It adds to Map-Reduce a Merge phase that can efficiently merge data already partitioned and sorted (or
+hashed) by map and reduce modules. 
+
+We also demonstrate that 
+this new model can express relational algebra operators
+as well as implement several join algorithms.
+
+}
+
+
+\subsection*{CIEL: a universal execution engine for distributed data-flow computing}
+{\color{cyan} {\color{magenta} Cited by: 118}
+
+This paper introduces 
+{\color{black} CIEL\cite{ciel}}, 
+a universal execution engine
+for distributed data-flow programs. 
+
+Like previous execution engines, 
+CIEL 
+{\color{red} \em masks the complexity of distributed programming}. 
+
+Unlike those systems, a 
+CIEL job can make data-dependent control-flow decisions, which 
+enables it to compute iterative and recursive algorithms.
+
+We have also developed Skywriting, a 
+Turing complete scripting language that runs directly on CIEL.
+
+The execution engine provides 
+transparent fault tolerance and 
+distribution to Skywriting scripts and 
+high-performance code written in other programming languages.
+
+We have 
+deployed CIEL on a cloud computing platform, and 
+demonstrate that it achieves scalable performance 
+for both iterative and non-iterative algorithms.	
+
+}
+
+\subsection*{Spark: Cluster Computing withWorking Sets}
+{\color{cyan} {\color{magenta} Cited by: 302}
+
+MapReduce and its variants 
+have been highly successful 
+in implementing large-scale data-intensive applications on commodity clusters. 
+
+However, 
+most of these systems are built around an acyclic data flow model 
+that is not suitable for other popular applications. 
+
+This paper 
+focuses on one such class of applications: 
+those that reuse a working set of data across multiple parallel operations.
+
+This includes many 
+iterative machine learning algorithms, as well as 
+interactive data analysis tools. 
+
+We propose 
+a new framework called 
+{\color{black} Spark\cite{spark}} 
+that supports these applications
+while retaining the scalability and fault tolerance of MapReduce. 
+
+To achieve these goals, 
+Spark introduces an abstraction called resilient distributed datasets (RDDs).
+
+An RDD is a 
+read-only collection of objects 
+partitioned across a set of machines 
+that can be rebuilt if a partition is lost. 
+
+Spark 
+can outperform Hadoop by 10x in iterative machine learning jobs, and c
+an be used to interactively query a 39 GB dataset with sub-second response time.
+
+}
+
+\subsection*{Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing}
+{\color{cyan} {\color{magenta} Cited by: 242}
+
+We present 
+{\color{black} Resilient Distributed Datasets (RDDs)\cite{rdd}}, 
+a distributed memory abstraction that 
+lets programmers perform in-memory computations on large clusters 
+in a fault-tolerant manner. 
+
+RDDs are motivated by two types of applications that 
+current computing frameworks handle inefficiently: 
+iterative algorithms and interactive data mining tools. 
+
+In both cases, 
+keeping data in memory 
+can improve performance by an order of magnitude.
+
+To achieve fault tolerance efficiently, 
+RDDs provide a restricted form of shared memory, 
+based on coarsegrained transformations rather than fine-grained updates to shared state. 
+
+However, 
+we show that 
+RDDs are expressive enough to capture a wide class of computations, including
+recent specialized programming models for iterative jobs, such as Pregel, and 
+new applications that these models do not capture.
+
+We have implemented RDDs in a system called Spark, 
+which we evaluate through a variety of user applications and benchmarks.
+
+}
+
+\subsection*{Optimizing Shuffle Performance in Spark}
+{\color{cyan} {\color{magenta} Not published!}
+
+Spark [6] is a cluster framework that performs in-memory computing, 
+with the goal of outperforming disk-based engines like Hadoop [2]. 
+
+As with other distributed data processing platforms, 
+it is common to collect data in a many-to-many fashion, 
+a stage traditionally known as the shuffle phase. 
+
+In Spark, many sources of inefficiency exist in the shuffle phase that, 
+once addressed, potentially promise vast performance improvements. 
+
+In this paper {\color{black} \cite{sparkshuffle}}, 
+we identify the bottlenecks in the execution of the current design, and 
+propose alternatives that solve the observed problems. 
+
+We evaluate our results in terms of 
+application level throughput.
+
+}
+
+\subsection*{Twister: a runtime for iterative mapreduce}
+{\color{cyan} {\color{magenta} Cited by: 413}
+
+MapReduce programming model has simplified the implementation of many data parallel applications. 
+
+The simplicity of the programming model and 
+the quality of services provided by many implementations of MapReduce 
+attract a lot of enthusiasm among distributed computing communities. 
+
+From the years of experience in applying MapReduce to various scientific applications 
+we identified a set of 
+extensions to the programming model and 
+improvements to its architecture that will 
+expand the applicability of MapReduce to more classes of applications. 
+
+In this paper, 
+we present 
+the programming model and the architecture of 
+{\color{black} Twister\cite{twister}} 
+an enhanced MapReduce runtime that 
+supports iterative MapReduce computations efficiently. 
+
+We also show 
+performance comparisons of Twister with other similar runtimes 
+such as Hadoop and DryadLINQ 
+for large scale data parallel applications.
+
+}
+
+\subsection*{DryadLINQ: A System for General-Purpose Distributed Data-Parallel Computing 
+Using a High-Level Language}
+{\color{cyan} {\color{magenta} Cited by: 485}
+
+{\color{black} DryadLINQ\cite{dryadlinq}} 
+is a system and a set of language extensions that 
+enable a new programming model for large scale distributed computing. 
+
+It generalizes previous execution environments such as SQL, MapReduce, and Dryad 
+in two ways: 
+by adopting an expressive data model of strongly typed .NET objects; and 
+by supporting general-purpose imperative and declarative operations on datasets 
+within a traditional high-level programming language.
+
+A DryadLINQ program 
+is a sequential program composed of 
+LINQ expressions performing arbitrary side-effect-free transformations on datasets, and 
+can be written and debugged using standard .NET development tools. 
+
+The DryadLINQ system 
+automatically and transparently 
+translates the data-parallel portions of the program 
+into a distributed execution plan which is passed to the Dryad execution platform. 
+
+Dryad, 
+which has been in continuous operation for several years on production clusters made up of thousands of computers, 
+ensures efficient, reliable execution of this plan.
+
+
+We describe the 
+implementation of the DryadLINQ compiler and runtime. 
+
+We evaluate DryadLINQ on a varied set of programs drawn from 
+domains such as web-graph analysis, large-scale log mining, and machine learning. 
+
+We show that 
+excellent absolute performance can be attained - 
+a general-purpose sort of 1012 Bytes of data executes in 319 seconds on a 240-computer, 960-disk cluster - 
+as well as demonstrating near-linear scaling of execution time on representative applications as 
+we vary the number of computers used for a job.
+
+}
+
+\subsection*{Shark: SQL and Rich Analytics at Scale}
+{\color{cyan} {\color{magenta} Cited by: 58}
+
+{\color{black} Shark\cite{shark}}
+is a new data analysis system that 
+marries query processing with complex analytics on large clusters. 
+
+It leverages 
+a novel distributed memory abstraction 
+to provide a unified engine that can run 
+SQL queries and sophisticated analytics functions (e.g., iterative machine learning) at scale, 
+and efficiently recovers from failures mid-query. 
+
+This allows Shark to run 
+SQL queries up to 100$\times$ faster than Apache Hive, and 
+machine learning programs more than 100$\times$ faster than Hadoop.
+
+Unlike previous systems, 
+Shark shows that 
+it is possible to achieve these speedups while retaining a MapReduce-like execution engine, and 
+the fine-grained fault tolerance properties that such engine provides. 
+
+It extends such an engine in several ways, 
+including 
+{\em column-oriented in-memory storage} and 
+{\em dynamic mid-query replanning}, 
+to effectively execute SQL. 
+
+The result is a system that matches the speedups reported for MPP analytic databases over MapReduce, while 
+offering fault tolerance properties and complex analytics capabilities that they lack.
+
+}
+
+\section{Resource Management: Sharing and Isolation}
+
+\subsection*{Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center}
+{\color{cyan} {\color{magenta} Cited by: 224}
+
+We present 
+Mesos\cite{mesos}, 
+a platform for sharing commodity clusters 
+between multiple diverse cluster computing frameworks, 
+such as Hadoop and MPI. 
+
+Sharing 
+improves cluster utilization and 
+avoids per-framework data replication.
+
+Mesos shares resources in a fine-grained manner,
+allowing frameworks to achieve data locality by taking turns reading data stored on each machine. 
+
+To support the sophisticated schedulers of today's frameworks,
+Mesos introduces a distributed two-level scheduling mechanism called resource offers. 
+
+Mesos decides how many resources to offer each framework, 
+while frameworks decide which resources to accept and which computations to run on them. 
+
+Our results show that 
+Mesos 
+can achieve near-optimal data locality when sharing the cluster among diverse frameworks, 
+can scale to 50,000 (emulated) nodes, and 
+is resilient to failures.
+
+}
+
+\subsection*{Nexus: A common substrate for cluster computing}
+{\color{cyan} {\color{magenta} Mesos's original name}
+
+Cluster computing has become mainstream, 
+resulting in the rapid creation and adoption of diverse cluster computing frameworks. 
+
+We believe that 
+no single framework will be optimal for all applications, and that 
+organizations will instead want to run multiple frameworks in the same cluster. 
+
+Furthermore, 
+to ease development of new frameworks, 
+it is critical to identify common abstractions and modularize their architectures. 
+
+To achieve these goals, 
+we propose 
+{\color{black} Nexus\cite{nexus}}, 
+a low-level substrate that provides 
+isolation and efficient resource sharing across frameworks running on the same cluster, 
+while giving each framework maximum control over the scheduling and execution of its jobs. 
+
+Nexus fosters innovation in the cloud 
+{\em by letting organizations run new frameworks alongside existing ones} and 
+{\em by letting framework developers focus on specific applications} 
+{\em rather than building one-size-fits-all frameworks}.
+
+}
+
+\subsection*{Apache hadoop yarn: Yet another resource negotiator}
+{\color{cyan} {\color{magenta} Cited by: 25}
+
+The initial design of Apache Hadoop was tightly focused on 
+running massive, MapReduce jobs 
+to process a web crawl. 
+
+For increasingly diverse companies, 
+Hadoop has become the data and computational agora - 
+the de facto place where data and computational resources are shared and accessed. 
+
+This broad adoption and ubiquitous usage has stretched the initial design well beyond its intended target, 
+exposing two key shortcomings: 
+1) tight coupling of a specific programming model with the resource management infrastructure, 
+forcing developers to abuse the MapReduce programming model, and 
+2) centralized handling of jobs' control flow, 
+which resulted in endless scalability concerns for the scheduler.
+
+In this paper, 
+we summarize the 
+design, development, and current state of deployment of 
+the next generation of Hadoop's compute platform: 
+{\color{black} YARN\cite{yarn}}. 
+
+The new architecture we introduced 
+decouples the programming model from the resource management infrastructure, and
+delegates many scheduling functions (e.g., task faulttolerance)
+to per-application components. 
+
+We provide
+experimental evidence demonstrating the improvements we made, 
+confirm improved efficiency by reporting the experience of running YARN on production environments
+(including 100\% of Yahoo! grids), and 
+confirm the flexibility claims 
+by discussing the porting of several programming frameworks onto YARN viz. 
+Dryad, Giraph, Hoya, Hadoop MapReduce, REEF, Spark, Storm, Tez.
+
+}
+
+\subsection*{Omega: flexible, scalable schedulers for large compute clusters}
+{\color{cyan} {\color{magenta} Cited by: 42}
+
+Increasing scale and the need for rapid response to changing requirements 
+are hard to meet with current 
+{\color{red} \em monolithic cluster scheduler architectures}.
+
+This 
+restricts the rate at which new features can be deployed, 
+decreases efficiency and utilization, and will eventually 
+limit cluster growth.
+
+We present
+{\color{black} a novel approach\cite{omega}}
+to address these needs using 
+parallelism, shared state, and lock-free optimistic concurrency control.
+
+We 
+compare this approach to existing cluster scheduler designs, 
+evaluate how much interference between schedulers occurs and how much it matters in practice, 
+present some techniques to alleviate it, and finally 
+discuss a use case highlighting the advantages of our approach – 
+all driven by real-life Google production workloads.
+
+}
+
+
+\subsection*{Scope: easy and efficient parallel processing of massive data sets}
+{\color{cyan} {\color{magenta} Cited by: 443}
+
+Companies providing cloud-scale services 
+have an increasing need to store and analyze massive data sets 
+such as search logs and click streams. 
+
+For cost and performance reasons, 
+processing is typically done on 
+large clusters of shared-nothing commodity machines. 
+
+It is imperative to 
+develop a programming model that 
+hides the complexity of the underlying system but provides flexibility by 
+allowing users to extend functionality to meet a variety of requirements.
+
+In this paper,  
+we present 
+a new declarative and extensible scripting language, 
+SCOPE (Structured Computations Optimized for Parallel Execution)\cite{cosmos-scope}, 
+targeted for this type of massive data analysis.
+
+The language is designed for ease of use with no explicit parallelism,
+while being amenable to efficient parallel execution on large clusters. 
+
+SCOPE borrows several features from SQL. 
+Data is modeled as sets of rows composed of typed columns. 
+The select statement is retained with inner joins, outer joins, and aggregation allowed. 
+Users can easily define their own functions and implement their own versions of operators: 
+extractors (parsing and constructing rows from a file), 
+processors (row-wise processing),
+reducers (group-wise processing), and 
+combiners (combining rows from two inputs). 
+
+SCOPE supports nesting of expressions
+but also allows a computation to be specified as a series of steps,
+in a manner often preferred by programmers. 
+
+We also describe
+how scripts are compiled into efficient, parallel execution plans and executed on large clusters.
+
+}
+
+\subsection*{Fuxi: a Fault-Tolerant Resource Management and Job Scheduling System at Internet Scale}
+{\color{cyan} {\color{magenta}}
+
+Scalability and fault-tolerance 
+are two fundamental challenges for all 
+distributed computing at Internet scale. 
+
+Despite many recent advances from both academia and industry, 
+these two problems are still far from settled. 
+
+In this paper, we present 
+{\color{black} Fuxi\cite{fuxi}}, 
+a resource management and job scheduling system that is capable of handling the kind of workload 
+at Alibaba where hundreds of terabytes of data are generated and analyzed everyday 
+to help optimize the company's business operations and user experiences. 
+
+We employ several novel techniques to enable Fuxi to perform efficient scheduling of hundreds of thousands of concur-
+rent tasks over large clusters with thousands of nodes: 
+
+1) an incremental resource management protocol that 
+supports multi-dimensional resource allocation and data locality; 
+2) user-transparent failure recovery where 
+failures of any Fuxi components will not impact the execution of user jobs; and
+3) an effective detection mechanism and a multi-level black-listing scheme that 
+prevents them from affecting job execution. 
+
+Our evaluation results demonstrate that 95\% and 91\% scheduled CPU/memory utilization can be fulfilled under
+synthetic workloads, and Fuxi is capable of achieving 2.36T-B/minute throughput in GraySort. 
+
+Additionally,  the same Fuxi job only experiences approximately 16\% slowdown under a 5\% fault-injection rate. 
+The slowdown only grows to 20\% when we double the fault-injection rate to 10\%. 
+Fuxi has been deployed in our production environment since 2009, and 
+it now manages hundreds of thousands of server nodes.
+
+}
+
+
+\section{Scheduling: Locality and Fairness}
+
+\subsection*{Quincy: fair scheduling for distributed computing clusters}
+{\color{cyan} {\color{magenta} Cited by: 293}
+
+This paper addresses the problem of 
+scheduling concurrent jobs on clusters where application data is stored on the computing nodes.
+
+This setting, in which 
+scheduling computations close to their data is crucial for performance, 
+is increasingly common and arises in systems such as 
+MapReduce, Hadoop, and Dryad as well as many grid-computing environments. 
+
+We argue that 
+data-intensive computation 
+benefits from a fine-grain resource sharing model that 
+differs from the coarser semi-static resource allocations 
+implemented by most existing cluster computing architectures. 
+
+The problem of
+scheduling with locality and fairness constraints has 
+not previously been extensively studied 
+under this resource-sharing model.
+
+We introduce 
+a powerful and flexible new framework 
+for scheduling concurrent distributed jobs with fine-grain resource sharing.
+
+The scheduling problem is mapped to a 
+graph datastructure, where 
+edge weights and capacities encode the competing demands of 
+data locality, fairness, and starvation-freedom, and 
+a standard solver computes the optimal online schedule according to a global cost model. 
+
+We evaluate 
+our implementation of this framework, which we call 
+{\color{black} Quincy\cite{quincy}}, 
+on a cluster of a few hundred computers using a varied workload of data- and CPU-intensive jobs. 
+
+We 
+evaluate Quincy against an existing queue-based algorithm and 
+implement several policies for each scheduler, with and without fairness constraints.
+
+Quincy gets better fairness when fairness is requested,
+while substantially improving data locality. 
+
+The volume of data transferred across the cluster is reduced by up to a factor of 3.9 
+in our experiments, 
+leading to a throughput increase of up to 40\%.
+
+}
+
+\subsection*{Delay scheduling: a simple technique for achieving locality and fairness in cluster scheduling}
+{\color{cyan} {\color{magenta} Cited by: 429}
+
+As organizations start to use data-intensive cluster computing systems 
+like Hadoop and Dryad 
+for more applications,
+there is a growing need to share clusters between users.
+
+However, 
+there is a conflict between 
+fairness in scheduling and 
+data locality (placing tasks on nodes that contain their input data). 
+
+We illustrate this problem 
+through our experience designing a fair scheduler for a 600-node Hadoop cluster at Facebook. 
+
+To address the conflict between locality and fairness, 
+we propose 
+a simple algorithm called 
+{\color{black} delay scheduling\cite{delay}}: 
+when the job that should be scheduled next according to fairness cannot launch a local task, 
+it waits for a small amount of time, letting other jobs launch tasks instead.
+
+We find that 
+delay scheduling 
+achieves nearly optimal data locality in a variety of workloads and can 
+increase throughput by up to 2x while preserving fairness. 
+
+In addition, the
+simplicity of delay scheduling makes it 
+applicable under a wide variety of scheduling policies beyond fair sharing.	
+
+}
+
+\subsection*{Improving MapReduce Performance in Heterogeneous Environments}
+{\color{cyan} {\color{magenta} Cited by: 789}
+
+MapReduce is emerging as an important programming model 
+for large-scale data-parallel applications such as
+web indexing, data mining, and scientific simulation.
+
+Hadoop is an open-source implementation of MapReduce enjoying wide adoption and is 
+often used for short jobs where low response time is critical. 
+
+Hadoop's performance is closely tied to its task scheduler, 
+which implicitly assumes that 
+cluster nodes are homogeneous and tasks make progress linearly, and 
+uses these assumptions to decide when to speculatively re-execute tasks that appear to be stragglers. 
+
+In practice, 
+the homogeneity assumptions do not always hold. 
+
+An especially compelling setting where this occurs is a virtualized data center, 
+such as Amazon's Elastic Compute Cloud (EC2).
+
+We show that 
+{\em Hadoop's scheduler can cause 
+severe performance degradation in heterogeneous environments}. 
+
+We design
+a new scheduling algorithm, 
+{\color{black} Longest Approximate Time to End (LATE)\cite{late}}, 
+that is highly robust to heterogeneity.
+
+LATE can improve Hadoop response times 
+by a factor of 2 
+in clusters of 200 virtual machines on EC2.	
+
+}
+
+\subsection*{Sparrow: Distributed, Low Latency Scheduling}
+{\color{cyan} {\color{magenta} Cited by: 12}
+
+Large-scale data analytics frameworks are 
+shifting towards shorter task durations and larger degrees of parallelism to provide low latency. 
+
+Scheduling highly parallel jobs that 
+complete in hundreds of milliseconds poses a major 
+challenge for task schedulers, 
+which will need to
+schedule millions of tasks per second on appropriatemachines
+while offering millisecond-level latency and high availability. 
+
+We demonstrate that a 
+decentralized, randomized sampling approach provides near-optimal performance
+while avoiding the throughput and availability limitations of a centralized design. 
+
+We implement and deploy our scheduler, 
+{\color{black} Sparrow\cite{sparrow}}, 
+on a 110-machine cluster and 
+demonstrate that Sparrow performs within 12\% of an ideal scheduler.
+
+}
+
+\subsection*{Assigning Tasks for Efficiency in Hadoop}
+{\color{cyan} {\color{magenta} Cited by: 37}
+
+In recent years Google's MapReduce has emerged as a leading large-scale data processing architecture. 
+
+Adopted by companies such as Amazon, Facebook, Google, IBM and Yahoo! in daily use, and 
+more recently put in use by several universities, 
+it allows parallel processing of huge volumes of data over cluster of machines. 
+
+Hadoop is a free Java implementation of MapReduce. 
+In Hadoop,files are split into blocks and replicated and spread over all servers in a network.
+Each job is also split into many small pieces called tasks. 
+Several tasks are processed on a single server, and a job is not completed until all the assigned tasks are finished.
+A crucial factor that affects the completion time of a job is the particular assignment of tasks to servers. 
+
+Given a placement of the input data over servers, 
+one wishes to find the assignment that minimizes the completion time. 
+
+In this paper, 
+{\color{black} an idealized Hadoop model \cite{hadoopmodel}}
+is proposed 
+to investigate the Hadoop task assignment problem. 
+
+It is shown that 
+{\em there is no feasible algorithm to find the optimal Hadoop task assignment} 
+unless P = NP. 
+
+Assignments that are computed by the 
+{\em round robin algorithm} 
+inspired by the current Hadoop scheduler are shown to 
+{\em deviate from optimum} 
+by a multiplicative factor in the worst case. 
+
+A fow-based algorithm is presented that 
+computes assignments that are optimal to within an additive constant.	
+
+}
+
+\subsection*{BAR: An Efficient Data Locality Driven Task Scheduling Algorithm for Cloud Computing}
+{\color{cyan} {\color{magenta} Cited by: 34}
+
+Large scale data processing is increasingly common in cloud computing systems 
+like MapReduce, Hadoop, and Dryad 
+in recent years. 
+
+In these systems, 
+files are split into many small blocks and 
+all blocks are replicated over several servers. 
+
+To process files efficiently, 
+each job is divided into many tasks and 
+each task is allocated to a server to deals with a file block. 
+
+Because network bandwidth is a scarce resource in these systems, 
+{\em enhancing task data locality (placing tasks on servers that contain their input blocks)}
+is crucial 
+for the job completion time. 
+
+Although there have been many approaches on improving data locality, 
+most of them 
+either are greedy and ignore global optimization, 
+or suffer from high computation complexity. 
+
+To address these problems, 
+we propose 
+{\color{black} a heuristic task scheduling algorithm called BAlance-Reduce(BAR) \cite{bar}}, 
+in which 
+an initial task allocation will be produced at first, then 
+the job completion time can be reduced gradually by tuning the initial task allocation. 
+
+By taking a global view, 
+BAR can adjust data locality dynamically 
+according to network state and cluster workload. 
+
+The simulation results show that BAR 
+is able to 
+deal with large problem instances in a few seconds and 
+outperforms previous related algorithms in term of the job completion time.	
+
+}
+
+\subsection*{Leveraging Endpoint Flexibility in Data-Intensive Clusters}
+{\color{cyan} {\color{magenta} Cited by: 7}
+
+Many applications do not constrain the destinations of their network transfers. 
+
+New opportunities emerge when such transfers contribute a large amount of network bytes. 
+
+By choosing the endpoints to avoid congested links, 
+completion times of these transfers as well as that of others without similar flexibility can be improved. 
+
+In this paper, we focus on 
+leveraging the flexibility in 
+replica placement during writes to cluster file systems (CFSes), 
+which account for almost 
+{\em half of all cross-rack traffic} 
+in data-intensive clusters. 
+
+The replicas of a CFS write can be placed in any subset of machines 
+as long as they are in multiple fault domains and ensure a balanced use of storage throughout the cluster.
+
+We study CFS interactions with the cluster network, analyze optimizations for replica placement, and propose 
+{\color{black} Sinbad\cite{sinbad}}, 
+a system that identifies imbalance and adapts replica destinations to navigate around congested links. 
+
+Experiments on EC2 and trace-driven simulations show that 
+{\em block writes} 
+complete 1.3 $\times$ (respectively, 1.58 $\times$) faster 
+as the network becomes more balanced. 
+
+As a col-lateral benefit, end-to-end completion times of data-intensive jobs improve as well. 
+
+Sinbad does so with little impact on the long-term storage balance.	
+
+}
+
+\subsection*{Paragon: QoS-Aware Scheduling for Heterogeneous Datacenters}
+{\color{cyan} {\color{magenta} Cited by: 37}
+
+Large-scale datacenters (DCs) host tens of thousands of diverse applications each day. 
+
+However, interference between colocated workloads and the difficulty to match applications to one of the many
+hardware platforms available can degrade performance, violating the
+quality of service (QoS) guarantees that many cloud workloads require.
+
+While previous work has identified the impact of heterogeneity and interference, 
+existing solutions are computationally intensive, 
+cannot be applied online and do not scale beyond few applications.
+
+We present 
+{\color{black} Paragon\cite{paragon}}, 
+an online and scalable DC scheduler that is heterogeneity and interference-aware. 
+
+Paragon is derived from robust analytical methods and instead of profiling each application in detail, 
+it leverages information the system already has about applications it has previously seen. 
+
+It uses 
+collaborative filtering techniques 
+to quickly and accurately classify an unknown, incoming workload
+with respect to heterogeneity and interference in multiple shared resources, 
+by identifying similarities to previously scheduled applications.
+
+The classification allows Paragon to greedily schedule applications 
+in a manner that minimizes interference and maximizes server utilization. 
+
+Paragon scales to tens of thousands of servers with marginal scheduling overheads in terms of time or state.
+
+We evaluate Paragon with a wide range of workload scenarios, 
+on both small and large-scale systems, including 1,000 servers on EC2.
+
+For a 2,500-workload scenario, 
+Paragon enforces performance guarantees for 91\% of applications, while significantly improving utilization.
+
+In comparison, 
+heterogeneity-oblivious, interference-oblivious and least-loaded schedulers only provide similar guarantees for 14\%, 11\% and 3\% of workloads. 
+
+The differences are more striking in oversubscribed scenarios where resource efficiency is more critical.
+
+}
+
+\section{Coordination: Lock Service, Group Messaging and Leader Election}
+
+\subsection*{The Chubby lock service for loosely-coupled distributed systems}
+{\color{cyan} {\color{magenta} Cited by: 546}
+
+We describe our experiences with the 
+{\color{black} Chubby lock service\cite{chubby}}, 
+which is intended to provide 
+coarse-grained locking as well as reliable (though low-volume) 
+storage for a loosely-coupled distributed system. 
+
+Chubby provides an interface much like a 
+{\em distributed file system with advisory locks}, 
+but the design emphasis is on 
+{\em availability and reliability}, 
+as opposed to 
+{\em high performance}. 
+
+Many instances of the service have been used for over a year,
+with several of them each handling a few tens of thousands of clients concurrently. 
+
+The paper 
+describes the initial design and expected use, 
+compares it with actual use, and 
+explains how the design had to be modified to accommodate the differences.	
+
+}
+
+\subsection*{ZooKeeper: Wait-free coordination for Internet-scale systems}
+{\color{cyan} {\color{magenta} Cited by: 370}
+
+In this paper, 
+we describe 
+{\color{black} ZooKeeper\cite{zookeeper}}, 
+a service for coordinating processes of distributed applications. 
+
+Since ZooKeeper is part of critical infrastructure, 
+ZooKeeper aims to provide 
+a simple and high performance kernel 
+for building more complex coordination primitives at the client. 
+
+It incorporates elements from 
+group messaging, shared registers, and distributed lock services 
+in a replicated, centralized service. 
+
+The interface exposed by ZooKeeper has the wait-free aspects of shared registers with
+an event-driven mechanism similar to cache invalidations of distributed file systems 
+to provide a simple, yet powerful coordination service.
+
+The ZooKeeper interface enables a high-performance service implementation. 
+
+In addition to the wait-free property, 
+ZooKeeper provides a per client guarantee of FIFO execution of requests and linearizability for all requests
+that change the ZooKeeper state. 
+
+These design decisions 
+enable the implementation of 
+a high performance processing pipeline with read requests being satisfied by local servers. 
+
+We show for the target workloads, 2:1 to 100:1 read to write ratio, that 
+ZooKeeper can handle tens to hundreds of thousands of transactions per second.
+
+This performance allows ZooKeeper to be used extensively by client applications.	
+
+}
+
+\section{Communication Management: Link, Flow, Transfer and Network Scheduling}
+
+\subsection*{Efficient Coflow Scheduling with Varys}
+{\color{cyan} {\color{magenta} Cited by: 0}
+
+Communication in 
+data-parallel applications often involves a collection of 
+parallel flows. 
+
+Traditional techniques to 
+optimize flow-level metrics 
+do not perform well in optimizing such collections,
+because the network is largely agnostic to application-level requirements.
+
+The recently proposed coflow abstraction 
+bridges this gap and 
+creates new opportunities for 
+{\color{red} \em network scheduling}. 
+
+In this paper,
+we address 
+{\color{red} \em inter-coflow scheduling}
+for two different objectives:
+{\color{red} \em decreasing communication time of data-intensive jobs} and
+{\color{red} \em guaranteeing predictable communication time}. 
+
+We introduce the
+{\color{red} concurrent open shop scheduling with coupled resources} 
+problem,
+analyze its complexity, and 
+propose effective heuristics to optimize either objective. 
+
+We present 
+{\color{black} Varys \cite{varys}}, 
+a system that 
+enables data-intensive frameworks to use coflows and the proposed algorithms
+while 
+{\color{red} maintaining high network utilization} and 
+{\color{red} guaranteeing starvation freedom}. 
+
+EC2 deployments and trace-driven simulations
+show that 
+communication stages complete up to 3.16$\times$ faster on average and 
+up to 2$\times$ more coflows meet their deadlines 
+using Varys in comparison to per-flow mechanisms. 
+
+Moreover, 
+Varys outperforms non-preemptive coflow schedulers by more than 5$\times$.	
+
+}
+
+\subsection*{Decentralized Task-Aware Scheduling for Data Center Networks}
+{\color{cyan} {\color{magenta} Cited by: 0}
+
+Most data center applications perform rich and complex tasks 
+(e.g., executing a search query or generating a user's wall). 
+
+From a network perspective, these tasks typically comprise multiple flows, which traverse different
+parts of the network at potentially different times. 
+
+Existing network resource allocation schemes, 
+however, 
+treat all these flows in isolation – rather than as part of a task – and therefore only optimize flow-level metrics.
+
+In this paper, 
+we show that task-aware network scheduling, which groups flows of a task and schedules them together, 
+can reduce both the average as well as tail completion time for typical data center applications.
+
+Based on the network footprint of real applications, 
+we motivate the use of a scheduling policy that dynamically adapts the level of multiplexing in the network. 
+
+To apply task-aware scheduling to online applications with small (sub-second) tasks, 
+we design and implement 
+{\color{black} Baraat\cite{baraat}}, 
+a decentralized task-aware scheduling system. 
+
+Through experiments with Memcached on a small testbed and large-scale simulations, 
+we show that, 
+compared to existing schemes, 
+Baraat can reduce tail task completion times by 
+60\% for data analytics workloads and 
+40\% for search workloads.
+
+}
+
+\subsection*{Coflow: A networking abstraction for cluster applications}
+{\color{cyan} {\color{magenta} Cited by: 7}
+
+Cluster computing applications – 
+frameworks like MapReduce and 
+user-facing applications like search platforms –
+have application-level requirements and higher-level abstractions to express them. 
+
+However, 
+there exists 
+{\color{red} \em no networking abstraction}
+that can take advantage of the rich semantics readily available from these data parallel applications.
+
+We propose 
+{\color{black} coflow\cite{coflow}}, 
+a networking abstraction to express the communication requirements of prevalent data parallel
+programming paradigms. 
+
+Coflows make it easier for the applications to 
+{\color{red} \em convey their communication semantics to the network}, 
+which in turn enables the network to better optimize common communication patterns.
+
+}
+
+\subsection*{Managing data transfers in computer clusters with orchestra}
+{\color{cyan} {\color{magenta} Cited by: 109; year: 2011;}
+
+Cluster computing applications like MapReduce and Dryad 
+{\color{red} transfer massive amounts of data between their computation stages}. 
+
+These transfers can have a significant impact on job performance, 
+accounting for 
+{\color{red} more than 50\% of job completion times}. 
+
+Despite this impact, 
+there has been relatively little work on 
+optimizing the performance of these data transfers, 
+with networking researchers traditionally focusing on per-flow traffic management. 
+
+We address this limitation by 
+proposing a {\color{black} global management architecture and a set of algorithms\cite{orchestra}} that 
+(1) 
+{\color{red} improve the transfer times of common communication patterns}, 
+such as broadcast and shuffle, and 
+(2) 
+{\color{red} allow scheduling policies at the transfer level}, 
+such as prioritizing a transfer over other transfers. 
+
+Using a prototype implementation, 
+we show that 
+our solution 
+improves broadcast completion times by up to {\color{red} $4.5 \times$} 
+compared to the status quo in Hadoop. 
+
+We also show that
+transfer-level scheduling can 
+reduce the completion time of high priority transfers by {\color{red} $1.7 \times$}.
+
+}
+{\color{blue} \small 
+
+
+How does the system work in brief:
+When an application wishes to perform a transfer in Orchestra,
+it invokes an API that launches a TC for that transfer. 
+{\color{red} \em The TC registers with the ITC to obtain its share of the network.}
+The ITC periodically consults a scheduling policy (e.g., FIFO, priority) to
+assign shares to the active transfers, and sends these to the TCs.
+Each TC can divide its share among its source-destination pairs as it wishes 
+(e.g., to choose a distribution graph for a broadcast).
+The ITC also updates the transfers' shares periodically as the set of active transfers changes. 
+Finally, each TC unregisters itself when its transfer ends. 
+Note that we assume a cooperative environment, where all the jobs use TCs and obey the ITC.	
+
+}
+{\color{blue} \small
+\begin{itemize}
+\item trend: distributed computing framework on large clusters for big data processing
+\item ignorance: resource scheduling and managing focused on compute and storage but no network
+\item intuition: managing and optimizing network activity is critical for improving job performance
+\item problem: 
+\item argument: transfer but not flow
+\item solution/proposal: global control architecture to manage intra- and inter- transfer activities
+\end{itemize}	
+}
+
+\subsection*{An Architecture for Internet Data Transfer}
+{\color{cyan} {\color{magenta} Cited by: 112}
+
+This paper 
+presents the 
+design and implementation of
+{\color{black} DOT\cite{dot}}, 
+a flexible architecture for data transfer. 
+
+This architecture
+separates content negotiation from the data transfer itself. 
+
+Applications determine what data they need to send and then use a new transfer service to send it. 
+
+This transfer service 
+acts as a common interface 
+between applications and the lower-level network layers, 
+facilitating innovation both above and below. 
+
+The transfer service 
+frees developers from re-inventing transfer mechanisms in each new application. 
+
+New transfer mechanisms, in turn, can be easily deployed without modifying existing applications.
+
+We discuss the 
+benefits that arise from separating data transfer into a service and 
+the challenges this service must overcome. 
+
+The paper then examines the implementation of
+DOT and its plugin framework for creating new data transfer mechanisms. 
+
+A set of 
+microbenchmarks 
+shows that the DOT prototype performs well, and that 
+the overhead it imposes is unnoticeable in the wide-area. 
+
+End-to-end experiments 
+using more complex configurations 
+demonstrate DOT's ability to implement effective, new data delivery
+mechanisms underneath existing services. 
+
+Finally, we
+evaluate a production mail server modified to use DOT 
+using trace data gathered from a live email server. 
+
+Converting the mail server required only 184 lines-of-code changes to the server, and 
+the resulting system reduces the bandwidth needed to send email by up to 20\%.	
+
+}
+
+\subsection*{ShuffleWatcher: Shuffle-aware scheduling in multi-tenant MapReduce clusters}
+{\color{cyan} {\color{magenta}}
+	
+MapReduce clusters are usually multi-tenant (i.e., shared among multiple users and jobs) 
+for improving cost and utilization. 
+
+The performance of jobs in a multitenant MapReduce cluster is greatly impacted by the 
+all-Map-to-all-Reduce communication, or Shuffle, 
+which saturates the cluster’s hard-to-scale network bisection bandwidth. 
+
+Previous schedulers optimize Map input locality but do not consider the Shuffle, 
+which is often the dominant source of traffic in MapReduce clusters.
+
+We propose 
+ShuffleWatcher\cite{shufflewatcher}, 
+a new multi-tenant MapReduce scheduler that shapes and reduces Shuffle
+traffic to improve cluster performance (throughput and job turn-around times), 
+while operating within specified fairness constraints. 
+
+ShuffleWatcher employs three key techniques. 
+First, 
+it curbs intra-job Map-Shuffle concurrency to shape Shuffle traffic 
+by delaying or elongating a job's Shuffle based on the network load. 
+Second, 
+it exploits the reduced intra-job concurrency and the flexibility engendered 
+by the replication of Map input data for fault tolerance 
+to preferentially assign a job's Map tasks to localize the Map output to as few nodes as possible.
+Third, 
+it exploits localized Map output and delayed Shuffle 
+to reduce the Shuffle traffic by preferentially assigning a job's Reduce tasks to the nodes containing its Map output. 
+
+ShuffleWatcher leverages opportunities that are unique to multi-tenancy, such
+overlapping Map with Shuffle across jobs rather than within a job, and trading-off intra-job concurrency for
+reduced Shuffle traffic. 
+
+On a 100-node Amazon EC2 cluster running Hadoop, 
+ShuffleWatcher improves cluster throughput 
+by 39-46\% and job turn-around times by 27-32\% 
+over three state-of-the-art schedulers.	
+
+}
+
+\subsection*{MegaPipe: A New Programming Interface for Scalable Network I/O}
+{\color{cyan} {\color{magenta}}
+
+We present 
+MegaPipe\cite{megapipe}, 
+a new API for efficient, scalable network I/O for message-oriented workloads. 
+
+The design of MegaPipe centers around the abstraction of a channel –
+a per-core, bidirectional pipe between the kernel and user space, 
+used to exchange both I/O requests and event notifications.
+
+On top of the channel abstraction, we introduce
+three key concepts of MegaPipe: 
+{\color{red} \em partitioning, lightweight socket (lwsocket), and batching.}
+
+We implement MegaPipe in Linux and adapt memcached and nginx. 
+
+Our results show that, by embracing a clean-slate design approach, 
+MegaPipe is able to exploit new opportunities for improved performance and ease of programmability. 
+
+In microbenchmarks on an 8-core server with 64 B messages, 
+MegaPipe outperforms baseline Linux between 29\% (for long connections) and 582\% (for short connections). 
+
+MegaPipe improves the performance of a modified version of memcached between 15\% and 320\%. 
+
+For a workload based on real-world HTTP traces, 
+MegaPipe boosts the throughput of nginx by 75\%.
+
+}
+
+
+\section{Stream Processing and Real-time Analytics}
+
+\subsection*{MapReduce Online}
+{\color{cyan} {\color{magenta} Cited by: 447}
+
+MapReduce is a popular framework for data-intensive distributed computing of batch jobs. 
+
+To simplify fault tolerance, 
+many implementations of MapReduce 
+materialize the entire output of each map and reduce task
+before it can be consumed. 
+
+In this paper, we propose a
+{\color{black} modified MapReduce architecture\cite{mapredonline}} 
+that allows data to be pipelined between operators. 
+
+This extends the MapReduce programming model beyond batch processing, and
+can reduce completion times and improve system utilization for batch jobs as well. 
+
+We present 
+a modified version of the Hadoop MapReduce framework that supports online aggregation, which 
+allows users to see ``early returns'' from a job as it is being computed. 
+
+Our Hadoop Online Prototype (HOP) also supports continuous queries, which
+enable MapReduce programs to be written for applications
+such as event monitoring and stream processing.
+
+HOP retains the fault tolerance properties of Hadoop and can 
+run unmodified user-defined MapReduce programs.	
+
+}
+
+\subsection*{Discretized Streams: An Efficient and Fault-Tolerant Model for Stream Processing on Large Clusters}
+{\color{cyan} {\color{magenta} Cited by: 47}
+
+Many important ``big data'' applications need to process data arriving in real time. 
+
+However, 
+current programming models for distributed stream processing are relatively low-level, 
+often leaving the user to worry about consistency of state across the system and fault recovery.
+
+Furthermore, 
+the models that provide fault recovery do so in an expensive manner, 
+requiring either hot replication or long recovery times. 
+
+We propose 
+a new programming model, 
+{\color{black} discretized streams (D-Streams)\cite{sparkstream}}, that
+offers a high-level functional programming API, 
+strong consistency, and efficient fault recovery. 
+
+D-Streams support 
+a new recovery mechanism that improves efficiency over the traditional replication and 
+upstream backup solutions in streaming databases: parallel recovery of lost state across the cluster. 
+
+We have prototyped D-Streams in an extension to the Spark cluster computing framework called Spark Streaming, 
+which lets users seamlessly intermix streaming, batch and interactive queries.
+
+}
+
+\subsection*{Storm at twitter}
+{\color{cyan} {\color{magenta}}
+
+This paper describes the use of Storm at Twitter. 
+
+{\color{black} Storm\cite{storm}} 
+is a realtime fault-tolerant and distributed stream data processing system.
+
+Storm is currently being used to run various critical computations in Twitter at scale, and in real-time. 
+
+This paper describes the architecture of Storm and its methods for distributed scale-out and fault-tolerance. 
+
+This paper also describes how queries (aka. topologies) are executed in Storm, 
+and presents some operational stories based on running Storm at Twitter. 
+
+We also present results from an empirical evaluation demonstrating the resilience of
+Storm in dealing with machine failures. 
+
+Storm is under active development at Twitter and we also present some potential directions for future work.
+
+}
+
+\subsection*{MillWheel: Fault-Tolerant Stream Processing at Internet Scale}
+{\color{cyan} {\color{magenta} Cited by: 15}
+
+{\color{black} MillWheel\cite{millwheel}}
+is a framework for building low-latency data-processing applications that is widely used at Google. 
+
+Users specify a directed computation graph and application code for individual nodes, and
+the system manages persistent state and the continuous flow of records, 
+all within the envelope of the framework's fault-tolerance guarantees.
+
+This paper describes MillWheel's programming model as well as its implementation. 
+
+The case study of a continuous anomaly detector in use at Google serves 
+to motivate how many of MillWheel's features are used. 
+
+MillWheel's programming model provides a notion of logical time, 
+making it simple to write time-based aggregations.
+
+MillWheel was designed from the outset with fault tolerance and scalability in mind. 
+
+In practice, we find that 
+MillWheel's unique combination of scalability, fault tolerance, and a versatile programming model 
+lends itself to a wide variety of problems at Google.
+
+}
+
+
+\section{Storage Systems: Distributed File Systems and Parallel Databases}
+
+\subsection*{The Google File System}
+{{\color{cyan} {\color{magenta} Cited by: 4227}
+
+We have designed and implemented the 
+{\color{black} Google File System\cite{gfs}},
+a scalable distributed file system for large distributed data-intensive applications. 
+
+It provides fault tolerance while running on inexpensive commodity hardware, and 
+it delivers high aggregate performance to a large number of clients.
+
+While sharing many of the same goals as previous distributed file systems, 
+our design has been driven by observations of our application workloads and technological environment,
+both current and anticipated, that reflect a marked departure from some earlier file system assumptions. 
+
+This has led us to reexamine traditional choices and explore radically different design points.
+The file system has successfully met our storage needs.
+It is widely deployed within Google as the storage platform for the generation and processing of data used by our service
+as well as research and development efforts that require large data sets. 
+
+The largest cluster to date provides 
+{\color{red} \em hundreds of terabytes of storage across thousands of disks on over a thousand machines}, and 
+it is concurrently accessed by hundreds of clients.
+
+In this paper, we 
+present file system interface extensions designed to support distributed applications, 
+discuss many aspects of our design, and 
+report measurements from both micro-benchmarks and real world use.
+
+}
+
+\subsection*{The Hadoop Distributed File System}
+{{\color{cyan} {\color{magenta} Cited by: 828}
+
+The 
+{\color{black} Hadoop Distributed File System (HDFS)\cite{hdfs}} 
+is designed 
+to store very large data sets reliably, and 
+to stream those data sets at high bandwidth to user applications. 
+
+In a large cluster, 
+thousands of servers both host directly attached storage and execute user application tasks. 
+
+By distributing storage and computation across many servers, 
+the resource can grow with demand while remaining economical at every size. 
+
+We 
+describe the architecture of HDFS and 
+report on experience using HDFS to manage {\color{red} 25 petabytes} of enterprise data at Yahoo!.
+
+}
+
+\subsection*{Bigtable: A distributed storage system for structured data}
+{\color{cyan} {\color{magenta} Cited by: 2822}
+
+{\color{black} Bigtable\cite{bigtable}}
+is a distributed storage system 
+for managing structured data that is designed to scale to a very large size: 
+petabytes of data across thousands of commodity servers. 
+
+Many projects at Google store data in Bigtable, 
+including web indexing, Google Earth, and Google Finance. 
+
+These applications place very different demands on Bigtable, 
+both in terms of 
+data size (from URLs to web pages to satellite imagery) and 
+latency requirements (from backend bulk processing to realtime data serving). 
+
+Despite these varied demands, 
+Bigtable has successfully provided a flexible,
+high-performance solution for all of these Google products. 
+
+In this article, 
+we describe 
+the simple data model provided by Bigtable, which gives clients dynamic control over data layout and format,
+and we describe 
+the design and implementation of Bigtable.
+
+}
+
+\subsection*{Spanner: Google's globally distributed database}
+{\color{cyan} {\color{magenta} Cited by: 230}
+
+{\color{black} Spanner\cite{spanner}}
+is Google's 
+{\color{red} \em scalable, multiversion, globally distributed, and synchronously replicated}
+database. 
+
+It is the first system to 
+distribute data at global scale and 
+support externally-consistent distributed transactions.
+
+This article 
+describes how Spanner is structured, 
+its feature set, 
+the rationale underlying various design decisions, and 
+a novel time API that exposes clock uncertainty. 
+
+This API and its implementation are 
+critical to supporting external consistency and a variety of powerful features: 
+{\color{red} \em nonblocking reads in the past, lockfree snapshot transactions, and atomic schema changes}, 
+across all of Spanner.
+
+}
+
+\subsection*{Parallel database systems: the future of high performance database systems}
+{\color{cyan} {\color{magenta} Cited by: 1340}
+
+Parallel database machine architectures have evolved 
+from the use of exotic hardware 
+to a software parallel dataflow architecture 
+based on conventional shared-nothing hardware. 
+
+These new designs 
+provide impressive 
+{\color{red} \em speedup and scaleup}
+when processing relational database queries. 
+
+This paper \cite{pdb}
+reviews the techniques used by such systems, and 
+surveys current commercial and research systems	
+
+}
+
+\section{Intra-Node Acceleration: SMP and HSA}
+
+\subsection*{Evaluating mapreduce for multi-core and multiprocessor systems}
+{\color{cyan} {\color{magenta} Cited by: 640}
+
+This paper 
+evaluates the suitability of the MapReduce model 
+for multi-core and multi-processor systems. 
+
+MapReduce was created by Google 
+for application development
+on data-centers with thousands of servers. 
+
+It allows programmers to write functional-style code that is 
+automatically parallelized and scheduled in a distributed system.
+
+We describe 
+{\color{black} Phoenix\cite{phoenix07}}, 
+an implementation of MapReduce 
+for shared-memory systems that 
+includes a programming API and an efficient runtime system. 
+
+The Phoenix runtime automatically manages 
+{\em thread creation,  dynamic task scheduling, data partitioning, and fault tolerance}
+across processor nodes. 
+
+We 
+study Phoenix with multi-core and symmetric multiprocessor systems and 
+evaluate its performance potential and error recovery features. 
+
+We also compare MapReduce code to code written in lower-level APIs such as P-threads. 
+
+Overall, we establish that, given a careful implementation, 
+MapReduce is a promising model for scalable performance on shared-memory systems 
+with simple parallel code.
+
+}
+
+\subsection*{Phoenix rebirth: Scalable MapReduce on a large-scale shared-memory system}
+{\color{cyan} {\color{magenta} Cited by: 138}
+
+Dynamic runtimes can simplify parallel programming 
+by automatically managing concurrency and locality without further burdening the programmer. 
+
+Nevertheless, 
+implementing such runtime systems for large-scale, shared-memory systems can be challenging. 
+
+This work 
+{\color{black} optimizes Phoenix\cite{phoenix09}}, 
+a MapReduce runtime for shared-memory multi-cores and multiprocessors, 
+on a quad-chip, 32-core, 256-thread UltraSPARC T2+ system with NUMA characteristics. 
+
+We show 
+how a multi-layered approach that comprises optimizations 
+on the algorithm, implementation, and OS interaction 
+leads to significant speedup improvements 
+with 256 threads (average of 2.5× higher speedup, maximum of 19×).
+
+We also identify the roadblocks that limit the scalability of parallel runtimes on shared-memory systems, 
+which are inherently tied to the OS scalability on large-scale systems.
+
+}
+
+\subsection*{Optimizing MapReduce for Multicore Architectures}
+{\color{cyan} {\color{magenta} Cited by: 48}
+
+MapReduce is a programming model for data-parallel programs originally intended for data centers. 
+
+MapReduce simplifies parallel programming, hiding synchronization and task management. 
+
+These properties make it a promising programming model for future processors with many cores, and 
+existing MapReduce libraries such as Phoenix have demonstrated that applications written
+with MapReduce perform competitively with those written with Pthreads [11].
+
+This paper 
+explores the design of the MapReduce data structures for grouping intermediate key/value pairs,
+which is often a performance bottleneck on multicore processors. 
+
+The paper finds the 
+{\em best choice depends on workload characteristics}, 
+such as 
+{\em the number of keys used by the application}, 
+{\em the degree of repetition of keys}, 
+etc. 
+
+This paper also introduces a new MapReduce library, 
+{\color{black} Metis\cite{metis}}, 
+with a compromise data structure designed to perform well for most workloads. 
+
+Experiments with the Phoenix benchmarks on a 16-core AMD-based server
+show that 
+Metis' data structure performs better than simpler alternatives, 
+including Phoenix.	
+
+}
+
+\subsection*{Map-Reduce for Machine Learning on Multicore}
+{\color{cyan} {\color{magenta} Cited by: 715}
+
+We are at the beginning of the multicore era. 
+
+Computers will have increasingly many cores (processors), 
+but there is still 
+no good programming framework for these architectures, and thus 
+no simple and unified way for machine learning to take advantage of the potential speed up. 
+
+In this paper, we develop 
+{\color{black} a broadly applicable parallel programming method \cite{mapredlearning}}, 
+one that is easily applied to many different learning algorithms. 
+
+Our work is in distinct contrast to the tradition in machine learning of 
+designing (often ingenious) ways to speed up a single algorithm at a time. 
+
+Specifically, 
+we show that algorithms that fit the Statistical Query model [15] can be written in a certain ``summation form'', 
+which allows them to be easily parallelized on multicore computers. 
+
+We adapt Google's map-reduce [7] paradigm to demonstrate this parallel speed up technique 
+on a variety of learning algorithms including 
+{\em
+locally weighted linear regression (LWLR), 
+k-means, 
+logistic regression (LR), 
+naive Bayes (NB), 
+SVM, ICA, PCA, 
+gaussian discriminant analysis (GDA), 
+EM, and 
+backpropagation (NN)
+}. 
+
+Our experimental results show basically 
+{\em linear speedup} 
+with an increasing number of processors.	
+
+}
+
+
+\subsection*{Accelerator: using data parallelism to program GPUs for general-purpose uses}
+{\color{cyan} {\color{magenta} Cited by: 288}
+
+GPUs are difficult to program for general-purpose uses. 
+
+Programmers can either learn graphics APIs and convert their applications to use graphics pipeline operations 
+or they can use stream programming abstractions of GPUs.
+
+We describe 
+{\color{black} Accelerator\cite{accelerator}}, 
+a system that uses data parallelism to program GPUs for general-purpose uses instead. 
+
+Programmers use 
+a conventional imperative programming language and 
+a library that provides only high-level data-parallel operations. 
+
+No aspects of GPUs are exposed to programmers. 
+
+The library implementation compiles the data-parallel operations on the fly 
+to optimized GPU pixel shader code and API calls.
+
+We describe the compilation techniques used to do this. 
+
+We evaluate the effectiveness of using data parallelism to program GPUs 
+by providing results for a set of compute-intensive benchmarks. 
+
+We 
+compare the performance of Accelerator versions of the benchmarks 
+against hand-written pixel shaders. 
+
+The speeds of the Accelerator versions are typically 
+within 50\% of the speeds of hand-written pixel shader code. 
+
+Some benchmarks significantly outperform C versions on a CPU: 
+they are up to 18 times faster than C code running on a CPU.
+
+}
+
+
+\subsection*{Mars: a MapReduce framework on graphics processors}
+{\color{cyan} {\color{magenta} Cited by: 437}
+
+We design and implement 
+{\color{black} Mars\cite{mars}}, 
+a MapReduce framework, on graphics processors (GPUs). 
+
+MapReduce is a distributed programming framework originally proposed by Google 
+for the ease of development of web search applications 
+on a large number of commodity CPUs. 
+
+Compared with CPUs, 
+GPUs have an order of magnitude higher computation power and memory bandwidth, 
+but are harder to program 
+since their architectures are designed as  a special-purpose co-processor and their 
+programming interfaces are typically for graphics applications. 
+
+As the first attempt to harness GPU's power for MapReduce, 
+we 
+developed Mars on an NVIDIA G80 GPU,
+which contains over one hundred processors, and 
+evaluated it in comparison with Phoenix, 
+the state-of-the-art MapReduce framework on multi-core CPUs. 
+
+Mars hides the programming complexity of the GPU behind the simple and familiar MapReduce interface.
+It is up to {\color{red} \em 16 times} faster than its CPU-based counterpart 
+for six common web applications on a quad-core machine.	
+
+}
+
+\section{Conclusion and Future Prevision: Datacenter Computing}
+
+\subsection*{Parallel Data Processing with MapReduce: A Survey}
+{\color{cyan} {\color{magenta} Cited by: 127}
+
+A prominent parallel data processing tool MapReduce 
+is gaining significant momentum 
+from both industry and academia
+as the volume of data to analyze grows rapidly. 
+
+While MapReduce is used in many areas 
+where massive data analysis is required,
+there are still debates on its 
+{\em performance}, 
+{\em efficiency per node}, and 
+{\em simple abstraction}. 
+
+This survey \cite{mapredsurvey}
+intends to assist 
+the database and open source communities 
+in understanding various technical aspects of the MapReduce framework.
+
+In this survey, we 
+{\em characterize the MapReduce framework} and 
+discuss its inherent 
+{\em pros and cons}. 
+
+We then introduce its 
+{\em optimization strategies} 
+reported in the recent literature.
+
+We also discuss the 
+open issues and challenges 
+raised on 
+parallel data analysis with MapReduce.	
+
+}
+
+
+\subsection*{The Datacenter Needs an Operating System \cite{dcos}}
+{\color{cyan} {\color{magenta} Cited by: 12}
+
+Datacenters have become a major computing platform,
+powering not only popular Internet services but also a growing number of scientific and enterprise applications.
+
+We argued that, 
+as the use of this new platform grows,
+datacenters increasingly need an 
+{\em operating system-like software stack}
+for the same reasons that single computers did: 
+{\em resource sharing between applications and users, data sharing, and abstraction}. 
+
+This kind of software stack is already emerging in an ad-hoc manner, 
+but 
+{\color{red} \em now is the right time for researchers to take a long-term approach to these problems and 
+have a lasting impact on the software infrastructure for this new computing platform}.	
+
+}
+
+\subsection*{The Data Center Is The Computer \cite{dccomputer}}
+{\color{cyan} {\color{magenta} Cited by: 12}
+
+Internet services 
+are already significant forces in 
+searching, retail purchases, music downloads, and auctions. 
+
+One vision of 21st century IT is that 
+most users will be accessing such services over a descendant of the cell phone 
+rather than running shrink-wrapped software on a descendant of the PC.
+
+The beauty of MapReduce is that any programmer can understand it, and 
+its power comes from being able to harness thousands of computers behind that simple interface. 
+
+When paired with the distributed Google File System to deliver data, 
+programmers can write simple functions that can do amazing things.
+
+{\color{red} \em 
+I predict MapReduce will inspire new ways of thinking about 
+the design and programming of large distributed systems. 
+}
+
+{\color{red} \em
+If MapReduce is the first instruction of the ``data center computer'',
+I can't wait to see the rest of the instruction set, 
+as well as the data center programming language, the data center operating system, the data center storage systems,
+and more.
+}
+
+}
+
+\nocite{*}
+\bibliography{mapred}
+\end{document}
+

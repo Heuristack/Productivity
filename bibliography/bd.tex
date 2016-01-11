@@ -1,0 +1,79 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{fullpage,color,xcolor,natbib}
+\color{black}
+\author{Li Ying}
+\title{A Literature Survey on Big Data}
+\bibliographystyle{unsrt}
+
+\begin{document}
+\maketitle
+
+
+\subsection*{Big Data: A Survey}
+{\color{cyan} {\color{magenta} Cited by: 12}
+
+In this paper \cite{bdsurvey}, 
+we review the background and state-of-the-art of big data. 
+
+We first introduce the general background of big data and review related technologies,
+such as could computing, Internet of Things, data centers, and Hadoop. 
+
+We then focus on the four phases of the value chain of big data, i.e., 
+{\color{red} \em data generation, data acquisition, data storage, and data analysis}. 
+
+For each phase, we 
+introduce the general background, 
+discuss the technical challenges, and 
+review the latest advances. 
+
+We finally examine the several representative applications of big data, 
+including
+{\color{red} \em 
+enterprise management, 
+Internet of Things, 
+online social networks, 
+medial applications, 
+collective intelligence, and 
+smart grid.
+}
+
+These discussions aim to provide a 
+comprehensive overview and big-picture 
+to readers of this exciting area. 
+
+This survey is concluded with a discussion of 
+open problems and future directions.
+
+}
+
+{
+CAP Theory: Consistency; Availability; Partition Tolerance;
+
+Eric Brewer proposed a CAP theory \cite{captheory} in 2000, 
+which indicated that a distributed system could not simultaneously
+meet the requirements on consistency, availability, and partition tolerance; 
+at most two of the three requirements can be satisfied simultaneously. 
+
+Seth Gilbert and Nancy Lynch from MIT proved the correctness of CAP theory \cite{capproof} in 2002. 
+
+Since consistency, availability, and partition tolerance could not be achieved simultaneously, 
+we can have 
+a CA system by ignoring partition tolerance, 
+a CP system by ignoring availability, and 
+an AP system that ignores consistency,
+according to different design goals. 
+
+}
+
+\bibliography{bd}
+\end{document}
+
+
+
+
+
+
+
+
+
+

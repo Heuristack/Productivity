@@ -1,0 +1,32 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{fullpage,color,xcolor,natbib}
+\color{black}
+\author{Li Ying}
+\title{Literature Survey Template}
+\bibliographystyle{unsrt}
+
+\begin{document}
+\maketitle
+
+\section*{Distributed and Parallel Computing}
+
+\subsection*{Time, clocks, and the ordering of events in a distributed system}
+{\color{cyan} {\color{magenta} Cited by: 8575}
+
+The concept of one event happening before another in a distributed system is examined, 
+and is shown to define a partial ordering of the events. 
+
+A distributed algorithm\cite{lamport1978time} is given 
+for synchronizing a system of logical clocks which can be used to totally order the events.
+
+The use of the total ordering is illustrated 
+with a method for solving synchronization problems. 
+
+The algorithm is then specialized 
+for synchronizing physical clocks, and a bound is derived on how far out of synchrony the clocks can become.	
+
+}
+
+\bibliography{pdc}
+\end{document}
+
