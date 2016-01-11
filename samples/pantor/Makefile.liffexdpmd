@@ -1,0 +1,7 @@
+# $Id$ -*- Makefile -*-
+
+rootpath=..
+libs=pantorpresto
+apps=liffexdpmd
+
+include ../env/base.mk

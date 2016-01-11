@@ -1,0 +1,7 @@
+# $Id$ -*- Makefile -*-
+
+rootpath=..
+libs=pantorpresto
+apps=arcamd
+
+include ../env/base.mk

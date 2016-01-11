@@ -1,0 +1,7 @@
+# -*- Makefile -*-
+
+rootpath=..
+libs=pantorpresto
+apps=fdump
+
+include ../env/base.mk

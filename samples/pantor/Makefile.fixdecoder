@@ -1,0 +1,7 @@
+# $Id$ -*- Makefile -*-
+
+rootpath=..
+libs=pantorpresto
+apps=fixdecoder
+
+include ../env/base.mk

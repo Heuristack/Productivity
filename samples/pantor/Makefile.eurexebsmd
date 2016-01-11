@@ -1,0 +1,7 @@
+# $Id$ -*- Makefile -*-
+
+rootpath=..
+libs=pantorpresto
+apps=eurexebsmd
+
+include ../env/base.mk
