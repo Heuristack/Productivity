@@ -43,10 +43,11 @@ mkdir -p Temporaries
 # build symbolic links to directories
 #
 ##==
-ln -snf temporaries             tmp
-ln -snf productivity/scripts    bin
-ln -snf productivity/snippets   snippets
-ln -snf productivity/codebase   codebase
+ln -snf temporaries               tmp
+ln -snf productivity/scripts      bin
+ln -snf productivity/snippets     snippets
+ln -snf productivity/codebase     codebase
+ln -snf productivity/bibliography bibliography
 
 
 ##==
