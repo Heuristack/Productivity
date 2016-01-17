@@ -34,7 +34,7 @@ function get_remote_sources_syn()
 # synchronize the 'tree' by calling the function above
 #
 ##==
-# get_remote_sources_sync tree
+# get_remote_sources_syn tree
 
 ##===----------------------------------------------------------------------===##
 
