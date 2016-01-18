@@ -15,18 +15,25 @@ cd $HOME
 ##==
 userid=
 remote=
+syncat=
 origin=
-target=
+target=$origin
 
 ##==
 #
 # function to remote synchronize a source tree to proper place
 #
 ##==
-function get_remote_sources_syn()
+function get_remote_sources_sync()
 {
     tree=$1
-    rsync $userid@$remote:$origin/$tree $target
+
+    options+=" --verbose"
+    options+=" --archive"
+    options+=" --recursive"
+    options+=" --update"
+
+    rsync $options $userid@$remote:$syncat/$origin/$tree $target
 }
 
 ##==
@@ -34,7 +41,8 @@ function get_remote_sources_syn()
 # synchronize the 'tree' by calling the function above
 #
 ##==
-# get_remote_sources_syn tree
+# get_remote_sources_sync  tree
+##==
 
 ##===----------------------------------------------------------------------===##
 
