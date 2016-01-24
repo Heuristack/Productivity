@@ -22,7 +22,7 @@ syntax on
 
 ""'''
 "
-" line no.
+" line num: set nu; set nu!;
 "
 ""'''
 set number
