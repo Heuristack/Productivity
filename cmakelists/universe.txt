@@ -3,7 +3,11 @@ project(universe_clion)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+include_directories(universe/include)
+
 set(SOURCE_FILES
-    src/main/main.cpp)
+    universe/src/main/main.cpp)
 
 add_executable(universe_clion ${SOURCE_FILES})
+
+
