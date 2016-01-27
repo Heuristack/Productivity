@@ -63,7 +63,7 @@ noremap <c-k> <c-w>
 "
 ""'''
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=DarkGrey  ctermfg=None
+highlight CursorLine cterm=NONE ctermbg=Grey  ctermfg=None
 
 ""'''
 "

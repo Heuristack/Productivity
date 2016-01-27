@@ -36,7 +36,7 @@ mkdir -p projects
 mkdir -p archive
 mkdir -p downloads
 mkdir -p temporaries
-mkdir -p log
+mkdir -p trash
 
 
 ##==
