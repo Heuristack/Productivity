@@ -26,5 +26,3 @@ add_executable( 41-concurrency-future src/cpp11/41-concurrency-future.cpp )
 
 add_executable(universe ${SOURCE_FILES})
 target_link_libraries (universe boost_system boost_thread wiredtiger)
-
-

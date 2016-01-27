@@ -28,6 +28,9 @@ export PS1=$PS1'[$(date +%H:%M:%S)]'
 export PS1=$PS1'[${HOSTNAME}]'
 export PS1=$PS1'[${PWD}]'
 
+export dateformat="%Y-%m-%d"
+export timeformat="%Y-%m-%d"
+
 if [ "$OS" == "Darwin" ]; then
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
