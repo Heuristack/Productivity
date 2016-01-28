@@ -15,8 +15,7 @@
 using std::cout;
 using std::endl;
 
-int main()
-{
+int main() {
     boost::asio::io_service service;
     cout << "Hello, World!" << endl;
 }

@@ -2,27 +2,16 @@ cmake_minimum_required(VERSION 3.3)
 project(universe)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set( CMAKE_INCLUDE_CURRENT_DIR true )
+set(CMAKE_INCLUDE_CURRENT_DIR true)
 
 include_directories(include)
-link_directories(/users/liying/local/usr/lib)
+link_directories(lib)
 
 set(SOURCE_FILES src/base/daemon.c)
 set(SOURCE_FILES src/main/main.cpp)
-
-include_directories(src/cpp11)
-add_executable( 11-operations-lambda src/cpp11/11-operations-lambda.cpp )
-add_executable( 31-containers src/cpp11/31-containers.cpp )
-add_executable( 36-string src/cpp11/36-string.cpp )
-add_executable( 36-string-charactor-type src/cpp11/36-string-character-type.cpp )
-add_executable( 36-string-charactor-traits src/cpp11/36-string-character-traits.cpp )
-add_executable( 36-string-basic-string src/cpp11/36-string-basic-string.cpp )
-add_executable( 36-string-c-string src/cpp11/36-string-c-string.cpp )
-add_executable( 36-string-constructors src/cpp11/36-string-constructors.cpp )
-add_executable( 36-string-operations src/cpp11/36-string-operations.cpp )
-add_executable( 41-concurrency-atomics src/cpp11/41-concurrency-atomics.cpp )
-add_executable( 41-concurrency-future src/cpp11/41-concurrency-future.cpp )
-
+set(SOURCE_FILES src/cpp11/36-string.cpp)
+set(SOURCE_FILES src/cpp11/41-concurrency-future.cpp)
 
 add_executable(universe ${SOURCE_FILES})
-target_link_libraries (universe boost_system boost_thread wiredtiger)
+add_definitions(-DHAVE_CXX_STDHEADERS)
+target_link_libraries (universe)
