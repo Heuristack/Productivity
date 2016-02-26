@@ -9,9 +9,13 @@ link_directories(lib)
 
 set(SOURCE_FILES src/base/daemon.c)
 set(SOURCE_FILES src/main/main.cpp)
-set(SOURCE_FILES src/cpp11/36-string.cpp)
 set(SOURCE_FILES src/cpp11/41-concurrency-future.cpp)
+set(SOURCE_FILES src/cpp11/36-string.cpp)
 set(SOURCE_FILES src/cpp11/11-operations-lambda.cpp)
+
+include_directories(src/base)
+link_directories(src/base)
+set(SOURCE_FILES src/base/base_test.c)
 
 add_executable(universe ${SOURCE_FILES})
 add_definitions(-DHAVE_CXX_STDHEADERS)
