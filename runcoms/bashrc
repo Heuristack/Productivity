@@ -98,6 +98,7 @@ export LOCAL=$HOME/local
 alias cdl='cd $LOCAL'
 
 export LOCAL_APP=$LOCAL/applications
+export LOCAL_DYL=$LOCAL/libraries
 export LOCAL_BIN=$LOCAL/bin
 export LOCAL_ETC=$LOCAL/etc
 export LOCAL_USR=$LOCAL/usr
@@ -106,6 +107,7 @@ export LOCAL_LIB=$LOCAL_USR/lib
 export LOCAL_JDK=$LOCAL/jdk
 
 alias cdapp='cd $LOCAL_APP'
+alias cddyl='cd $LOCAL_DYL'
 alias cdbin='cd $LOCAL_BIN'
 alias cdetc='cd $LOCAL_ETC'
 alias cdusr='cd $LOCAL_USR'
