@@ -22,6 +22,7 @@ cd
 #
 ##==
 mkdir -p local/applications
+mkdir -p local/libraries
 mkdir -p local/bin
 mkdir -p local/etc
 mkdir -p local/usr
