@@ -1,23 +1,50 @@
+//===----------------------------------------------------------------------===//
 //
-// blocking_tcp_echo_server.cpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-// Copyright (c) 2003-2015 Christopher M. Kohlhoff (chris at kohlhoff dot com)
+//                   blocking_tcp_echo_server.cpp
+//                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
+//===----------------------------------------------------------------------===//
 
+//==
+//
+// headers
+//
+//==
 #include <cstdlib>
 #include <iostream>
 #include <thread>
 #include <utility>
 #include <boost/asio.hpp>
 
-using boost::asio::ip::tcp;
 
+//==
+//
+// aliases
+//
+//==
+using boost::asio::io_service;
+using boost::asio::ip::tcp;
+using boost::asio::ip::udp;
+
+using std::cout;
+using std::cerr;
+using std::endl;
+
+using std::thread;
+
+//==
+//
+// global variables
+//
+//==
 const int max_length = 1024;
 
+//==
+//
+// global functions
+//
+//==
 void session(tcp::socket sock)
 {
   try
@@ -28,8 +55,7 @@ void session(tcp::socket sock)
 
       boost::system::error_code error;
       size_t length = sock.read_some(boost::asio::buffer(data), error);
-      if (error == boost::asio::error::eof)
-        break; // Connection closed cleanly by peer.
+      if (error == boost::asio::error::eof) break; // Connection closed cleanly by peer.
       else if (error)
         throw boost::system::system_error(error); // Some other error.
 
@@ -38,7 +64,7 @@ void session(tcp::socket sock)
   }
   catch (std::exception& e)
   {
-    std::cerr << "Exception in thread: " << e.what() << "\n";
+    cerr << "Exception in thread: " << e.what() << endl;
   }
 }
 
@@ -53,13 +79,18 @@ void server(boost::asio::io_service& io_service, unsigned short port)
   }
 }
 
+//==
+//
+// program entry point
+//
+//==
 int main(int argc, char* argv[])
 {
   try
   {
     if (argc != 2)
     {
-      std::cerr << "Usage: blocking_tcp_echo_server <port>\n";
+      cerr << "Usage: blocking_tcp_echo_server <port>" << endl;
       return 1;
     }
 
@@ -69,8 +100,9 @@ int main(int argc, char* argv[])
   }
   catch (std::exception& e)
   {
-    std::cerr << "Exception: " << e.what() << "\n";
+    cerr << "Exception: " << e.what() << endl;
   }
 
   return 0;
 }
+//===----------------------------------------------------------------------===//

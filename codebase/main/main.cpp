@@ -6,18 +6,19 @@
 //
 //===----------------------------------------------------------------------===//
 
-
 #include <iostream>
 #include "boost/asio.hpp"
-#include "wiredtigher/wiredtiger.h"
-#include "berkeleydb/db_cxx.h"
 
 using std::cout;
 using std::endl;
 
-int main() {
+int main(int argc, char* argv[])
+{
     boost::asio::io_service service;
+
     cout << "Hello, World!" << endl;
+
+    return 0;
 }
 
 //===----------------------------------------------------------------------===//
