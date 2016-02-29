@@ -11,10 +11,8 @@
 // headers
 //
 //==
-#include <cstdlib>
 #include <iostream>
 #include <thread>
-#include <utility>
 #include <boost/asio.hpp>
 
 
@@ -32,52 +30,24 @@ using std::cerr;
 using std::endl;
 
 using std::thread;
+using std::move;
+
 
 //==
 //
-// global variables
+// constants
 //
 //==
 const int max_length = 1024;
 
+
 //==
 //
-// global functions
+// variables
 //
 //==
-void session(tcp::socket sock)
-{
-  try
-  {
-    for (;;)
-    {
-      char data[max_length];
+int is_running = true;
 
-      boost::system::error_code error;
-      size_t length = sock.read_some(boost::asio::buffer(data), error);
-      if (error == boost::asio::error::eof) break; // Connection closed cleanly by peer.
-      else if (error)
-        throw boost::system::system_error(error); // Some other error.
-
-      boost::asio::write(sock, boost::asio::buffer(data, length));
-    }
-  }
-  catch (std::exception& e)
-  {
-    cerr << "Exception in thread: " << e.what() << endl;
-  }
-}
-
-void server(boost::asio::io_service& io_service, unsigned short port)
-{
-  tcp::acceptor a(io_service, tcp::endpoint(tcp::v4(), port));
-  for (;;)
-  {
-    tcp::socket sock(io_service);
-    a.accept(sock);
-    std::thread(session, std::move(sock)).detach();
-  }
-}
 
 //==
 //
@@ -88,15 +58,46 @@ int main(int argc, char* argv[])
 {
   try
   {
+
     if (argc != 2)
     {
-      cerr << "Usage: blocking_tcp_echo_server <port>" << endl;
+      cerr << "usage: echo_server <port>" << endl;
       return 1;
     }
 
-    boost::asio::io_service io_service;
+    boost::system::error_code e;
 
-    server(io_service, std::atoi(argv[1]));
+    //==
+    //
+    // objects used to construct the server
+    //
+    //==
+    unsigned short port = std::atoi(argv[1]);
+    boost::asio::io_service io_service;
+    boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
+    boost::asio::ip::tcp::acceptor acceptor(io_service, endpoint);
+
+    //==
+    //
+    // main loop
+    //
+    //==
+    while(is_running){
+      boost::asio::ip::tcp::socket s(io_service);
+      acceptor.accept(s);
+
+      //==
+      //
+      // handle connection
+      //
+      //==
+      char d[max_length];
+
+      size_t in = s.read_some(boost::asio::buffer(d), e);
+      size_t on = s.write_some(boost::asio::buffer(d, in));
+
+    }
+
   }
   catch (std::exception& e)
   {

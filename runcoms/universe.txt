@@ -19,7 +19,7 @@ project(universe)
 #   compiler options
 #
 ##==
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
 set(CMAKE_INCLUDE_CURRENT_DIR true)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build/lib)
@@ -42,6 +42,7 @@ link_directories(lib)
 set(SOURCE_FILES src/cpp11/41-concurrency-future.cpp)
 set(SOURCE_FILES src/cpp11/36-string.cpp)
 set(SOURCE_FILES src/cpp11/11-operations-lambda.cpp)
+set(SOURCE_FILES src/cpp11/14-namespace-unnamed.cpp)
 
 ##==
 #
@@ -76,8 +77,17 @@ add_executable(asio_echo_client src/asio/echo/blocking_tcp_echo_client.cpp)
 target_link_libraries(asio_echo_client boost_system)
 
 
+##==
+#
+#   template - hello
+#
+##==
+set(SOURCE_FILES snp/template.hello.cpp)
+
+
 ##===----------------------------------------------------------------------===##
 
+set(SOURCE_FILES src/cpp11/14-namespace-unnamed.cpp)
 
 add_definitions(-DHAVE_CXX_STDHEADERS)
 add_executable(universe ${SOURCE_FILES})
