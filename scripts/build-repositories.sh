@@ -8,16 +8,18 @@
 ##===----------------------------------------------------------------------===##
 cd $RP_HOME
 
+if false; then echo "skip ... until fi";
 ##==
 #
-# boost
+# Boost
 #
 ##==
-cd boost.git
+cd boost.release
 ./bootstrap.sh --prefix=$LOCAL_USR 
 ./b2 -aq install
 cd - &> /dev/null
 
+fi
 ##==
 #
 # QuickFIX
@@ -38,9 +40,11 @@ cd - &> /dev/null
 cd quantlib.git
 ./autogen.sh
 ./configure --enable-static --with-boost-include=$LOCAL_INC --with-boost-lib=$LOCAL_LIB --prefix=$LOCAL_USR
+#./configure --enable-static --with-boost-include=$LOCAL_DYL/boost/include --with-boost-lib=$LOCAL_DYL/boost/lib --prefix=$LOCAL_USR
 make
 make install
 cd - &> /dev/null
+exit
 
 ##==
 #

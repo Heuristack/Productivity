@@ -8,14 +8,13 @@
 ##===----------------------------------------------------------------------===##
 
 package_manager=brew
-package_list+=(boost)
 
 ##==
 #
-# update list
+# boost
 #
 ##==
-$package_manager update
+package_list+=(boost)
 
 ##==
 #
@@ -26,6 +25,7 @@ for package in ${package_list[@]}
 do
     $package_manager install $package
 done
+
 
 ##===----------------------------------------------------------------------===##
 
