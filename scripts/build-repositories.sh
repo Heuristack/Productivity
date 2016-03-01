@@ -19,7 +19,6 @@ cd boost.release
 ./b2 -aq install
 cd - &> /dev/null
 
-fi
 ##==
 #
 # QuickFIX
@@ -44,7 +43,6 @@ cd quantlib.git
 make
 make install
 cd - &> /dev/null
-exit
 
 ##==
 #
@@ -163,6 +161,7 @@ make
 make install
 cd - &> /dev/null
 
+fi
 ##==
 #
 # LLVM (Uninstallation: make uninstall)
@@ -171,11 +170,19 @@ cd - &> /dev/null
 ##==
 if [ -d llvm.build ]; then mkdir llvm.build; fi
 cd llvm.build
+if false; then echo "The LLVM project no longer supports building with configure & make.";
 ../llvm.git/configure --prefix=$LOCAL_USR
 make
 make install
+fi
+
+cmake -DCMAKE_INSTALL_PREFIX=$LOCAL_USR ../llvm.git
+cmake --build .
+cmake --build . --target installj
+
 cd - &> /dev/null
 
+exit
 ##==
 #
 # Berkeley DB

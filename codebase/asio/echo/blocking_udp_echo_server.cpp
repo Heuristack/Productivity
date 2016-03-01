@@ -1,12 +1,11 @@
+//===----------------------------------------------------------------------===//
 //
-// blocking_udp_echo_server.cpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-// Copyright (c) 2003-2015 Christopher M. Kohlhoff (chris at kohlhoff dot com)
+//                        blocking_udp_echo_server.cpp
+//                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
+//===----------------------------------------------------------------------===//
+
 
 #include <cstdlib>
 #include <iostream>
@@ -16,6 +15,7 @@ using boost::asio::ip::udp;
 
 enum { max_length = 1024 };
 
+
 void server(boost::asio::io_service& io_service, unsigned short port)
 {
   udp::socket sock(io_service, udp::endpoint(udp::v4(), port));
@@ -23,11 +23,17 @@ void server(boost::asio::io_service& io_service, unsigned short port)
   {
     char data[max_length];
     udp::endpoint sender_endpoint;
+
     size_t length = sock.receive_from(
         boost::asio::buffer(data, max_length), sender_endpoint);
+
+    std::string header = "This is a reply message from udp server: ";
+
+    sock.send_to(boost::asio::buffer(header.data(), header.size()), sender_endpoint);
     sock.send_to(boost::asio::buffer(data, length), sender_endpoint);
   }
 }
+
 
 int main(int argc, char* argv[])
 {
@@ -50,3 +56,4 @@ int main(int argc, char* argv[])
 
   return 0;
 }
+//===----------------------------------------------------------------------===//

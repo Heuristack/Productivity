@@ -66,7 +66,12 @@ const string x::s = "(unnamed namespace)::x::";
 //==
 int main()
 {
-    thread_local int threadlocalx = 1;
+    //==
+    //
+    // thread_local is not supported by Apple clang
+    //
+    //==
+    // thread_local int threadlocalx = 1;
 
     stack_counter++;
     cout << "stack depth: " << stack_counter << endofline;

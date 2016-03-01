@@ -73,9 +73,11 @@ int main(int argc, char* argv[])
     //
     //==
     unsigned short port = std::atoi(argv[1]);
-    boost::asio::io_service io_service;
     boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
+
+    boost::asio::io_service io_service;
     boost::asio::ip::tcp::acceptor acceptor(io_service, endpoint);
+
 
     //==
     //

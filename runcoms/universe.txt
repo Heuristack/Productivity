@@ -37,7 +37,7 @@ link_directories(lib)
 ##==
 #
 #   C++11 source files
-#
+
 ##==
 set(SOURCE_FILES src/cpp11/41-concurrency-future.cpp)
 set(SOURCE_FILES src/cpp11/36-string.cpp)
@@ -70,11 +70,17 @@ link_directories(libraries/boost/lib)
 #   asio examples
 #
 ##==
-add_executable(asio_echo_server src/asio/echo/blocking_tcp_echo_server.cpp)
-target_link_libraries(asio_echo_server boost_system)
+add_executable(blocking_tcp_echo_server src/asio/echo/blocking_tcp_echo_server.cpp)
+target_link_libraries(blocking_tcp_echo_server boost_system)
 
-add_executable(asio_echo_client src/asio/echo/blocking_tcp_echo_client.cpp)
-target_link_libraries(asio_echo_client boost_system)
+add_executable(blocking_tcp_echo_client src/asio/echo/blocking_tcp_echo_client.cpp)
+target_link_libraries(blocking_tcp_echo_client boost_system)
+
+add_executable(blocking_udp_echo_server src/asio/echo/blocking_udp_echo_server.cpp)
+target_link_libraries(blocking_udp_echo_server boost_system)
+
+add_executable(blocking_udp_echo_client src/asio/echo/blocking_udp_echo_client.cpp)
+target_link_libraries(blocking_udp_echo_client boost_system)
 
 
 ##==
@@ -86,7 +92,10 @@ set(SOURCE_FILES snp/template.hello.cpp)
 
 
 ##===----------------------------------------------------------------------===##
-
+#
+#   put the main entry point bellow for testing
+#
+##==
 set(SOURCE_FILES src/cpp11/14-namespace-unnamed.cpp)
 
 add_definitions(-DHAVE_CXX_STDHEADERS)
