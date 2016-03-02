@@ -18,6 +18,15 @@ package_list+=(libboost-all-dev)
 
 ##==
 #
+# lttng tools, modules, and ust
+#
+##==
+package_list+=(lttng-modules-dkms)
+package_list+=(liblttng-ust-dev)
+package_list+=(lttng-tools)
+
+##==
+#
 # install packages
 #
 ##==
@@ -25,7 +34,6 @@ for package in ${package_list[@]}
 do
     $package_manager install $package
 done
-
 
 ##===----------------------------------------------------------------------===##
 
