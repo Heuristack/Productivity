@@ -83,6 +83,15 @@ target_link_libraries(timer-1 boost_system)
 add_executable(timer-2 src/asio/tutorial/timer-2.cpp)
 target_link_libraries(timer-2 boost_system)
 
+add_executable(timer-3 src/asio/tutorial/timer-3.cpp)
+target_link_libraries(timer-3 boost_system)
+
+add_executable(timer-4 src/asio/tutorial/timer-4.cpp)
+target_link_libraries(timer-4 boost_system)
+
+add_executable(timer-5 src/asio/tutorial/timer-5.cpp)
+target_link_libraries(timer-5 boost_system)
+target_link_libraries(timer-5 boost_thread)
 
 ##==
 #
