@@ -7,14 +7,14 @@
 #
 ##===----------------------------------------------------------------------===##
 
-package_manager=brew
+package_manager=apt-get
 
 ##==
 #
 # boost library
 #
 ##==
-package_list+=(boost)
+package_list+=(libboost-all-dev)
 
 ##==
 #

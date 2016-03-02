@@ -9,6 +9,8 @@
 cd $RP_HOME
 
 if false; then echo "skip ... until fi";
+fi
+exit
 ##==
 #
 # Boost
@@ -161,7 +163,6 @@ make
 make install
 cd - &> /dev/null
 
-fi
 ##==
 #
 # LLVM (Uninstallation: make uninstall)
@@ -178,11 +179,10 @@ fi
 
 cmake -DCMAKE_INSTALL_PREFIX=$LOCAL_USR ../llvm.git
 cmake --build .
-cmake --build . --target installj
+cmake --build . --target install
 
 cd - &> /dev/null
 
-exit
 ##==
 #
 # Berkeley DB

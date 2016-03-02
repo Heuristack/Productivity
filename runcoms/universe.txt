@@ -62,9 +62,6 @@ link_directories(src/base)
 ##==
 set(SOURCE_FILES src/main/main.cpp)
 
-include_directories(libraries/boost/include)
-link_directories(libraries/boost/lib)
-
 ##==
 #
 #   asio examples
@@ -81,6 +78,17 @@ target_link_libraries(blocking_udp_echo_server boost_system)
 
 add_executable(blocking_udp_echo_client src/asio/echo/blocking_udp_echo_client.cpp)
 target_link_libraries(blocking_udp_echo_client boost_system)
+
+##==
+#
+#   asio tutorial
+#
+##==
+add_executable(timer-1 src/asio/tutorial/timer-1.cpp)
+target_link_libraries(timer-1 boost_system)
+
+add_executable(timer-2 src/asio/tutorial/timer-2.cpp)
+target_link_libraries(timer-2 boost_system)
 
 
 ##==
