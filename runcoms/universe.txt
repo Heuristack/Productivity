@@ -57,13 +57,6 @@ link_directories(src/base)
 
 ##==
 #
-#   universe main entry
-#
-##==
-set(SOURCE_FILES src/main/main.cpp)
-
-##==
-#
 #   asio examples
 #
 ##==
@@ -104,10 +97,9 @@ set(SOURCE_FILES snp/template.hello.cpp)
 #   put the main entry point bellow for testing
 #
 ##==
-set(SOURCE_FILES src/cpp11/14-namespace-unnamed.cpp)
+set(SOURCE_FILES src/main/main.cpp)
 
 add_definitions(-DHAVE_CXX_STDHEADERS)
 add_executable(universe ${SOURCE_FILES})
-target_link_libraries (universe boost_system)
-
+target_link_libraries (universe boost_system quickfix quantlib db_cxx)
 ##===----------------------------------------------------------------------===##

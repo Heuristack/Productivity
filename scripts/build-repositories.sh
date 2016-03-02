@@ -9,8 +9,6 @@
 cd $RP_HOME
 
 if false; then echo "skip ... until fi";
-fi
-exit
 ##==
 #
 # Boost
@@ -46,9 +44,10 @@ make
 make install
 cd - &> /dev/null
 
+fi
 ##==
 #
-# ACE
+# ACE - Mavericks
 #
 ##==
 importstring='#include "ace/config-macosx-mavericks.h"'
@@ -77,6 +76,7 @@ bin/mwc.pl -type gnuace ace.mwc
 make
 make install
 cd - &> /dev/null
+exit
 
 ##==
 #
