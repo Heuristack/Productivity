@@ -9,12 +9,12 @@ void print(const boost::system::error_code& /*e*/)
 
 int main()
 {
-    boost::asio::io_service io;
-    boost::asio::deadline_timer timer(io, boost::posix_time::seconds(5));
+    boost::asio::io_service service;
+    boost::asio::deadline_timer timer(service, boost::posix_time::seconds(5));
 
     timer.async_wait(&print);
 
-    io.run();
+    service.run();
 
     return 0;
 }

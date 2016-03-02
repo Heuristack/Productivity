@@ -209,5 +209,34 @@ else
 fi
 cd - &> /dev/null
 
+##==
+#
+# LTTng
+#
+##==
+if [ "$(uname)" == "Linux" ]; then 
+cd lttng-tools.git
+./bootstrap
+./configure -prefix=$LOCAL_USR
+make
+make install
+ldconfig
+cd - &> /dev/null
+
+cd lttng-ust.git
+./bootstrap
+./configure -prefix=$LOCAL_USR
+make
+make install
+ldconfig
+cd - &> /dev/null
+
+cd lttng-modules.git
+make
+make modules_install
+depmod -a
+cd - &> /dev/null
+fi
+
 ##===----------------------------------------------------------------------===##
 

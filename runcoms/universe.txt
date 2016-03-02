@@ -86,7 +86,7 @@ target_link_libraries(timer-2 boost_system)
 
 ##==
 #
-#   template - hello
+#   snippets: template - hello
 #
 ##==
 set(SOURCE_FILES snp/template.hello.cpp)

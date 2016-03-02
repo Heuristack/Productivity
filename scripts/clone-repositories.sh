@@ -11,6 +11,20 @@ remote=https://github.com/Heuristack
 
 ##==
 #
+# function to clone repo
+#
+##==
+function clonerepo()
+{
+    reponame=$1
+    remote=$2
+    if [ -d $reponame.git ]; then echo "already exist: $reponame"; return; fi
+    git clone $remote/$reponame.git $reponame.git
+}
+
+if false; then echo "skip ... until fi";
+##==
+#
 # clone boost from boostorg and add remote linking to heuristack
 #
 ##==
@@ -32,12 +46,6 @@ done
 # clone repos from heuristack
 #
 ##==
-function clonerepo()
-{
-    reponame=$1
-    if [ -d $reponame.git ]; then echo "already exist: $reponame"; return; fi
-    git clone $remote/$reponame.git $reponame.git
-}
 
 repolist+=(quickfix)
 repolist+=(quantlib)
@@ -53,7 +61,7 @@ repolist+=(protobuf)
 
 for reponame in ${repolist[@]}
 do
-    clonerepo $reponame
+    clonerepo $reponame $remote
 done
 
 ##==
@@ -87,6 +95,22 @@ cd - &> /dev/null
 
 popd &> /dev/null
 
+fi
+##==
+#
+# clone lttng tools, ust, and modules for
+#
+##==
+lttng_remote=git://git.lttng.org
+
+lttng_repolist+=(lttng-tools)
+lttng_repolist+=(lttng-ust)
+lttng_repolist+=(lttng-modules)
+
+for reponame in ${lttng_repolist[@]}
+do
+    clonerepo $reponame $lttng_remote
+done
 
 ##===----------------------------------------------------------------------===##
 
