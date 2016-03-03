@@ -6,21 +6,11 @@
 #include "boost/date_time/posix_time/posix_time.hpp"
 #include "boost/asio.hpp"
 
-class printer {
+class printer
+{
 public:
 
-    printer(boost::asio::io_service& s)
-        : strand(s),
-          timer1(s, boost::posix_time::seconds(1)),
-          timer2(s, boost::posix_time::seconds(1)),
-          count(0)
-    {
-        std::cout << "CT: " << std::endl;
-
-
-    }
-
-    ~printer(){ std::cout << "DT: final cout is " << count << std::endl;}
+    printer(boost::asio::io_service& s) : strand(s), timer1(s, boost::posix_time::seconds(1)), timer2(s, boost::posix_time::seconds(1)), count(0) { std::cout << "CT: " << std::endl; }
 
     void print1()
     {
@@ -46,6 +36,7 @@ public:
         }
     }
 
+    ~printer(){ std::cout << "DT: final cout is " << count << std::endl;}
 
 private:
     boost::asio::io_service::strand strand;

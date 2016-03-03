@@ -93,6 +93,13 @@ add_executable(timer-5 src/asio/tutorial/timer-5.cpp)
 target_link_libraries(timer-5 boost_system)
 target_link_libraries(timer-5 boost_thread)
 
+add_executable(daytime-1 src/asio/tutorial/daytime-1.cpp)
+target_link_libraries(daytime-1 boost_system)
+
+add_executable(daytime-2 src/asio/tutorial/daytime-2.cpp)
+target_link_libraries(daytime-2 boost_system)
+
+
 ##==
 #
 #   snippets: template - hello
