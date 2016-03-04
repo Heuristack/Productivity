@@ -23,6 +23,7 @@ function clonerepo()
 }
 
 if false; then echo "skip ... until fi";
+fi
 ##==
 #
 # clone boost from boostorg and add remote linking to heuristack
@@ -120,13 +121,12 @@ done
 ##==
 clonerepo libdispatch git://git.macosforge.org 
 
-fi
 ##==
 #
 # Wireshark
 #
 ##==
-git clone https://code.wireshark.org/review/wireshark
+git clone https://code.wireshark.org/review/wireshark wireshark.git
 
 ##===----------------------------------------------------------------------===##
 
