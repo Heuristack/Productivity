@@ -31,6 +31,7 @@ int main(int argc, char *argv[]){
 
         service.run();
     }
+
     catch(std::exception& e) { std::cout << "exception: " << e.what() << std::endl; }
     return 0;
 }

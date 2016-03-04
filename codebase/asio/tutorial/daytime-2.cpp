@@ -12,9 +12,10 @@ int main(){
         boost::asio::ip::tcp::acceptor acceptor(service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), 8813));
 
         while(is_running) {
+            boost::system::error_code ignored_error;
+
             boost::asio::ip::tcp::socket socket(service);
             acceptor.accept(socket);
-            boost::system::error_code ignored_error;
 
             std::string message = make_daytime_string();
 

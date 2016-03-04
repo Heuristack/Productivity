@@ -44,7 +44,6 @@ make
 make install
 cd - &> /dev/null
 
-fi
 ##==
 #
 # ACE - Mavericks
@@ -76,7 +75,6 @@ bin/mwc.pl -type gnuace ace.mwc
 make
 make install
 cd - &> /dev/null
-exit
 
 ##==
 #
@@ -163,6 +161,7 @@ make
 make install
 cd - &> /dev/null
 
+fi
 ##==
 #
 # LLVM (Uninstallation: make uninstall)
@@ -183,6 +182,7 @@ cmake --build . --target install
 
 cd - &> /dev/null
 
+exit
 ##==
 #
 # Berkeley DB

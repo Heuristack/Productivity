@@ -12,6 +12,7 @@
 #include "quickfix/Application.h"
 #include "ql/quantlib.hpp"
 #include "db_cxx.h"
+#include "dispatch/dispatch.h"
 
 using std::cout;
 using std::endl;

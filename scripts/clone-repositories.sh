@@ -73,7 +73,6 @@ if [ -d mpc.git ]; then echo "already exist: mpc"; else
 git clone https://github.com/DOCGroup/MPC.git mpc.git; fi
 if [ -d ace.git ]; then ln -snf ace.git atcd.git; fi
 
-
 ##==
 #
 # clone llvm, clang, and libcxx
@@ -91,11 +90,13 @@ cd - &> /dev/null
 cd projects
 git clone http://llvm.org/git/libcxx.git
 git clone http://llvm.org/git/libcxxabi.git
+git clone http://llvm.org/git/compiler-rt.git
+git clone http://llvm.org/git/openmp.git
+git clone http://llvm.org/git/test-suite.git
 cd - &> /dev/null
 
 popd &> /dev/null
 
-fi
 ##==
 #
 # clone lttng tools, ust, and modules for
@@ -111,6 +112,21 @@ for reponame in ${lttng_repolist[@]}
 do
     clonerepo $reponame $lttng_remote
 done
+
+##==
+#
+# libdispatch (GCD)
+#
+##==
+clonerepo libdispatch git://git.macosforge.org 
+
+fi
+##==
+#
+# Wireshark
+#
+##==
+git clone https://code.wireshark.org/review/wireshark
 
 ##===----------------------------------------------------------------------===##
 
