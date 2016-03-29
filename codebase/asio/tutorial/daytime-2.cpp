@@ -6,7 +6,8 @@ bool is_running = true;
 
 std::string make_daytime_string() { std::time_t now = std::time(0); return ctime(&now); }
 
-int main(){
+int main()
+{
     try {
         boost::asio::io_service service;
         boost::asio::ip::tcp::acceptor acceptor(service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), 8813));

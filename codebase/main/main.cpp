@@ -23,33 +23,20 @@ try
 
     cout << "Hello, World!" << endl;
 
-
     boost::asio::io_service io;
     io.run();
 
 
-    FIX::SessionSettings settings("session.config");
-
+    try { FIX::SessionSettings settings("session.config"); } catch (FIX::ConfigError& e){ cout << "Exception@FIX: Configuration Error: " << e.what() << endl; }
 
     cout << "QuantLib Version: " << QL_LIB_VERSION << endl;
 
+    try { Db db(NULL, 0); db.open(NULL, "universe.db", NULL, DB_BTREE, DB_CREATE, 0); db.close(0); } catch (DbException& e) { cout << "Exception@BDB: " << e.what() << endl; }
 
-    Db db(NULL, 0);
-    db.open(NULL, "universe.db", NULL, DB_BTREE, DB_CREATE, 0);
-    db.close(0);
-
-}
-catch (FIX::ConfigError& e)
-{
-    cout << "FIX exception: " << e.what() << endl;
-}
-catch (DbException& e)
-{
-    cout << "BDB exception: " << e.what() << endl;
 }
 catch (std::exception & e)
 {
-    cout << "exception: " << e.what() << endl;
+    cout << "Exception: " << e.what() << endl;
 }
 
 //===----------------------------------------------------------------------===//

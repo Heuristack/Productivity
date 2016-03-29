@@ -99,6 +99,9 @@ target_link_libraries(daytime-1 boost_system)
 add_executable(daytime-2 src/asio/tutorial/daytime-2.cpp)
 target_link_libraries(daytime-2 boost_system)
 
+add_executable(daytime-3 src/asio/tutorial/daytime-3.cpp)
+target_link_libraries(daytime-3 boost_system)
+
 
 ##==
 #
