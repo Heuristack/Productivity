@@ -67,10 +67,24 @@ highlight CursorLine cterm=NONE ctermbg=Grey  ctermfg=None
 
 ""'''
 "
-" highlight vertical 
+" highlight column
 "
 ""'''
 "set cursorcolumn
 highlight CursorColumn cterm=NONE ctermbg=DarkGrey ctermfg=NONE
+
+""'''
+"
+" highlight search
+"
+""'''
+set hlsearch
+
+""'''
+"
+" incremental search
+"
+""'''
+set incsearch
 
 ""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''""
