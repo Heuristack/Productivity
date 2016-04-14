@@ -56,9 +56,10 @@ ln -snf productivity/bibliography bibliography
 # build symbolic links to files
 #
 ##==
-ln -snf productivity/runcoms/bashrc .bash_profile
-ln -snf productivity/runcoms/vimrc  .vimrc
-ln -snf productivity/runcoms/tmuxrc .tmux.conf
+ln -snf productivity/runcoms/bashrc  .bash_profile
+ln -snf productivity/runcoms/vimrc   .vimrc
+ln -snf productivity/runcoms/tmuxrc  .tmux.conf
+ln -snf productivity/runcoms/inputrc .inputrc
 
 
 ##===----------------------------------------------------------------------===##

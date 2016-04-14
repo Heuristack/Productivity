@@ -27,7 +27,7 @@ bind-key r source ~/.tmux.conf \; display "Reloaded!"
 # Basic Settings
 #
 ##==
-set-option -g status-style bg=red
+set-option -g status-style bg=green
 set-option -g display-panes-time 5000
 set-option -g base-index 0
 set-window-option -g pane-base-index 1
