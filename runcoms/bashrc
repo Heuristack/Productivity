@@ -31,6 +31,11 @@ export PS1=$PS1'[${PWD}]'
 export dateformat="%Y-%m-%d"
 export timeformat="%Y-%m-%d"
 
+##==
+#
+# Color Control
+#
+##==
 if [ "$OS" == "Darwin" ]; then
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
@@ -41,15 +46,37 @@ export LS_OPTIONS='--color=auto'
 eval "`dircolors`"
 fi
 
+##==
+#
+# Terminal Control
+#
+##==
+stty -ixon
+
+##==
+#
+# Line Editing: readline
+#
+##==
 export READLINE_MODE=vi
 export READLINE_MODE=emacs
 set -o $READLINE_MODE
 
+##==
+#
+# History Retrieve
+#
+##==
 export HISTTIMEFORMAT='%F %T  '
-export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:tb:history:'
+export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:history:'
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 
+##==
+#
+# Frequent Aliases
+#
+##==
 alias reload='source $HOME/.bash_profile'
 alias hosts='cat /etc/hosts'
 alias rm='rm -i'
