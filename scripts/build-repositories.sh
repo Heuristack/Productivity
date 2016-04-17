@@ -161,7 +161,6 @@ make
 make install
 cd - &> /dev/null
 
-fi
 ##==
 #
 # LLVM (Uninstallation: make uninstall)
@@ -182,7 +181,7 @@ cmake --build . --target install
 
 cd - &> /dev/null
 
-exit
+fi
 ##==
 #
 # Berkeley DB
@@ -209,6 +208,7 @@ else
 fi
 cd - &> /dev/null
 
+exit
 ##==
 #
 # LTTng
@@ -237,6 +237,18 @@ make modules_install
 depmod -a
 cd - &> /dev/null
 fi
+
+##==
+#
+# Wireshark
+#
+##==
+
+##==
+#
+# libdispatch
+#
+##==
 
 ##===----------------------------------------------------------------------===##
 

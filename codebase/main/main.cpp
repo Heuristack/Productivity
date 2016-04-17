@@ -11,7 +11,7 @@
 #include "quickfix/SessionSettings.h"
 #include "quickfix/Application.h"
 #include "ql/quantlib.hpp"
-#include "db_cxx.h"
+#include "berkeleydb/db_cxx.h"
 #include "dispatch/dispatch.h"
 
 using std::cout;
