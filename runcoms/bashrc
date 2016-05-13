@@ -68,7 +68,7 @@ set -o $READLINE_MODE
 #
 ##==
 export HISTTIMEFORMAT='%F %T  '
-export HISTIGNORE='ls:l:ll:cd:cd*:cd *:cp:cp*:cp *:pwd:history:'
+export HISTIGNORE='ls:l:ll:ls *"cd:cd[a-z]:cd[a-z][a-z]:cp[a-z][a-z]:pwd:history:'
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
 
