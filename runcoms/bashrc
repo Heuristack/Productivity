@@ -80,6 +80,7 @@ export HISTSIZE=10000
 alias reload='source $HOME/.bash_profile'
 alias hosts='cat /etc/hosts'
 alias rm='rm -i'
+alias vi='vim'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls $LS_OPTIONS'
