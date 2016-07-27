@@ -109,6 +109,7 @@ alias cdsp='cd $SP_HOME'
 alias cdsc='cd $SC_HOME'
 
 alias cdsnip='cdsp'
+alias cdcpp='cd $CB_HOME/cpp11'
 
 alias cpmk='cp $MK_HOME/Makefile.mk ./Makefile'
 alias cptx='cp $TX_HOME/*.tex .'
