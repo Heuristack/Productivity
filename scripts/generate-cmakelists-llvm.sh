@@ -42,6 +42,17 @@ find -H llvm.git/tools/clang/include/clang -type f -name "*.h" -or -name "*.cpp"
 find -H llvm.git/tools/clang/tools/driver  -type f -name "*.h" -or -name "*.cpp" >> t/clang.main.txt
 
 
+find -H llvm.git/utils/unittest/googletest/include -type d -maxdepth 0 >> t/googletest.include0.txt
+find -H llvm.git/utils/unittest/googletest/include -type d -maxdepth 1 >> t/googletest.include1.txt
+find -H llvm.git/utils/unittest/googletest/include -type d -maxdepth 2 >> t/googletest.include2.txt
+
+find -H llvm.git/utils/unittest/googletest/include -type f -name "*.h" -or -name "*.cc" >> t/googletest.src.txt
+find -H llvm.git/utils/unittest/googletest/src -type f -name "*.h" -or -name "*.cc" >> t/googletest.src.txt
+find -H llvm.git/utils/unittest/UnitTestMain -type f -name "*.cpp" >> t/googletest.src.txt
+
+find -H llvm.git/unittests -type f -name "*.h" -or -name "*.cpp" >> t/unittests.src.txt
+
+
 ##===----------------------------------------------------------------------===##
 #
 # construct 
@@ -60,12 +71,15 @@ echo "set(SOURCES"
 cat t/llvm.lib.txt
 cat t/clang.lib.txt
 cat t/clang.main.txt
+cat t/googletest.src.txt
+cat t/unittests.src.txt
 echo ")"
 echo
 
 echo "include_directories("
 cat t/llvm.include0.txt
 cat t/clang.include0.txt
+cat t/googletest.include2.txt
 echo ")"
 echo
 
